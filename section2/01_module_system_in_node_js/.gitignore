@@ -1,0 +1,25 @@
+# macOS junk
+.DS_Store
+
+# Screenshots / images
+Screenshot*
+*.png
+*.jpg
+*.jpeg
+
+# Node
+node_modules
+npm-debug.log
+
+# VS Code
+.vscode
+
+# Env
+.env
+
+# Logs
+*.log
+
+# System junk
+.Trashes
+.Spotlight-V100
