@@ -1,3 +1,23 @@
 
+
 .DS_Store
 .vscode/
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# Node
+node_modules/
+
+# Logs
+*.log
+
+# Environment files
+.env
+
+# Test files
+test.txt
+
