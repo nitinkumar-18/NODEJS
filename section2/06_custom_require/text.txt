@@ -1,0 +1,25 @@
+Ab eval kya hota hai? (simple language)
+eval = string ko JS code bana ke run karna
+eval("console.log('Hello')");
+
+
+👉 output:
+
+Hello
+
+Example:
+let code = "let x = 5; console.log(x)";
+eval(code);
+
+
+👉 JS string ko real code bana diya
+
+❗ Par eval dangerous kyo hota hai?
+
+1️⃣ Security risk
+2️⃣ Hack possible
+3️⃣ Performance slow
+4️⃣ Debugging nightmare 😵
+
+Isliye Node.js real life me eval use nahi karta
+➡️ new Function() use karta hai internally
