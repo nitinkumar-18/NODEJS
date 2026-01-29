@@ -12,3 +12,5 @@ import vite from "vite";
 
 console.log(vite);
 console.log(axios);
+
+// LIBRARY VS CLI PACKAGES AND ALSO LOCAL ABD GLOBAL
