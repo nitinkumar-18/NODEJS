@@ -3,7 +3,7 @@ console.log("HI");
 let num=0; 
 setInterval(()=>{
     console.log(++num);
-},500);
+},5000);
 
 
 
