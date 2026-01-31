@@ -1,0 +1,12 @@
+fs module kewal text file ko hi nhi read karta 0 and 1 
+
+ko read karta hai 0 and 1 ko hi write karta hai binary
+
+// fs is just like an object hai ek tarike ka
+
+
+// fs ke andar bhaut saare objects hai aur usme kaafi file hai aur sabh do tarah ke hai jaise readfile toh uska readfilesync. agar appendfile toh uska appendfilesync essa sabh hai
+
+// toh by default yeh samjo readfilesync read karte hai toh vo buffer return karta hai aur voo 0 and 1 hote hai ek tarah ke sai 0 and 1 hote hai ek tarah sai vo 
+
+
