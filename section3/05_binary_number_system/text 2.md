@@ -157,3 +157,197 @@ low voltage=0
 // computer convinient in 2 ki power [binary number system]
 // but human convinient in 10 ki power[decimal number system]
 // koi badha number compact form ke liye octal and hexa mai likhte hai
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// character sets and character encodings
+
+
+
+
+
+//character sets
+
+a,b,c,d,e,f,1,2,3,koi bhi symbol like
+koi ek number assign karte hai like unhe assign karne ke process ko character sets khete hai
+
+// 1->a
+//2->b
+basically ASCII[American standard code for information interchange] characters they assign number to the value
+
+//unicode
+
+// sbko number assign hai ascii ke andar 
+
+
+
+
+
+
+
+
+
+ascii code->128 characters 2^7=128
+
+
+
+
+
+// unicode have 1.1 million characters
+
+// jitne possible ho skte hai unicode mai vo lakar rakhe hai usme yehi hai aaj kal popular hai bhaut jyada
+
+
+
+
+
+
+
+
+
+
+
+
+// koi bhi character ko number assign karna characters set
+
+
+
+
+
+
+
+// character encodings
+-> isme  character sets ko binary mai kaise represent kaise kare bss yehi isme ataa hai
+
+
+
+//UTF-8[8 bits hoti hai]
+// ASCII CODE[7 bits hoti hai]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+UTF-8 is the rulebook that tells computers how to turn human-readable characters into binary (0s and 1s), and back.
+
+Why UTF-8 exists
+
+Early computers used ASCII, which could store only 128 characters (English letters, digits, symbols).
+That was a problem for:
+
+Hindi, Chinese, Arabic, etc.
+
+Emojis 😎🔥
+
+Accents (é, ñ)
+
+UTF-8 solved this globally 🌍.
+
+Key properties of UTF-8
+1️⃣ Variable-length encoding
+
+Each character uses 1 to 4 bytes:
+
+Character	Bytes	Example
+A	1 byte	ASCII compatible
+é	2 bytes	European chars
+अ	3 bytes	Hindi
+😀	4 bytes	Emoji
+
+So English text stays small, but all languages are supported.
+
+2️⃣ Backward compatible with ASCII
+
+This is huge 👇
+
+ASCII characters (A–Z, a–z, 0–9) use exactly the same byte values
+
+Old systems don’t break
+
+Example:
+
+A  → 01000001
+
+
+Same in ASCII and UTF-8.
+
+3️⃣ Can represent ALL Unicode characters
+
+Unicode assigns a code point to every character:
+
+A → U+0041
+
+अ → U+0905
+
+😀 → U+1F600
+
+UTF-8 is just one way to store these code points in bytes.
+
+Why UTF-8 is everywhere 🚀
+
+🌐 Web standard (HTML, CSS, JS)
+
+🐍 Python default encoding
+
+🗄️ Databases (MySQL, PostgreSQL)
+
+🧠 Linux / macOS systems
+
+That’s why you often see:
+
+<meta charset="UTF-8">
+
+UTF-8 vs Unicode (common confusion)
+
+Unicode → character set (what characters exist)
+
+UTF-8 → encoding (how characters are stored)
+
+👉 Unicode = dictionary
+👉 UTF-8 = storage format
+
+Quick real-world example
+
+Word: Hi 😀
+
+Character	UTF-8 bytes
+H	48
+i	69
+😀	F0 9F 98 80
+In one line 🧠
+
+UTF-8 is a universal, space-efficient encoding that lets computers store and display text from every language correctly.
+
+
+
+
