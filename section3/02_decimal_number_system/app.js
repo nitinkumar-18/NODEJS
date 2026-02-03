@@ -24,3 +24,4 @@ function digitsToNumber(digits){
 // console.log(num2);
 
 
+// data stored in bit ex- 1011010110 here 10 bits available
