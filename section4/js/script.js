@@ -16,3 +16,5 @@ fetch("http://localhost:3000/",{
     method:"POST",
     body:"TANISH TANDON HERE NOW"
 }).then((res)=>res.text()).then((data)=>console.log(data));
+
+
