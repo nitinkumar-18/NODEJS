@@ -1,0 +1,23 @@
+NODE JS is a single threaded , event driven ,non-blocking,
+
+
+
+Single-threaded
+Node.js uses a single main thread to execute JavaScript code. This means all JavaScript runs on one thread, not multiple threads.
+
+Event-driven
+Node.js works on an event-driven architecture. Tasks are executed based on events (like request arrival, file read completion, timer expiry).
+
+Non-blocking (Asynchronous I/O)
+Node.js does not block the main thread while performing I/O operations such as file reading, database queries, or network requests.
+Instead, these operations are handled asynchronously, and callbacks/promises are executed once the task is completed.
+
+Because of this architecture, Node.js is highly efficient and suitable for:
+
+I/O-intensive applications
+
+Real-time applications
+
+APIs and web servers
+
+Scalable network applications
