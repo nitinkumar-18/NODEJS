@@ -1,0 +1,9 @@
+
+
+Stream = data ko chhote-chhote pieces (chunks) me process karna instead of pura ek saath.
+
+
+// TYPES OF STREAMS
+
+1.READABLE STREAMS.
+
