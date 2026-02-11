@@ -10,7 +10,7 @@ import fs from "fs";
 
 
 
-console.time();
+// console.time();
 // via buffer it take time default: 4.738ms this much
 //MEMORY // 400MB
 // CPU 3%
@@ -28,7 +28,7 @@ console.time();
 
 
 //toh bhai never write and read on same time this is quite lagging the system very fast 
-const readStream= fs.createReadStream("/Users/tanishtandon/Downloads/Part 2 – Master JavaScript & Become a Real Developer _ Full Course - YouTube.html",{highWaterMark:1 * 1024 * 1024});
+// const readStream= fs.createReadStream("/Users/tanishtandon/Downloads/COMPILER.pdf",{highWaterMark:1 * 1024 * 1024});
 
 
 
@@ -47,14 +47,25 @@ const readStream= fs.createReadStream("/Users/tanishtandon/Downloads/Part 2 – 
 
 // large file
 
-readStream.on("data",(chunkBuffer)=>{
-    fs.appendFileSync("/Users/tanishtandon/Downloads/COMPILER.pdf",chunkBuffer)
+// readStream.on("data",(chunkBuffer)=>{
+//     fs.appendFileSync("/Users/tanishtandon/Downloads/COMPILER.pdf",chunkBuffer)
 
-    if(chunkBuffer.byteLength < 1 * 1024 * 1024){
-console.timeEnd();
-    }
-});
-// memory ka usage bhuat kam kar skte hai
+//     if(chunkBuffer.byteLength < 1 * 1024 * 1024){
+// console.timeEnd();
+//     }
+// });
+// memory ka usage bhuat kam kar skte hai bss time thoda extra lagha  data ko chunks mai read karna
+
+
+
+
+// readStream.on("data",(chunkBuffer)=>{
+//     fs.appendFileSync("/Users/tanishtandon/Downloads/interstellar.mkv",chunkBuffer)
+
+//     if(chunkBuffer.byteLength < 1 * 1024 * 1024){
+// console.timeEnd();
+//     }
+// });
 
 
 
@@ -92,3 +103,30 @@ console.timeEnd();
 
 // streams we can work with promises or not there is your choice only ek do steps baddh jaate hai bss
 
+
+
+
+
+
+//highWaterMark:4 means size. 4 ka table
+
+const readStream=fs.createReadStream("chars.txt",{
+    highWaterMark:16,
+});
+
+let readCount=0;
+
+
+
+
+readStream.on("data",(chunk)=>{
+    console.log(chunk.byteLength);
+    readCount++;
+})
+
+
+
+readStream.on("end",(chunk)=>{
+    console.log({readCount});
+    
+})
