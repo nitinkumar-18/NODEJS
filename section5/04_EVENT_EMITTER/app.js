@@ -14,7 +14,7 @@ const emitter=new EventEmitter();//emitter object return karta hai jo humare cus
 
 emitter.setMaxListeners(2);
 
-
+//abc event ka name uske andar do event handlers hai
 //abc is a event name 
 // emitter is event emitter 
 emitter.on('abc',()=>{
@@ -34,6 +34,8 @@ emitter.on("y",()=>{
 });
 
 
+// kUDH KAA BHI USE KAR SKTE HAI EVENT EMITTER AUR CUSTOM EMITTER
+// EK EVENT LISTENER KE LIYE MULTIPLE EVENT HANDLERS HO SAKTE HAI
 // emitter.on("y",()=>{
 //     console.log(' second abc event emitted');
 // });
@@ -42,6 +44,18 @@ emitter.once("abc",()=>{
     console.log('once abc event emitted');
 
 });
+
+emitter.once("abc",()=>{
+    console.log("TANISH");
+})
+
+
+
+emitter.once("abc",()=>{
+    console.log('once abc event emitted');
+
+});
+
 
 
 // emitter.on("y",()=>{
