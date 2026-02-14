@@ -21,3 +21,11 @@ node_modules/
 # Test files
 test.txt
 
+
+
+
+
+
+*.mp4
+*.mkv
+*.zip
