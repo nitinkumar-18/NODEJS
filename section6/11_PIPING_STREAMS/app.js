@@ -4,11 +4,11 @@ import fs, { WriteStream } from "fs";
 
 console.time();
 
-const readStream=fs.createReadStream("/Users/tanishtandon/Desktop/The Prestige 2005 720p 10Bit BluRay Hindi VCD English ESubs - MoviesMod.Lol.mkv",{highWaterMark:1 * 1024 * 1024});
+// const readStream=fs.createReadStream("/Users/tanishtandon/Desktop/The Prestige 2005 720p 10Bit BluRay Hindi VCD English ESubs - MoviesMod.Lol.mkv",{highWaterMark:1 * 1024 * 1024});
 
 
 
-const writeStream=fs.createWriteStream("The Prestige 2005 720p 10Bit BluRay Hindi VCD English ESubs - MoviesMod.Lol.mkv")
+// const writeStream=fs.createWriteStream("The Prestige 2005 720p 10Bit BluRay Hindi VCD English ESubs - MoviesMod.Lol.mkv")
 
 // jo humne isEmpty vagera check kia vo humm pipe sai kara skte hai   // pipe method use on readstream uske andar write stream lagao  hamara backpressure pause hona sabh hojaega via pipe
 readStream.pipe(writeStream);// read par pipe hota hai
