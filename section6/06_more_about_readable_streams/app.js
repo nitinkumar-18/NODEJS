@@ -1,5 +1,8 @@
 import fs, { read } from "fs";
+import { Readable } from "stream";
+// console.log(Readable);
 
+//jo readable class inherit karta hai readStream sai
 // hum logh yeh highwatermark ke baadh bhi encoding de skte hai
 const readStream=fs.createReadStream("chars.txt",{highWaterMark:4,encoding:"utf-8"});
 /// encoding set kardete sai hai toh hamara data string ke form mai ajata hai
@@ -134,6 +137,13 @@ const readStream=fs.createReadStream("chars.txt",{highWaterMark:4,encoding:"utf-
 
 
 
-readStream.on("data",(chunk)=>{
-    console.log(chunk);
-})
+// readStream.on("data",(chunk)=>{
+//     console.log(chunk);
+// })
+
+
+
+
+
+// pipe writable mai hota hai because arguement chaiyeh hota hai ek stream ka data dusri stream mai pass karne ke liye hota hai
+// readStream.pipe();
