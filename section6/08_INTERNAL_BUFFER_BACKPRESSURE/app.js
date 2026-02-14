@@ -9,6 +9,8 @@ const writeStream=fs.createWriteStream("file.txt",{highWaterMark :4});// yeh lag
 
 // console.log(writeStream.writableHighWaterMark);
 
+// internal buffer iska highwatermark value hoti hai
+
 
 // uska size 4 hai lekin vo leta hi jaega kaam  jabh takh kaam  leta jaega jabh takh ek dum katam na hojae
 
@@ -211,3 +213,15 @@ function write100A(){
 
 // when we handle backpressure then it handle it with less memory but time slight increase. backpressure is very serious
 //toh usko pause kardo agar jyada hojae internal buffer mai kyoki vo uss data ko khali kar sake
+
+
+
+
+
+//createWriteStream backpressure apply karti hai
+//writable length property hoti hai
+//writestream boolean value return karta hai
+
+
+
+
