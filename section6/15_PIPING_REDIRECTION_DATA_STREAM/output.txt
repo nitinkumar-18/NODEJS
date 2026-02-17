@@ -1,0 +1,6 @@
+stdout : THIS IS TANISH TANDON from app2.js
+97d4439-3d40-456d-83c2-7090ae164348
+For help, see: https://nodejs.org/en/docs/inspector
+Debugger attached.
+stderr : THIS IS TANISH TANDON from app2.js
+Waiting for the debugger to disconnect...

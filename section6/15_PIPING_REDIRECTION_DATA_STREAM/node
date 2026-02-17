@@ -1,0 +1,6 @@
+Debugger listening on ws://127.0.0.1:52239/0ac73888-217f-4fd7-ab22-640d3816d323
+For help, see: https://nodejs.org/en/docs/inspector
+Debugger attached.
+stderr : THIS IS TANISH TANDON from app2.js
+Waiting for the debugger to disconnect...
+stdout : THIS IS TANISH TANDON from app2.js
