@@ -12,6 +12,8 @@ const {buffer,bytesRead}=await fileHandle.read({buffer : Buffer.alloc(10)});
 
 
 
+
+
 // 🔹 File Handle kya hota hai?
 
 // 👉 File handle ek reference / ID hota hai jo OS deta hai jab tum file open karte ho.
