@@ -1,0 +1,29 @@
+WHAT IS NETWORKING?
+NET + WORK
+
+net -> bole toh chizzo ko connect karna ek ek points ko connect kardia.
+
+
+work -> jo net ki process hai usko excecute karna toh NETWORK
+
+
+// means mobile phone aur desktop ek dusre sai connected hai
+
+
+
+
+
+
+
+// if two devices present so that is called your NETWORK
+// there were many devices present out there  and connected to each other
+
+
+
+
+
+
+// hum move karege data ko one device to another device but there is some rules require for transfer like that is called protocols issi ki study ko hum NETWORKING bolte hai aur bole toh computer NETWORKING bolte hai
+
+
+
