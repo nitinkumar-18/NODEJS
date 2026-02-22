@@ -127,6 +127,106 @@
 
 
 
+// import http from "http";
+// import fs from "fs/promises";
+// import { read } from "fs";
+
+// const server=http.createServer(async(req,res)=>{
+//   res.setHeader("access-control-allow-origin","*");
+
+
+
+
+
+
+
+
+  // yaha image likha hai humne toh jo img hoghi vo load karege
+  // res.setHeader("Content-Type","image/webp");
+
+
+
+  // const fileHandle=await fs.open('river.webp');// yaha koi bhi file le skte  ho package.json anything jo present ho 
+
+
+
+
+
+
+
+
+  // const readStream= fileHandle.createReadStream({highWaterMark :5000 });
+
+
+
+
+
+
+
+  // readStream.on("data",(chunk)=>{
+  //   res.write(chunk);
+
+  //   readStream.pause();
+
+  //   setTimeout(()=>{
+  //     readStream.resume();
+  //   },500);
+
+
+  // });
+
+
+
+
+
+
+
+
+// readStream.on("end",()=>{
+//   res.end();
+// });
+
+
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+// server.listen(4000,"localhost",()=>{
+//   console.log("Server Started");
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import http from "http";
 import fs from "fs/promises";
 import { read } from "fs";
@@ -142,11 +242,7 @@ const server=http.createServer(async(req,res)=>{
 
 
   // yaha image likha hai humne toh jo img hoghi vo load karege
-  res.setHeader("Content-Type","image/webp");
-
-
-
-  const fileHandle=await fs.open('river.webp');// yaha koi bhi file le skte  ho package.json anything jo present ho 
+  res.setHeader("Content-Type","video/mp4");
 
 
 
@@ -155,7 +251,23 @@ const server=http.createServer(async(req,res)=>{
 
 
 
-  const readStream= fileHandle.createReadStream({highWaterMark :5000 });
+// yeh download karega 
+  res.setHeader("Content-Disposition","attachment; filename=video.mp4")
+
+
+
+  const fileHandle=await fs.open('/Users/tanishtandon/Desktop/ALLSTARS.mp4');// yaha koi bhi file le skte  ho package.json anything jo present ho 
+
+
+// yeh size bataega
+const {size}=await fileHandle.stat();
+
+
+
+res.setHeader("Content-Length",size);
+
+
+  const readStream= fileHandle.createReadStream({highWaterMark :100 });
 
 
 
@@ -170,7 +282,7 @@ const server=http.createServer(async(req,res)=>{
 
     setTimeout(()=>{
       readStream.resume();
-    },500);
+    },1);
 
 
   });
