@@ -1,10 +1,10 @@
-import fs from "fs/promises";
+// import fs from "fs/promises";
 
 
-const fileHandle=await fs.open('text.txt','r+')// open promises return karega. // toh yeh filehandle kuch nahi bss fd ko use karke ek object banadia.  kahi sarre methods and properties hai 
+// const fileHandle=await fs.open('text.txt','r+')// open promises return karega. // toh yeh filehandle kuch nahi bss fd ko use karke ek object banadia.  kahi sarre methods and properties hai 
 
 
-const {buffer,bytesRead}=await fileHandle.read({buffer : Buffer.alloc(10)});
+// const {buffer,bytesRead}=await fileHandle.read({buffer : Buffer.alloc(10)});
 
 
 
@@ -24,18 +24,18 @@ const {buffer,bytesRead}=await fileHandle.read({buffer : Buffer.alloc(10)});
 
 
 
-const {buffer : writtenBuffer , bytesWritten}= await fileHandle.write(Buffer.from("TANISH TANDON"));
+// const {buffer : writtenBuffer , bytesWritten}= await fileHandle.write(Buffer.from("TANISH TANDON"));
 
-console.log({writtenBuffer});
+// console.log({writtenBuffer});
 
-console.log({bytesWritten});
-
-
+// console.log({bytesWritten});
 
 
 
 
-await fileHandle.close();
+
+
+// await fileHandle.close();
 // console.log(buffer);
 // console.log(bytesRead);
 
@@ -49,3 +49,33 @@ await fileHandle.close();
 
 
 
+
+
+
+
+// main  is below 
+
+
+
+
+
+
+
+
+
+import fs from "fs/promises";
+
+const fileHandle=await fs.open("text.txt","r+");
+
+const {buffer,bytesRead}=await fileHandle.read({buffer : Buffer.alloc(10),
+
+});
+
+
+const {buffer : writtenBuffer , bytesWritten}=await fileHandle.write(Buffer.from("TANISH"));
+
+console.log({writtenBuffer});
+console.log({bytesWritten});
+
+
+await fileHandle.close();
