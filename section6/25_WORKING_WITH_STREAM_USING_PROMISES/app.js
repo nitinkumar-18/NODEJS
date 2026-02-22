@@ -53,12 +53,12 @@ import fs from "fs/promises";
 
 
 
-const readFileHandle=await fs.open("/Users/tanishtandon/Downloads/ALLSTARS.mp4");
+// const readFileHandle=await fs.open("/Users/tanishtandon/Downloads/ALLSTARS.mp4");
 
 
-const writeHandle=await fs.open("ALLSTARS.mp4");
+// const writeHandle=await fs.open("ALLSTARS.mp4");
 
-const readStream=readFileHandle.createReadStream();
-const writeStream=writeHandle.createWriteStream();
+// const readStream=readFileHandle.createReadStream();
+// const writeStream=writeHandle.createWriteStream();
 
-readStream.pipe(writeStream)
+// readStream.pipe(writeStream)

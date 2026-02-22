@@ -242,8 +242,11 @@ const server=http.createServer(async(req,res)=>{
 
 
   // yaha image likha hai humne toh jo img hoghi vo load karege
+  // res.setHeader("Content-Type","video/mp4");
+
   res.setHeader("Content-Type","video/mp4");
 
+// res.setHeader("Content-Type","image/webp");
 
 
 
@@ -252,7 +255,7 @@ const server=http.createServer(async(req,res)=>{
 
 
 // yeh download karega 
-  res.setHeader("Content-Disposition","attachment; filename=video.mp4")
+  // res.setHeader("Content-Disposition","attachment; filename=video.mp4")
 
 
 
@@ -260,6 +263,7 @@ const server=http.createServer(async(req,res)=>{
 
 
 // yeh size bataega
+
 const {size}=await fileHandle.stat();
 
 
