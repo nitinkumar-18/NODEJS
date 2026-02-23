@@ -1,0 +1,45 @@
+10.49.193.235
+
+
+//MAC ADDRESS HOTE HAI DO EK LAN KA EK WAN KA
+
+//openwrt firmware hota hai
+
+
+
+
+//A MAC address (Media Access Control address) is a unique physical identifier assigned to a device’s network interface (like Wi-Fi or Ethernet card).
+
+Think of it as 👉 device ka permanent ID card on a network.
+
+📌 Simple Definition
+
+A MAC address is a 12-digit hexadecimal number used to identify a device on a local network.
+
+
+
+
+MAC address works at:
+
+👉 Data Link Layer (Layer 2) of the OSI Model
+
+It helps devices communicate inside a local network (LAN).
+
+📌 Why MAC address is needed?
+
+When devices talk in a network:
+
+IP address → identifies device globally (internet)
+
+MAC address → identifies device locally (within LAN)
+
+Example:
+
+📦 Sending parcel:
+
+IP = house address (city, street)
+
+MAC = exact person inside house
+
+
+
