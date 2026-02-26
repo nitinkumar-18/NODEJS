@@ -33008,12 +33008,13 @@ function CountriesList({ query  }) {
     _s();
     const [countriesData, setCountriesData] = (0, _react.useState)([]);
     (0, _react.useEffect)(()=>{
-        fetch("https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital").then((res)=>res.json()).then((data)=>setCountriesData(data)).catch((err)=>console.log("Error fetching countries:", err));
+        fetch(// ERROR FIX HEREn
+        "https://restcountries.com/v3.1/all?fields=name,flags,population,region,capital").then((res)=>res.json()).then((data)=>setCountriesData(data)).catch((err)=>console.log("Error fetching countries:", err));
     }, []);
     // show loading shimmer while data loads
     if (!countriesData.length) return /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _countriesListShimmerDefault.default), {}, void 0, false, {
         fileName: "components/CountriesList.jsx",
-        lineNumber: 87,
+        lineNumber: 88,
         columnNumber: 12
     }, this);
     const search = query.toLowerCase();
@@ -33028,12 +33029,12 @@ function CountriesList({ query  }) {
                 data: country
             }, country.name.common, false, {
                 fileName: "components/CountriesList.jsx",
-                lineNumber: 101,
+                lineNumber: 102,
                 columnNumber: 11
             }, this))
     }, void 0, false, {
         fileName: "components/CountriesList.jsx",
-        lineNumber: 93,
+        lineNumber: 94,
         columnNumber: 5
     }, this);
 }
