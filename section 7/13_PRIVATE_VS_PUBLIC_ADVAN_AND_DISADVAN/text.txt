@@ -1,0 +1,187 @@
+private address advantages
+
+because ip address inc every day so (below)
+
+
+
+
+
+reason 1 below
+
+
+
+
+🏠 Situation
+
+4 ghar (houses)
+
+Har ghar mein:
+
+10 devices (mobile, laptop, TV, etc.)
+
+1 router
+
+👉 Total devices = 4 × 10 = 40 devices
+👉 Routers = 4
+
+🌐 Case 1: Agar har device ko PUBLIC IP diya jaye
+
+Public IP = Internet pe visible unique address
+
+Toh:
+
+40 devices → 40 public IP
+
+4 routers → 4 public IP
+
+👉 Total = 44 public IP
+
+❌ Problem:
+
+Public IP limited hote hain
+
+ISP ke liye expensive
+
+IPv4 addresses kam pad jaate
+
+Isi problem ko solve karne ke liye Private IP system banaya gaya.
+
+🌐 Case 2: Real World (Private IP + Router NAT)
+
+Har ghar ko ISP sirf 1 Public IP deta hai.
+
+Router ke andar:
+
+Sab devices ko Private IP milta hai.
+
+Example (House 1):
+
+Device	Private IP
+Phone	192.168.1.2
+Laptop	192.168.1.3
+TV	192.168.1.4
+etc	...
+
+Router ka IP: 192.168.1.1
+
+👉 4 Houses ka calculation:
+
+Public IP needed = 4
+
+Private IP inside homes = 40
+
+🔥 Internet ko sirf 4 IP dikhenge, 40 nahi.
+
+🔁 NAT kya karta hai?
+
+Router NAT (Network Address Translation):
+
+📤 Jab device internet pe request bhejta hai:
+
+192.168.1.5 → router → Public IP (49.xx.xx.xx)
+
+📥 Jab reply aata hai:
+Router use correct device ko bhej deta hai.
+
+👉 Bahar duniya ko sirf router ka public IP dikhta hai.
+
+🧠 Private IP ranges
+
+Yeh special ranges home networks ke liye reserved hain:
+
+192.168.0.0 – 192.168.255.255
+
+172.16.0.0 – 172.31.255.255
+
+10.0.0.0 – 10.255.255.255
+
+Isliye sab gharon mein same IP ho sakta hai:
+👉 192.168.1.2 har ghar mein ho sakta hai.
+
+Conflict nahi hota.
+
+⭐ Private IP ke Advantages
+✅ 1. Public IP saving
+
+IPv4 addresses bachate hain.
+
+✅ 2. Security
+
+Private IP direct internet se access nahi hota.
+
+✅ 3. Easy network management
+
+Ghar, office network easily manage.
+
+✅ 4. Cost efficient
+
+ISP ko kam IP dene padte.
+
+✅ 5. Unlimited devices
+
+Ek public IP → hundreds devices.
+
+🔥 Real world example
+
+Tumhare ghar mein:
+
+6–10 devices
+
+Sabka private IP
+
+Internet pe sirf 1 public IP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2. SECURITY
+we can show our private ip but we can not show public ip because ussai hamari info leak ho skti hai
+because private ko koi access nhi kar skta hai but public kar skta hai toh public ip ko chupaaao bhaut
+
+
+
+public IP accessible over internet
+public ip address consume ip address(drawback
+aur agar private bata bhi do toh koi risk nhi but public bataya toh risk hai bhaut )
+
+
+
+private drawback we cant create server internent cannot access directly via private toh inko internent sai communicate ke liye public ip hona chiayeh
+
+
+not suitable for create server via private because server directly connect with the internet
+
+
+
+
+
+
+
+
+
+
+
+.// PORT FORWARDING concept
+
+agar kisi port par request aae toh usko redirect kardena hai
+
+
+
+// VIA PUBLIC ADDRESS WE CAN ACCESS OTHER FILE EVERYWHERE KOI BHI OPEN KAR SKTA HAI. TOH APNE LAPTOP AUR COMPUTER KO BHI SERVER BANA SKTE HAI
+
+
+
+TOH HUM LIVE CHANGE KAREGE TOH USMAI BHI HOGHA 
