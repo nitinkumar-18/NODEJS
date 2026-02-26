@@ -1,0 +1,163 @@
+(base) tanishtandon@Tanishs-MacBook-Air ~ % nslookup
+> google.com
+Server:		192.168.1.1
+Address:	192.168.1.1#53
+
+Non-authoritative answer:
+Name:	google.com
+Address: 142.250.193.14
+> 
+
+
+name server lookup->nslookup
+
+
+
+
+1.1.1.1 cloudfare DNS HAI
+
+
+
+
+🌐 1️⃣ Websites open karte waqt
+👉 Kaha:
+
+Browser me jab tum likhte ho:
+
+google.com
+👉 Kyon:
+
+Computer ko IP chahiye hota hai.
+
+DNS convert karta hai:
+
+google.com → 142.250.x.x
+
+➡️ bina DNS ke website open hi nahi hogi.
+
+📧 2️⃣ Email bhejne me
+👉 Kaha:
+
+Jab tum email bhejte ho:
+
+user@gmail.com
+👉 Kyon:
+
+DNS MX record batata hai email server kahan hai.
+
+➡️ email sahi server tak pahunchti hai.
+
+☁️ 3️⃣ Cloud services & apps
+👉 Kaha:
+
+Google Drive, AWS, Firebase, APIs
+
+👉 Kyon:
+
+Servers change hote rehte hain
+DNS automatically new IP map karta hai.
+
+🎮 4️⃣ Online gaming & apps
+👉 Kaha:
+
+PUBG, Valorant, Play Store, WhatsApp
+
+👉 Kyon:
+
+Game servers ko locate karne ke liye DNS use hota hai.
+
+🏢 5️⃣ Companies ke internal networks
+👉 Kaha:
+
+Office systems & intranet
+
+👉 Kyon:
+
+Internal server names ko resolve karne ke liye.
+
+🔐 6️⃣ Security & filtering
+👉 Kaha:
+
+Schools, offices, parental control
+
+👉 Kyon:
+
+DNS block kar sakta hai:
+❌ adult sites
+❌ harmful websites
+
+🔥 SIMPLE FLOW (real life)
+
+1️⃣ Tum type karte ho → youtube.com
+2️⃣ DNS se IP milta hai
+3️⃣ Browser server se connect hota hai
+4️⃣ Website load hoti hai
+
+🔥 Agar DNS na ho to:
+
+❌ internet use karna mushkil
+❌ IP yaad rakhne padenge
+❌ email kaam nahi karegi
+❌ apps connect nahi hongi
+
+
+
+
+
+
+
+
+
+
+
+
+
+1.1.1.1 cloudflare DNS
+
+
+
+8.8.8.8 Google DNS
+
+
+
+
+
+
+
+// iana organizations  konsa ip kisko assign hogha
+
+
+13 logical servers hai
+
+
+
+root server ko bhi kisika ka addrerss nhi pata hota uske pass yeh pata hai .com .org yeh kaga sai belon 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//TTL. AMOUNT OF TIME DNS TAKE TO REFRESH
+
+
+// DNS CACHE KARTA HAI TABH KUCH TIME SPAN KE LIYE KARTA HAI
+
+
+
+
+
+
+
+
+DNS SERVER OR DNS RESOLVER OR RECURSIVE DNS SERVER 
+
+cached hai toh bdia hai vrna bhaut dikkat hoti hai
