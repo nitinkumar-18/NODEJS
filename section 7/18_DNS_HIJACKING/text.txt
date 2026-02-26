@@ -49,3 +49,20 @@ Jab tum facebook open karte ho:
 4️⃣ request internet par nahi gayi
 
 👉 DNS bypass ho gaya.
+
+
+// SMALL LEVEL DNS HIJACKING VERY HELPFUL FOR DEVELOPERS
+// MANY BENEFITS AND MANY DISADVANTAGES
+
+
+
+🖥️ Hosts File — Pros & Cons
+✅ Advantages (Fayde)	               ❌ Disadvantages (Nuksaan)
+⚡ Fast connection (DNS lookup skip)	    ❗ Galat entry se websites block ho sakti hain
+💻 Local development easy              	🤯 Bhool gaye to internet issues
+🌐 Real domain jaisa testing	         📱 Sirf isi computer par kaam karega
+🧪 Offline testing possible          	 🔄 Changes ke baad DNS flush karna padta hai
+🔧 Multiple subdomains simulate	         🛠 Manual editing & maintenance
+🚫 Websites block kar sakte ho	         🦠 Malware misuse kar sakta hai
+🔐 Security learning & testing	         🌍 Large networks me practical nahi
+🧼 Ads & trackers block kar sakte ho	  ⚠️ Galat use se confusion
