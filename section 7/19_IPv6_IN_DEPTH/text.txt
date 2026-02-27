@@ -81,3 +81,6 @@ excecute IPv6 on 2345
 
 
 
+
+// GLOBAL HAI LEKIN MOBILE PAR EXCECUTE NHI hogha
+because permission nhi hoti hai
