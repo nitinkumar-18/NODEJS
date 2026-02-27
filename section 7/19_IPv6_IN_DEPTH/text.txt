@@ -1,0 +1,83 @@
+IPv6 128 bits
+
+// starting zero we can remove easily 
+// there are so many rules
+
+
+
+
+
+
+//Link-Local IPv6
+
+inet6 fe80::c52:33b8:8090:6fb6%en0 // yeh unique hoti hai 
+
+✔ Meaning:
+
+✅ same local network ke liye
+✅ router se baat karne ke liye
+✅ automatic generate hota hai
+
+👉 internet use nahi karta.
+
+
+
+
+
+
+
+
+
+
+
+
+//Global IPv6 (Primary)
+inet6 2409:40d2:2151:600a:8fb:420e:3593:734f
+✅ internet par reachable
+✅ ISP ne assign kiya
+✅ real public IPv6 address
+
+👉 duniya tumhe is IP se dekh sakti hai.
+
+
+
+
+
+
+
+
+
+
+// yeh change hota rhega
+//Temporary IPv6
+inet6 2409:40d2:2151:600a:71da:3a94:95e:cd97
+✅ privacy ke liye generate hota hai
+✅ tracking se bachata hai
+✅ periodically change hota hai
+
+👉 modern systems privacy ke liye use karte hain.
+
+
+
+
+
+
+
+
+
+
+yeh IPv6 public hota hai we can access it anywhere server start hojata hai
+
+
+
+
+
+
+
+
+
+excecute IPv6 on 2345
+
+
+
+
