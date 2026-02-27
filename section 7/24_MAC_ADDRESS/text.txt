@@ -1,0 +1,127 @@
+👉 MAC = Media Access Control address
+
+👉 Ye ek unique hardware ID hoti hai jo network device ko identify karti hai.
+
+💡 Simple:
+
+MAC address = device ka permanent hardware identity
+
+
+
+IP address = ghar ka address
+MAC address = ghar ka permanent serial number
+
+
+
+
+
+
+
+
+
+
+
+
+🔢 MAC address format
+
+Example:
+
+A0:9A:8E:3E:70:31
+
+Ya:
+
+a0-9a-8e-3e-70-31
+
+👉 6 pairs
+
+hexadecimal numbers (0–9, A–F)
+
+
+
+
+
+
+
+
+
+Structure samjho
+A0:9A:8E   :   3E:70:31
+First half:
+
+👉 manufacturer (device kis company ne banaya)
+
+Second half:
+
+👉 unique device ID
+
+Isliye har device unique hota hai.
+
+
+
+
+
+
+✅ 1️⃣ Device identification
+
+Router ko pata hota hai kaunsa device connect hai.
+
+✅ 2️⃣ Network communication
+
+Local network me MAC address use hota hai.
+
+✅ 3️⃣ Access control
+
+Router MAC filtering kar sakta hai.
+
+✅ 4️⃣ Security tracking
+
+Network logs me device identify hota hai.
+
+✅ 5️⃣ DHCP reservation
+
+Same MAC → same IP assign.
+
+
+
+
+
+
+
+
+
+🌍 MAC vs IP difference
+Feature	MAC      	IP
+Type	hardware	logical
+Permanent	yes	    change ho sakta
+Use	  local network	 internet routing
+Layer	Layer 2      layer 3
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🌍 MAC address kaha use hota hai?
+
+✔ same WiFi network
+✔ router communication
+✔ LAN communication
+
+Internet par use nahi hota.
+
+🌍 IP address kaha use hota hai?
+
+✔ internet browsing
+✔ online gaming
+✔ cloud services
+✔ global routing
