@@ -1,0 +1,62 @@
+// SSH PROTOCOL hai
+
+//SECURE SHELL
+ BASED ON TCP PROTOCOL
+
+
+ // WE CAN ACCESS OTHER DEVICE TERMINAL IN OUR DEVICE
+
+
+
+ // one TERMINAL talk with another TERMINAL
+
+
+
+
+ // TERMINAL access only when we deploy
+
+
+
+
+
+
+ // MAC ALREADY HAVE INTALLED SSH
+
+
+
+
+
+ // TELNET hota thaa use but secure nhi thaa
+
+
+
+
+
+ // ssh port by default 
+22
+
+
+
+
+
+
+
+
+
+
+
+💻 Laptop → network → laptop
+(simulation of remote computer)
+
+Ye practice hai future ke liye.
+
+🔐 SSH kya karta hai?
+👉 SSH = remote control
+
+Jaise:
+
+TV remote → TV control
+
+SSH → computer control
+
+Tum kisi dusre system ko command se control kar sakte
