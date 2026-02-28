@@ -60,3 +60,45 @@ TV remote → TV control
 SSH → computer control
 
 Tum kisi dusre system ko command se control kar sakte
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// scp secure copy PROTOCOL
+
+
+
