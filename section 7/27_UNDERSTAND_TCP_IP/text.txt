@@ -1,0 +1,318 @@
+7️⃣ Application Layer (User Interaction Layer)
+🎯 Purpose:
+
+User ko network services provide karna.
+
+🧠 Yeh layer:
+
+User requests handle karti hai
+
+Network services access karwati hai
+
+📡 Protocols:
+
+HTTP, HTTPS, FTP, SMTP, DNS, Telnet
+
+🧰 Uses:
+
+✔ Web browsing
+✔ Email sending
+✔ File transfer
+✔ Remote login
+
+🧠 Real Example:
+
+Tum browser me google.com type karte ho → request generate.
+
+❗Important:
+
+Ye actual apps nahi, balki network services interface hai.
+
+6️⃣ Presentation Layer (Data Translator & Security Layer)
+🎯 Purpose:
+
+Data ko readable format me convert karna.
+
+🧠 Responsibilities:
+
+✔ Encryption / Decryption
+✔ Compression / Decompression
+✔ Data format translation
+
+📌 Example:
+
+HTTPS encryption
+
+JPEG, MP4 compression
+
+UTF-8 text encoding
+
+👉 Sender encrypt karega → receiver decrypt karega.
+
+5️⃣ Session Layer (Connection Manager)
+🎯 Purpose:
+
+Devices ke beech session establish & maintain karna.
+
+🧠 Responsibilities:
+
+✔ Session start & end
+✔ Authentication
+✔ Session recovery
+✔ Checkpoint creation
+
+📌 Example:
+
+Tum website login karte ho → session active rehta hai.
+
+Agar internet drop ho jaye → session resume ho sakta hai.
+
+🧠 Real World:
+
+Video call disconnect → reconnect → session restore.
+
+4️⃣ Transport Layer (Reliable Delivery Layer)
+🎯 Purpose:
+
+Data ko reliable aur ordered way me deliver karna.
+
+🧠 Responsibilities:
+
+✔ Segmentation (data tukdo me todna)
+✔ Error detection & correction
+✔ Flow control
+✔ Retransmission
+✔ End-to-end delivery
+
+📡 Protocols:
+🔹 TCP (Transmission Control Protocol)
+
+✔ Reliable
+✔ Error-free delivery
+✔ Slow but safe
+
+Use: websites, emails, banking
+
+🔹 UDP (User Datagram Protocol)
+
+✔ Fast
+✔ No guarantee
+✔ Low latency
+
+Use: streaming, gaming, video calls
+
+📌 Example:
+
+WhatsApp text → TCP
+
+PUBG game → UDP
+
+3️⃣ Network Layer (Routing & IP Layer)
+🎯 Purpose:
+
+Data ko destination tak pahunchana.
+
+🧠 Responsibilities:
+
+✔ Logical addressing (IP)
+✔ Routing
+✔ Path selection
+✔ Packet forwarding
+
+📡 Protocols:
+
+IP, ICMP, routing protocols
+
+📌 Devices:
+
+👉 Router
+
+🧠 Example:
+
+Router decide karta hai data India se US server tak kaise jayega.
+
+2️⃣ Data Link Layer (Local Delivery Layer)
+🎯 Purpose:
+
+Same network me devices ke beech data transfer.
+
+🧠 Responsibilities:
+
+✔ MAC addressing
+✔ Framing
+✔ Error detection
+✔ Node-to-node delivery
+
+📡 Sub-layers:
+
+• LLC (Logical Link Control)
+• MAC (Media Access Control)
+
+📌 Devices:
+
+👉 Switch
+👉 WiFi router
+
+🧠 Example:
+
+Switch MAC address dekhkar data correct device ko bhejta hai.
+
+1️⃣ Physical Layer (Hardware Transmission Layer)
+🎯 Purpose:
+
+Bits ko physical signals me convert karna.
+
+🧠 Responsibilities:
+
+✔ Electrical signals
+✔ Optical signals
+✔ Radio waves
+✔ Cable transmission
+
+📌 Examples:
+
+Ethernet cable
+Fiber optic
+WiFi signals
+Bluetooth
+
+👉 Yahan data = 0 aur 1 signals.
+
+🔥 Data Flow (Sender → Receiver)
+Sender:
+
+Application → Presentation → Session → Transport → Network → Data Link → Physical
+
+Receiver:
+
+Physical → Data Link → Network → Transport → Session → Presentation → Application
+
+📦 Data Unit Names (VERY IMPORTANT)
+Layer	Data Name
+Application	Data
+Transport	Segment
+Network	Packet
+Data Link	Frame
+Physical	Bits
+🌍 Real Life Example: Website Open Karna
+Step-by-step:
+
+1️⃣ Browser request create
+2️⃣ Transport → TCP connection
+3️⃣ Network → IP routing
+4️⃣ Data Link → MAC delivery
+5️⃣ Physical → signals travel
+6️⃣ Server response bhejta hai
+7️⃣ Browser page display karta hai
+
+🔧 Devices & OSI Layers
+Device	Layer
+Hub	Physical
+Switch	Data Link
+Router	Network
+Firewall	Network/Transport
+Gateway	All layers
+🧠 Mnemonic
+
+👉 All People Seem To Need Data Processing
+
+🔥 OSI Model Real Use
+
+✔ Networking samajhne me
+✔ Interview preparation
+✔ Troubleshooting
+✔ Cybersecurity
+✔ Cloud & DevOps
+
+👉 Tum networking & cloud me interested ho → yeh foundation hai.
+
+⚡ Layer-wise Troubleshooting Examples
+
+❌ cable damage → Physical
+❌ switch issue → Data Link
+❌ wrong IP → Network
+❌ port blocked → Transport
+❌ session timeout → Session
+❌ SSL error → Presentation
+❌ website down → Application
+
+✅ Short Revision
+
+✔ Physical → signals
+✔ Data Link → MAC
+✔ Network → IP routing
+✔ Transport → reliability
+✔ Session → connection
+✔ Presentation → encryption/format
+✔ Application → user services
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OSI MODEL MADE BY ISO[internation organization for standardisation]
+
+
+// TCP // IP model made by US DEPARTMENT
+
+
+
+4. Application layer [Application,Presentation,session isme ek application layer]
+//data
+
+
+
+
+3.Transport layer[Transport layer]
+tcp segment ,udp datagrams
+
+
+2.internet layer[network layer]
+// Packet
+
+
+1.network access layer [data link and physical layer]
+// frame ,Bits
