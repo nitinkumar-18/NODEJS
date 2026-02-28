@@ -1,0 +1,506 @@
+// chrome browser and node js server talk
+
+
+// ek application kisi dusre server sai batt karti hai
+
+
+// hamara bts wala code phele sai likha hua bss communicate kartte hai aaj ke time mai
+
+
+//OSI Model (Open Systems Interconnection Model)
+
+
+
+
+
+[TOP TO BOTTOM]
+
+7.A – Application Layer
+6.P – Presentation Layer
+5.S – Session Layer
+4.T – Transport Layer
+3.N – Network Layer
+2.D – Data Link Layer
+1.P – Physical Layer
+
+
+
+
+summary->
+
+
+
+
+
+
+
+HUMAN READABLE Data.
+       |
+ENCRYPTION,SERIALIZATION,COMPRESSION.       
+        |
+SESSION MANAGEMENT KONSA CLIENT KISSAI CONNECT hai[NO CHANGE IN DATA AT ALL AST IS IT DATA THERE]
+         |
+(SEGMENT) mai tut jata hai bole toh pieces mai tut jata hai port bhi ajate hai issai pata chalta hai ki TCP HAI YAA UDP SAI BROWSER SAI REQUEST TCP KE BHEJTE HAI
+         |
+ NETWORK MAI ISKO EK IP ADDRESS ASSIGN HOGHA SOURCE AND DESTI WALA IP
+ (ISKO PACKET BHI BOLTE HAI)
+         |
+ YAHA SOURCE AND DESTIN ATAA HAI PURE KO FRAME KHETE HAI YEH CONVERT HOTA HAI ELECTRICAL SIGNAL VAGERA MAI ELECTROMAGNETIC SIGNAL AND ELECTRIC SIGNALS MAI
+
+
+
+// layer2 or hop to hop delivery
+kya frame ke jariye router takh aegi toh abh router sai node js takh jaegi ussai phele 
+jabh vo router mai source destination jo aege router sai milne ke baadh jo destination hai vo source banjaega aur jo aur destination uss node wale ka hogha abh
+
+// FRAME BARR BARR RECREATE HOGHA
+
+          |
+
+LAPTOP TAKH AAEGI REQUEST
+
+
+
+
+
+
+
+FRAME AYAA USKO UNPACK KAR RHE HAI USS PORT PAR DELIVER KARDEGE 
+
+
+
+
+DATA DOWN THE LINE ENCAPSULATION UP JAA RHA HAI TOH DECAPSULATION
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+PHYSICAL LAYER MAI CABLES AND REPEATERS HUB BHI HOTA HAI
+
+DATA LINK LAYER KAA EXAMPLE HAI SWITCHES
+
+
+
+NETWORK KE ANDAR ROUTER AEGA AUR Transport KE ANDAR BHI AEGA 
+OSI EK THEORY MODEL HAI BSS SAMAJNE KE LIYE HOTA HAI
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🔥 OSI Model kyun banaya gaya?
+
+Networking complex thi → alag vendors ke devices kaam nahi karte the.
+
+OSI model solve karta hai:
+
+✅ Standard communication rules
+✅ Interoperability between devices
+✅ Troubleshooting easy
+✅ Network design modular banata hai
+
+📦 Data Transmission ka Big Picture
+
+Sender → Data create
+↓
+Layers data ko prepare karti hain
+↓
+Network se travel
+↓
+Receiver par reverse process
+
+👉 Is process ko Encapsulation & Decapsulation kehte hain.
+
+🔹 7 Layers Explained Deeply
+7️⃣ Application Layer (User Interaction Layer)
+🎯 Role:
+
+User ko network services provide karta hai.
+
+👨‍💻 Kaam:
+
+Web browsing
+
+Email sending
+
+File transfer
+
+Remote login
+
+📡 Protocols:
+
+HTTP, HTTPS, FTP, SMTP, DNS
+
+🧠 Real Example:
+
+Tum Chrome me google.com type karte ho.
+
+👉 Request generate hoti hai.
+
+6️⃣ Presentation Layer (Translator + Security Layer)
+🎯 Role:
+
+Data ko readable format me convert karta hai.
+
+👨‍💻 Kaam:
+
+✔ Encryption / Decryption
+✔ Compression
+✔ Data format conversion
+
+🧠 Example:
+
+HTTPS encryption
+
+Image compression (JPEG, PNG)
+
+Text encoding (ASCII, UTF-8)
+
+👉 Sender encrypt karega → receiver decrypt karega.
+
+5️⃣ Session Layer (Connection Manager)
+🎯 Role:
+
+Devices ke beech session establish, maintain & terminate karta hai.
+
+👨‍💻 Kaam:
+
+✔ Session start/end
+✔ Authentication
+✔ Session recovery
+
+🧠 Example:
+
+Tum website login karte ho → session active rehta hai.
+
+Agar internet thodi der drop ho jaye → session resume ho sakta hai.
+
+4️⃣ Transport Layer (Reliable Delivery Layer)
+🎯 Role:
+
+Data ko correct & reliable way me deliver karna.
+
+👨‍💻 Functions:
+
+✔ Segmentation
+✔ Error detection
+✔ Flow control
+✔ Retransmission
+
+📡 Protocols:
+
+TCP & UDP
+
+⚖️ TCP vs UDP
+TCP	UDP
+Reliable	Fast
+Error checking	No guarantee
+Slow	Real-time
+Used in web	Used in streaming
+🧠 Example:
+
+WhatsApp message → TCP
+Live video → UDP
+
+3️⃣ Network Layer (Routing Layer)
+🎯 Role:
+
+Data ko correct destination tak pahunchana.
+
+👨‍💻 Kaam:
+
+✔ Logical addressing (IP address)
+✔ Routing
+✔ Path selection
+
+📡 Protocols:
+
+IP, ICMP, Routing protocols
+
+🧠 Example:
+
+Router decide karta hai data ka route.
+
+👉 Google server India me hai ya US me → route decide.
+
+2️⃣ Data Link Layer (Local Delivery Layer)
+🎯 Role:
+
+Same network ke andar data transfer.
+
+👨‍💻 Functions:
+
+✔ MAC addressing
+✔ Error detection
+✔ Framing
+
+🧠 Example:
+
+Switch MAC address use karta hai data bhejne ke liye.
+
+👉 WiFi router par connected devices.
+
+1️⃣ Physical Layer (Hardware Layer)
+🎯 Role:
+
+Raw bits ko signals me convert karna.
+
+👨‍💻 Kaam:
+
+✔ Electrical signals
+✔ Radio waves
+✔ Cables transmission
+
+🧠 Example:
+
+Ethernet cable, fiber optics, WiFi signals.
+
+👉 0 & 1 signals me convert hote hain.
+
+🔥 Data Encapsulation Process
+Sender Side:
+
+Application → Data
+
+Transport → Segments
+
+Network → Packets
+
+Data Link → Frames
+
+Physical → Bits (signals)
+
+Receiver Side:
+
+Reverse process = Decapsulation
+
+Bits → Frames → Packets → Segments → Data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Jab data ek device se doosre device tak travel karta hai, toh OSI layers us data ko wrap (pack) karti hain aur destination par usse unwrap (khola) jata hai.
+
+👉 Wrap karna = Encapsulation
+👉 Unwrap karna = Decapsulation
+
+📦 Encapsulation kya hota hai?
+👉 Definition:
+
+Data jab sender side par OSI layers se pass hota hai, toh har layer apni information (header/trailer) add karti hai.
+
+Is process ko Encapsulation kehte hain.
+
+👉 Simple words:
+Data ko parcel ki tarah pack karna.
+
+🎯 Encapsulation Step-by-Step
+Example: Tum WhatsApp message bhejte ho “Hello”
+🔹 Step 1: Application Layer
+
+Data = "Hello"
+
+🔹 Step 2: Transport Layer
+
+Header add hota hai:
+
+Port number
+
+Sequence number
+
+Error control
+
+👉 Now called: Segment
+
+🔹 Step 3: Network Layer
+
+Header add hota hai:
+
+Source IP
+
+Destination IP
+
+👉 Now called: Packet
+
+🔹 Step 4: Data Link Layer
+
+Header + Trailer add:
+
+Source MAC
+
+Destination MAC
+
+Error detection (CRC)
+
+👉 Now called: Frame
+
+🔹 Step 5: Physical Layer
+
+Frame → bits → signals
+
+👉 010101010 → wire / WiFi se travel
+
+🔥 Visual Flow
+
+Data → Segment → Packet → Frame → Bits
+
+📦 Decapsulation kya hota hai?
+👉 Definition:
+
+Destination device par reverse process hota hai.
+
+Har layer apna header remove karti hai aur original data extract hota hai.
+
+👉 Simple words:
+Parcel ko kholna.
+
+🎯 Decapsulation Step-by-Step
+Receiver side:
+
+1️⃣ Physical → bits receive
+2️⃣ Data Link → MAC verify → header remove
+3️⃣ Network → IP verify → header remove
+4️⃣ Transport → port & errors check → header remove
+5️⃣ Application → original message
+
+👉 Final output: Hello
+
+🧠 Real Life Example (Courier Parcel)
+Encapsulation:
+
+Gift pack kiya
+
+Box dala
+
+Address label lagaya
+
+Courier seal kiya
+
+Decapsulation:
+
+Courier receive
+
+Label check
+
+Box khola
+
+Gift nikala
+
+🔥 Headers kya hote hain?
+
+Header = control information
+
+Examples:
+
+✔ Source & destination address
+✔ Port numbers
+✔ Error checking
+✔ Protocol info
+
+👉 Without headers data destination tak nahi pahunch sakta.
+
+🎯 PDU Names During Encapsulation
+Layer	Name
+Application	Data
+Transport	Segment
+Network	Packet
+Data Link	Frame
+Physical	Bits
