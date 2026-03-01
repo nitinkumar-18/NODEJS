@@ -74,6 +74,12 @@ socket.on("message",(message,remoteAddress)=>{
 // const content=await readFile("/Users/tanishtandon/Documents/num.txt", "utf-8");
 
 const content=await readFile("/Users/tanishtandon/Documents/numbers.txt", "utf-8");
+// large file now numbers.txt send via chunks 
+
+
+
+
+
 
 
 socket.send(content,4000,"192.168.1.5",()=>{
