@@ -51,9 +51,9 @@ import net from "node:net";
 const server=net.createServer();
 
 
-server.listen(2600);
+// server.listen(2600);
 
-server.on("listening",()=>{
+server.listen(2600,'0.0.0.0',()=>{
 
   console.log("Server started on port 2600");
 
@@ -71,8 +71,20 @@ server.on("listening",()=>{
 server.on("connection",(socket)=>{
   socket.on('data',(chunk)=>{
     console.log(chunk.toString());
+    socket.write("HTTP\n\nGOT YOUR MESSAGE");
+    socket.end();
 
-  })
+  });
+
+
+  socket.on('close',()=>{
+    console.log(socket.remoteAddress,": Client disconnected");
+  });
+
+  console.log(socket.address());
+  console.log(socket.remoteAddress);
+  console.log(socket.remotePort);
+  console.log(socket.remoteFamily);
   console.log("Client Connected");
 });
 
