@@ -221,7 +221,7 @@
 
 
 
-
+// phone par request bhejne ke liye hum socket.send method ka use karte hai 
 
 
 import dgram from 'node:dgram'//UDP
@@ -238,4 +238,4 @@ socket.on("message",(message,remoteAddress)=>{
 });
 
 
-socket.send("HI FROM KING TANISH TANDON",2500,"10.215.70.47");
+socket.send("HI FROM  TANISH TANDON",2500,"10.215.70.47");
