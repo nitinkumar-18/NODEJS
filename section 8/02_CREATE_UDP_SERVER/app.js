@@ -268,6 +268,7 @@ const socket=dgram.createSocket("udp4");
 socket.on("message",(message,remoteAddress)=>{
   console.log(message.toString());
   console.log(remoteAddress);
+  socket.close();
 });
 
 
