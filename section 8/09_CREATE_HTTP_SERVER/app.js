@@ -2,7 +2,16 @@ import { createReadStream } from "node:fs";
 import net from "node:net";
 
 const server = net.createServer((socket) => {
-  socket.write("HTTP/1.1\n\n");
+  // socket.write("HTTP/1.1 200 OKAY \nAccess-Control-Allow-Origin:*\n\n");
+  // socket.end();
+
+
+  socket.write("HTTP/1.1 200 OKAY\n");
+    socket.write("Access-Control-Allow-Origin:*\n");
+    socket.write("Access-Control-Allow-Origin:*\n");
+    socket.write("hello world\n");
+    socket.write("\n\n");
+
   
   const readStream = createReadStream("river.webp");
   // const readStream = createReadStream("numbers.txt");
@@ -11,6 +20,7 @@ const server = net.createServer((socket) => {
   readStream.on("end", () => {
     console.log("File ended");
   });
+
 
   socket.on("data", (chunk) => {
     console.log(chunk.toString());
@@ -29,3 +39,20 @@ const server = net.createServer((socket) => {
 server.listen(4000, "0.0.0.0", () => {
   console.log("Server started on port 4000");
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+// jo hi hii hai vo responsse ka  header hai
+
+
+// HTTP/1.1\n\nhii
