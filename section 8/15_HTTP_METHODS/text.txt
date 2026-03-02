@@ -1,0 +1,630 @@
+idempotent means same input dene par same output mile
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1️⃣ GET
+✔ Purpose:
+
+Server se data lena.
+
+Example:
+GET /users
+
+👉 users list milegi.
+
+✔ Safe: YES
+✔ Idempotent: YES
+
+Same request → same data.
+
+🌍 Real use:
+
+✅ webpage load
+✅ products list
+✅ search results
+✅ API fetch
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2️⃣ POST
+✔ Purpose:
+
+naya data create karna.
+
+Example:
+POST /users
+
+Body:
+
+{ "name": "Tanish" }
+
+👉 new user create hoga.
+
+❌ Safe: NO
+❌ Idempotent: NO
+
+Agar 2 baar bheja → 2 users ban jayenge.
+
+🌍 Real use:
+
+✅ signup
+✅ login
+✅ payment
+✅ form submit
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3️⃣ PUT
+✔ Purpose:
+
+resource ko update ya replace karna.
+
+Example:
+PUT /users/5
+
+👉 user 5 ko replace karega.
+
+✔ Idempotent: YES
+
+Same request 10 baar bhejo → same result.
+
+❌ Safe: NO
+
+server change hota hai.
+
+🌍 Real use:
+
+✅ profile update
+✅ settings replace
+✅ resource overwrite
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🔹 4️⃣ DELETE
+✔ Purpose:
+
+resource delete karna.
+
+DELETE /users/5
+
+👉 user delete.
+
+✔ Idempotent: YES
+
+1 baar delete → ho gaya
+10 baar delete → same result
+
+❌ Safe: NO
+🌍 Real use:
+
+✅ account delete
+✅ post delete
+✅ remove item
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+5️⃣ HEAD
+✔ Purpose:
+
+GET jaisa hi, par sirf headers milte hain.
+
+HEAD /file.zip
+
+👉 file size, last modified milta hai
+👉 file download nahi hoti.
+
+✔ Safe: YES
+✔ Idempotent: YES
+🌍 Real use:
+
+✅ file size check
+✅ caching validation
+✅ server status check
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+6️⃣ OPTIONS
+✔ Purpose:
+
+server kya allow karta hai ye batata hai.
+
+OPTIONS /users
+
+Response:
+
+Allow: GET, POST, PUT
+✔ Safe: YES
+✔ Idempotent: YES
+🌍 Real use:
+
+✅ CORS preflight request
+✅ API capability check
+
+Browser automatically bhejta hai.
+
+
+
+
+
+
+
+
+
+
+
+
+
+7️⃣ PATCH
+✔ Purpose:
+
+partial update.
+
+PATCH /users/5
+
+Body:
+
+{ "name": "Tanish" }
+
+👉 sirf name update.
+
+❌ Safe: NO
+❌ Idempotent: NO
+
+Agar multiple patch operations different ho → result change.
+
+🌍 Real use:
+
+✅ profile edit
+✅ partial update
+✅ toggle status
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🔹 1️⃣ GET — Data lena
+Kya karta hai:
+
+Server se data retrieve karta hai.
+
+
+GET /products
+
+👉 products list milegi.
+
+Real examples:
+
+webpage load
+
+YouTube video info
+
+Instagram feed
+
+Amazon products
+
+Safe: ✔
+Idempotent: ✔
+
+👉 100 baar refresh karo → data hi milega.
+
+🧠 Internally kya hota hai?
+
+Browser:
+
+GET /users
+
+Server:
+→ database read
+→ response send
+
+
+
+
+
+
+
+
+
+
+
+🔹 2️⃣ POST — Naya data create
+Kya karta hai:
+
+Server ko data bhejkar naya resource create karta hai.
+
+POST /users
+
+Body:
+
+{ "name": "Tanish" }
+
+👉 new user create.
+
+Real examples:
+
+signup
+
+login
+
+payment
+
+comment post
+
+order place
+
+Safe: ❌
+Idempotent: ❌
+
+👉 2 baar bheja → 2 users ban sakte hain.
+
+🧠 Flow:
+
+client → data send
+server → store data
+server → response
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🔹 3️⃣ PUT — Resource replace/update
+Kya karta hai:
+
+specific URL par resource replace karta hai.
+
+PUT /users/5
+
+Body:
+
+{ "name": "Tanish", "age": 21 }
+
+👉 pura user replace.
+
+Safe: ❌
+Idempotent: ✔
+
+Same PUT 10 baar bhejo → same final state.
+
+🧠 Real use:
+
+profile overwrite
+
+settings replace
+
+document replace
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🔹 4️⃣ DELETE — Resource remove
+DELETE /users/5
+
+👉 user delete.
+
+Safe: ❌
+Idempotent: ✔
+
+delete 1 baar → done
+delete 10 baar → still deleted
+
+Real use:
+
+post delete
+
+remove item from cart
+
+account delete
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🔹 5️⃣ HEAD — Headers only
+
+GET jaisa hi hai but body nahi bhejta.
+
+HEAD /file.zip
+
+Response:
+
+file size
+
+last modified
+
+content type
+
+👉 file download nahi hoti.
+
+Safe: ✔
+Idempotent: ✔
+Real use:
+
+download size check
+
+cache validation
+
+server health check
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🔹 6️⃣ OPTIONS — Server kya allow karta hai
+OPTIONS /users
+
+Response:
+
+Allow: GET, POST, PUT
+
+👉 server supported methods batata hai.
+
+Safe: ✔
+Idempotent: ✔
+🔥 IMPORTANT: CORS preflight
+
+Browser pehle OPTIONS request bhejta hai jab:
+
+frontend alag port/domain par ho
+
+POST/PUT request bhejni ho
+
+
+
+
+
+
+
+
+
+
+
+
+
+🔹 7️⃣ PATCH — Partial update
+Kya karta hai:
+
+resource ka sirf ek hissa update karta hai.
+
+PATCH /users/5
+
+Body:
+
+{ "age": 22 }
+
+👉 sirf age update.
+
+Safe: ❌
+Idempotent: ❌
+
+Kyuki multiple patch operations alag result de sakte hain.
+
+
+
+
+
+
+
+
+
+
+🔥 PUT vs PATCH (Most asked)
+PUT
+
+👉 pura object replace
+
+PATCH
+
+👉 sirf change wali field update
+
+Example:
+
+User:
+
+name: Ravi
+age: 20
+city: Delhi
+PUT
+name: Ravi
+age: 21
+city: Delhi
+PATCH
+age: 21
+🧠 Real App Flow Example
+Instagram
+
+GET → feed load
+POST → photo upload
+PATCH → bio edit
+DELETE → post delete
+
+Amazon
+
+GET → products
+POST → order create
+DELETE → remove cart item
+
+📊 SAFE vs IDEMPOTENT (easy memory trick)
+SAFE
+
+👉 sirf read
+
+GET, HEAD, OPTIONS
+
+IDEMPOTENT
+
+👉 repeat safe result
+
+GET, PUT, DELETE, HEAD, OPTIONS
+
+
+
+
