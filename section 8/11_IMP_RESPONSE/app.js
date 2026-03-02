@@ -84,7 +84,9 @@ const server = net.createServer(async(socket) => {
   // socket.end();
 
 
-  const fileHandle=await open("numbers.txt");
+  // const fileHandle=await open("numbers.txt");
+  
+const fileHandle=await open('/Users/tanishtandon/Desktop/NODE./NODEJS/section 8/09_CREATE_HTTP_SERVER/ALLSTARS.mp4');
   
 
   const {size}=await fileHandle.stat();
@@ -92,11 +94,19 @@ const server = net.createServer(async(socket) => {
 
   const readStream=fileHandle.createReadStream();
 
+
 // yeh niche sabh header hai jo client ko bheja ja raha hai
   socket.write("HTTP/1.1 200 OKAY\n");
-    socket.write("Access-Control-Allow-Origin:*\n");
-    socket.write("Content-Type:text/txt; charset=utf-8\n");    socket.write("Access-Control-Expose-Header:Hello,name*\n");
-    socket.write("hello world\n");
+    // socket.write("Access-Control-Allow-Origin:*\n");
+    // socket.write("Content-Type:text/txt; charset=utf-8\n");  
+
+
+
+    
+
+     socket.write("Content-Type:video/mp4\n"); 
+      // socket.write("Access-Control-Expose-Header:Hello,name*\n");
+    // socket.write("hello world\n");
     socket.write(`Content-length: ${size}\n`);// kitne byte ka data bheja ja raha hai ussai jyada data bhejna allowed nahi hai
 
     socket.write("\n\n");
@@ -135,8 +145,12 @@ server.listen(4000, "0.0.0.0", () => {
 
 
 
+// via content-length header client ko pata chal jata hai ki kitna data receive karna hai aur uss data ke end tak pahuchne ke baad connection close kar diya jata hai
+ //aur download bhi start ho jata hai
 
 
+
+ //content-length bhaut important header hai jab hum file bhej rahe hote hai client ko kyuki usse client ko pata chal jata hai ki kitna data receive karna hai aur uss data ke end tak pahuchne ke baad connection close kar diya jata hai
 
 
 
