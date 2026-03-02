@@ -84,7 +84,7 @@ const server = net.createServer(async(socket) => {
   // socket.end();
 
 
-  const fileHandle=await open("test.pdf");
+  const fileHandle=await open("river.webp");
   
 // const fileHandle=await open('/Users/tanishtandon/Desktop/NODE./NODEJS/section 8/09_CREATE_HTTP_SERVER/ALLSTARS.mp4');
   
@@ -109,12 +109,21 @@ const server = net.createServer(async(socket) => {
     
 
     //  socket.write("Content-Type:video/mp4\n");
-    
-      socket.write("Content-Type:application/pdf\n"); 
+
+
+    socket.write("Content-Type:image/webp\n");
+      // socket.write("Content-Type:application/pdf\n"); 
       // socket.write("Access-Control-Expose-Header:Hello,name*\n");
     // socket.write("hello world\n");
     socket.write(`Content-Length: ${size}\n`);
    
+
+
+// inline means browser ke andar hi file open kar dega aur attachment means file download kar dega
+
+
+    socket.write("Content-Disposition: attachment; filename=ALLSTARS.mp4");
+
 
     socket.write("\n\n");
 
