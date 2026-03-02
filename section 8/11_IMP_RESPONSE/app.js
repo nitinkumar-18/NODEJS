@@ -84,10 +84,14 @@ const server = net.createServer(async(socket) => {
   // socket.end();
 
 
-  // const fileHandle=await open("numbers.txt");
+  const fileHandle=await open("test.pdf");
   
-const fileHandle=await open('/Users/tanishtandon/Desktop/NODE./NODEJS/section 8/09_CREATE_HTTP_SERVER/ALLSTARS.mp4');
+// const fileHandle=await open('/Users/tanishtandon/Desktop/NODE./NODEJS/section 8/09_CREATE_HTTP_SERVER/ALLSTARS.mp4');
   
+
+
+
+// const fileHandle=await open("ALLSTARS.mp4");
 
   const {size}=await fileHandle.stat();
 
@@ -104,10 +108,13 @@ const fileHandle=await open('/Users/tanishtandon/Desktop/NODE./NODEJS/section 8/
 
     
 
-     socket.write("Content-Type:video/mp4\n"); 
+    //  socket.write("Content-Type:video/mp4\n");
+    
+      socket.write("Content-Type:application/pdf\n"); 
       // socket.write("Access-Control-Expose-Header:Hello,name*\n");
     // socket.write("hello world\n");
-    socket.write(`Content-length: ${size}\n`);// kitne byte ka data bheja ja raha hai ussai jyada data bhejna allowed nahi hai
+    socket.write(`Content-Length: ${size}\n`);
+   
 
     socket.write("\n\n");
 
@@ -115,6 +122,7 @@ const fileHandle=await open('/Users/tanishtandon/Desktop/NODE./NODEJS/section 8/
   // const readStream = createReadStream("river.webp");
   // const readStream = createReadStream("numbers.txt");
   
+  // socket.write('{"name": "THE TANISH TANDON"}');
   readStream.pipe(socket);
   // socket.write("abcdefgh");
   // socket.end();
