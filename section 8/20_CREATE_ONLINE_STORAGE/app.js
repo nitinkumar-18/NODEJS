@@ -5,6 +5,7 @@ import mime from "mime-types";
 
 
 const server = http.createServer(async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
   if (req.url === "/favicon.ico") return res.end("No favicon.");
   if (req.url === "/") {
     serveDirectory(req, res);
@@ -17,7 +18,7 @@ const server = http.createServer(async (req, res) => {
 
 
   const queryParams={}
-  queryString.split('&').forEach((pair)=>{
+  queryString?.split('&').forEach((pair)=>{
     const [key,value]=pair.split('=');
     queryParams[key]=value;
 
@@ -51,7 +52,7 @@ console.log({queryParams});
 
 
 
- res.setHeader('Content-Type',"mime.contentType(url.slice(1))");
+ res.setHeader('Content-Type',mime.contentType(url.slice(1)));
   
 
 
@@ -71,28 +72,33 @@ console.log({queryParams});
 
 
 async function serveDirectory(req, res) {
-  const [url,queryString]=req.url.split("?");
-  console.log("hello", {url,queryString});
+  const [url]=req.url.split("?");
+  // console.log("hello", {url,queryString});
+
  
 
 
    
   const itemsList = await readdir(`./storage${url}`);
-  let dynamicHTML = "";
-  itemsList.forEach((item) => {
-    dynamicHTML += `${item}<a href=".${
-      req.url === "/" ? "" : req.url
-    }/${item}?action=open">OPEN</a>
+  // let dynamicHTML = "";
+  // itemsList.forEach((item) => {
+  //   dynamicHTML += `${item}<a href=".${
+  //     req.url === "/" ? "" : req.url
+
+  //   }/${item}?action=open">OPEN</a>
 
 
 
-    <a href=".${
-      req.url === "/" ? "" : req.url
-    }/${item}?action=download">DOWNLOAD</a>
-    <br>`;
-  });
-  const htmlBoilerplate = await readFile("./boilerplate.html", "utf-8");
-  res.end(htmlBoilerplate.replace("${dynamicHTML}", dynamicHTML));
+
+  //   <a href=".${
+  //     req.url === "/" ? "" : req.url
+  //   }/${item}?action=download">DOWNLOAD</a>
+  //   <br>`;
+  // });
+  // const htmlBoilerplate = await readFile("./boilerplate.html", "utf-8");
+
+  res.setHeader('Content-Type', "application/json");
+  res.end(JSON.stringify(itemsList));
 }
 
 server.listen(2200, "0.0.0.0", () => {
