@@ -1,18 +1,65 @@
 import { open, readdir, readFile } from "fs/promises";
 import http from "http";
 
+import mime from "mime-types";
+
+
 const server = http.createServer(async (req, res) => {
   if (req.url === "/favicon.ico") return res.end("No favicon.");
   if (req.url === "/") {
     serveDirectory(req, res);
   } else {
     try {
-      const fileHandle = await open(`./storage${decodeURIComponent(req.url)}`);
+
+       const [url,queryString]=req.url.split("?");
+  console.log("hello", {url,queryString});
+
+
+
+  const queryParams={}
+  queryString.split('&').forEach((pair)=>{
+    const [key,value]=pair.split('=');
+    queryParams[key]=value;
+
+  })
+console.log({queryParams});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      const fileHandle = await open(`./storage${decodeURIComponent(url)}`);
       const stats = await fileHandle.stat();
       if (stats.isDirectory()) {
         serveDirectory(req, res);
       } else {
         const readStream = fileHandle.createReadStream();
+
+
+
+ res.setHeader('Content-Type',"mime.contentType(url.slice(1))");
+  
+
+
+ res.setHeader("Content-Length",stats.size);
+        if(queryParams.action === "download"){
+          res.setHeader('Content-Disposition',`attachment; filename="${url.slice(1)}"`);
+        }
+
         readStream.pipe(res);
       }
     } catch (err) {
@@ -22,13 +69,27 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
+
 async function serveDirectory(req, res) {
-  const itemsList = await readdir(`./storage${req.url}`);
+  const [url,queryString]=req.url.split("?");
+  console.log("hello", {url,queryString});
+ 
+
+
+   
+  const itemsList = await readdir(`./storage${url}`);
   let dynamicHTML = "";
   itemsList.forEach((item) => {
-    dynamicHTML += `<a href=".${
+    dynamicHTML += `${item}<a href=".${
       req.url === "/" ? "" : req.url
-    }/${item}">${item}</a><br>`;
+    }/${item}?action=open">OPEN</a>
+
+
+
+    <a href=".${
+      req.url === "/" ? "" : req.url
+    }/${item}?action=download">DOWNLOAD</a>
+    <br>`;
   });
   const htmlBoilerplate = await readFile("./boilerplate.html", "utf-8");
   res.end(htmlBoilerplate.replace("${dynamicHTML}", dynamicHTML));
@@ -37,3 +98,13 @@ async function serveDirectory(req, res) {
 server.listen(2200, "0.0.0.0", () => {
   console.log("Server started");
 });
+
+
+
+
+
+
+
+
+
+
