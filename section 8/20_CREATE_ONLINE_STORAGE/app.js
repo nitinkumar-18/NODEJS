@@ -45,21 +45,41 @@ console.log(dynamicHTML);
     }
 
 
-    else{
+    else {
 
-        try{
-       const fileHandle = await open(`./storage${decodeURIComponent(req.url)}`);
-        const readStream=fileHandle.createReadStream();
+    // favicon ignore
+    if (req.url === "/favicon.ico") {
+        res.statusCode = 204;
+        return res.end();
+    }
+
+    try {
+        const filePath = `./storage${decodeURIComponent(req.url)}`;
+        const fileHandle = await open(filePath);
+
+        const stats = await fileHandle.stat();
+
+        // agar directory hai to open mat karo
+        if (stats.isDirectory()) {
+            res.statusCode = 403;
+            return res.end("Cannot open directory");
+        }
+
+        const readStream = fileHandle.createReadStream();
+
+        // stream error handle karo (important)
+        readStream.on("error", () => {
+            res.statusCode = 500;
+            res.end("Stream Error");
+        });
 
         readStream.pipe(res);
-        }
-        catch(err){
-            console.log(err.message);
-            res.end("NOT FOUND");
-        }
 
+    } catch (err) {
+        res.statusCode = 404;
+        res.end("NOT FOUND");
     }
-})
+});
 
 
 
@@ -68,8 +88,6 @@ console.log(dynamicHTML);
 
 
 
-
-
-server.listen(80,"0.0.0.0",()=>{
+server.listen(2200,"0.0.0.0",()=>{
     console.log("SERVER STARTED");
-})
+});
