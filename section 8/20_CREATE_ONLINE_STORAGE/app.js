@@ -17,7 +17,7 @@
 
 import http from "http";
 import { createWriteStream } from "fs";
-import { open, readdir, rm } from "fs/promises";
+import { open, readdir, rm, rename } from "fs/promises";
 import path from "path";
 import mime from "mime-types";
 
@@ -107,33 +107,78 @@ const server = http.createServer(async (req, res) => {
   }
 
 
-  else if (req.method === "DELETE") {
+else if (req.method === "DELETE") {
+  try {
+    const [url, queryString] = req.url.split("?");
+    const queryParams = {};
+
+    queryString?.split("&").forEach((pair) => {
+      const [key, value] = pair.split("=");
+      queryParams[key] = value;
+    });
+
+    const filename = queryParams.filename;
+
+    if (!filename) {
+      res.statusCode = 400;
+      return res.end("Filename query param required");
+    }
+
+    const safePath = path.join(
+      STORAGE_PATH,
+      path.basename(decodeURIComponent(filename))
+    );
+
+    await rm(safePath, { recursive: true, force: true });
+
+    res.end("Deleted successfully");
+  } catch (err) {
+    res.statusCode = 500;
+    res.end(err.message);
+  }
+}
+
+else if (req.method === "PATCH") {
+  let body = "";
+
+  req.on("data", (chunk) => {
+    body += chunk;
+  });
+
+  req.on("end", async () => {
     try {
-      const [url, queryString] = req.url.split("?");
-      const queryParams = {};
-
-      queryString?.split("&").forEach((pair) => {
-        const [key, value] = pair.split("=");
-        queryParams[key] = value;
-      });
-
-      const filename = queryParams.filename;
-
-      if (!filename) {
+      if (!body) {
         res.statusCode = 400;
-        return res.end("Filename query param required");
+        return res.end("Body missing");
       }
 
-      const safePath = path.join(STORAGE_PATH, path.basename(filename));
+      const data = JSON.parse(body);
 
-      await rm(safePath);
+      if (!data.oldFilename || !data.newFilename) {
+        res.statusCode = 400;
+        return res.end("Both filenames required");
+      }
 
-      res.end("File deleted successfully");
+      const oldPath = path.join(
+        STORAGE_PATH,
+        path.basename(data.oldFilename)
+      );
+
+      const newPath = path.join(
+        STORAGE_PATH,
+        path.basename(data.newFilename)
+      );
+
+      await rename(oldPath, newPath);
+
+      res.end("File renamed successfully");
     } catch (err) {
       res.statusCode = 500;
       res.end(err.message);
     }
-  }
+  });
+}
+  
 });
 
 async function serveDirectory(res) {
@@ -147,6 +192,6 @@ async function serveDirectory(res) {
   }
 }
 
-server.listen(2200, "0.0.0.0", () => {
+server.listen(2200, () => {
   console.log("Server running");
 });
