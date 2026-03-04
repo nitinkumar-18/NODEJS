@@ -195,6 +195,36 @@
 
 
 
+//MIDDLEWARE
+// yeh ek function basically koi incoming request aur response ke bich mai bethega
+
+//"/",(req,res)=>{
+//     res.end("TANISH TANDON IS HERE");
+// });
+
+//yeh above jo function hai vo middleware hai 
+
+
+
+
+
+
+// import express from "express";
+
+
+// const app=express();
+
+// const PORT =2700;
+
+
+
+// infinite middleware de skte hai
+
+
+
+// dekho response ek barr bhejdeia aur end kar dia phir bhejoge koi fayda nhi hogha
+
+// next lagane sai jo next req res hai vo bhi use hogha
 
 
 
@@ -202,3 +232,223 @@
 
 
 
+// app.get("/",(req,res,next)=>{
+//     console.log("RUNNING MIDDLEWARE 1")
+//     res.write("TANISH TANDON IS HERE 1\n");
+//     next();
+// },
+
+
+
+
+
+
+
+// (req,res,next)=>{
+//     console.log("RUNNING MIDDLEWARE 2")
+//     res.write("TANISH TANDON IS HERE 2\n");
+//     next();
+//     // yaha next likhdo end mai koi error nhi agar iske agee kuch ho bhi na ho
+// },
+
+
+
+
+
+
+// (req,res,next)=>{
+//     console.log("RUNNING MIDDLEWARE 3")
+//     res.write("TANISH TANDON IS HERE 3\n");
+//     next();
+  
+  
+// },
+
+
+
+
+
+// (req,res)=>{
+//     console.log("RUNNING MIDDLEWARE 4")
+//     res.end("TANISH TANDON IS HERE 4");
+  
+  
+// },
+
+
+
+
+
+
+// );
+
+
+
+
+
+
+
+// app.listen(PORT,()=>{
+//     console.log(`Server is listening on PORT ${PORT}`);
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// this will give you an error kyoki phele next call ho chuka hai bhaii flow ko samjo
+
+
+
+// import express from "express";
+
+// const app=express();
+
+// const PORT=2700;
+
+
+
+// app.get("/",(req,res,next)=>{
+//     console.log("RUNNING MIDDLEWARE 1");
+//      next();
+//     res.write("TANISH TANDON IS HERE 1\n");
+   
+// },
+
+// (req,res)=>{
+//     console.log("RUNNING MIDDLEWARE 2");
+//     res.end("TANISH TANDON IS HERE 2\n")
+
+
+// }
+// );
+
+// app.listen(PORT,()=>{
+//     console.log(`SERVER IS LISTENING ON PORT ${PORT}`);
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+// middleare ek array ke andar store karte jata hai behind the scenes
+
+
+
+// yeh erro nhi dega kyoki next ka flow dekho write end esse samjo flow uska bdia hai yeh
+
+import express from "express";
+
+const app=express();
+
+const PORT=2700;
+
+
+
+app.get("/",
+    // (req,res,next)=>{
+            (req,res)=>{
+    // console.log("RUNNING MIDDLEWARE 1");
+    //  next('TANISH');
+    // res.end("TANISH TANDON IS HERE 1\n");
+    //   next('TANISH');
+
+
+    // yeh try catch mai humne error handling kia hai
+
+ 
+        console.log("RUNNING MIDDLEWARE 1");
+
+        // throw new Error("error Occured");
+
+        console.log(num);
+        res.end("hii");
+ // nex() ke andar kuch bhi pass karo jo truthy value ho toh error middleware
+   
+},
+
+// (req,res)=>{
+    //error ko handle karna
+   
+//     console.log("RUNNING MIDDLEWARE 2");
+//     res.write("TANISH TANDON IS HERE 2\n")
+
+
+// },
+
+
+// agar yeh 4 params wala nhi likhoge toh crash hojaega server jaldi sai
+ (err,req,res,next)=>{
+    //error ko handle karna
+    console.log({err : err.message});
+    console.log(" ERROR RUNNING MIDDLEWARE");
+ 
+    // res.end("TANISH TANDON IS HERE ERROR\n");
+
+    res.end(err.message);
+   
+},
+
+);
+
+app.listen(PORT,()=>{
+    console.log(`SERVER IS LISTENING ON PORT ${PORT}`);
+})
+
+
+
+
+
+
+
+
+
+/// middlewares are of two types
+// request handler middleware isme 2 ya 3 params hoghe
+//(req,res,next) and (req,res) bich yaa start mai 3 params hoghe last mai 2 hoghe params
+
+// agar 2 yaa 3 params hai toh req aegi toh inke pass aegi
+
+
+
+
+
+
+// 2.error handling middleware usme 4 params hoghe
+// vo error bhi handle karega request and response ke sath sath
+
+
+// dekho next() yeh likha hai matlab response hi handle hogha uske baadh agar uske andar kuch likha hai like next('tanish')tabh error ayega 
+
+
+
+
+
+// jabh next ko call karo with truthy value
