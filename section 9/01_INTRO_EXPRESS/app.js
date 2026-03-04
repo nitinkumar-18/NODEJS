@@ -500,6 +500,11 @@
 
 
 
+
+
+
+
+
 import express from "express";
 
 const app=express();
@@ -508,18 +513,96 @@ const PORT=2700;
 
 
 
+//LOGGING REQUEST(LOG REQUEST) request ko hum likh rhe hai log ka means hai yeh
 
+
+
+// yeh below mai humne custom middleware banaya hai jo body parse kar rha hai
+app.use((req,res,next)=>{
+    // res.end("GLOBAL MIDDLEWARE");
+
+    
+
+
+
+    req.on("data",(chunk)=>{
+        const reqBody=JSON.parse(chunk.toString());
+   
+
+
+        req.body=reqBody;
+
+
+
+          next();
+
+    })
+    
+
+
+   
+
+  
+
+})
 
 
 
 app.get("/",(req,res)=>{
+
+
+
+    console.log(req.headers);
+
+    console.log(req.url);
    
-    res.end("Express HOME");
+    res.end("Express HOME\n");
 });
 
+
+
+
+
+
+
+
+
+
+
+//user
+app.get("/user",(req,res)=>{
+    console.log(req.url);
+   
+    res.end("TANISH CODER\n");
+});
+
+
+
+
+
+
+
+
+app.post("/user",(req,res)=>{
+    console.log(req.url);
+    console.log(req.body);
+   
+    res.end("post CODER\n");
+});
+
+
+
+
+
+
+
+
+
+//login
 app.get("/login",(req,res)=>{
+    console.log(req.url);
    
-    res.end("THIS IS TANISH EXPRESS");
+    res.end("LOGIN  IS TANISH EXPRESS\n");
 });
 
 
@@ -529,37 +612,45 @@ app.get("/login",(req,res)=>{
 
 
 
-app.post("/",(req,res)=>{
-    res.end("POST HOME ROUTE");
-})
-
-
-
-app.put("/",(req,res)=>{
-    res.end("PUT HOME ROUTE");
-})
 
 
 
 
-
-app.patch("/",(req,res)=>{
-    res.end("PATCH HOME ROUTE");
-})
-
-
-
-
-app.delete("/",(req,res)=>{
-    res.end("DELETE HOME ROUTE");
-})
 
 
 app.listen(PORT,()=>{
-    console.log(`TANISH app listen on port ${PORT}`);
+    console.log(`TANISH app listen on port ${PORT}\n`);
 });
 
 
 
 
 
+
+
+
+
+
+
+
+// jo url hota hai vo   http://192.168.1.7:2700/login yeh jo login hai vo hum isko req kar rhe hai login hoskta kuch bhi ho skta hai yeh url hai or req url bhi yehi hai
+// console.log(req.url) sai access bhi kar skte hai
+
+
+
+
+
+
+
+// abh route kya hota hai route hamara. app.delete("/",(req,res)
+// yeh jo double comma mai likha hai vo hai yeh delete ka route  get ka route patch ka route esse hi 
+// console.log(req.route) sai bhi access kar skte ho tum object milega
+// agar console.log(req.route.path)toh humko same req.url ke equal milega output
+
+// maximum mai same hota hai req.url hai req.route.path but kuch mai change bhi hota hai
+
+
+
+
+
+// jo request url ki request ko handle karega vo route.path

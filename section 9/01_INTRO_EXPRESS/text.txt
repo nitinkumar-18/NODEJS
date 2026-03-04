@@ -1,1 +1,123 @@
 npm i express
+
+
+
+
+1️⃣ URL kya hota hai
+
+URL = full address of resource on internet
+
+Example:
+
+http://localhost:2700/login?user=tanish
+
+Isko todte hain:
+
+protocol → http
+host → localhost
+port → 2700
+path → /login
+query → ?user=tanish
+
+Ye complete address hai.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1️⃣ URL kya hota hai
+
+URL = full address of resource on internet
+
+Example:
+
+http://localhost:2700/login?user=tanish
+
+Isko todte hain:
+
+protocol → http
+host → localhost
+port → 2700
+path → /login
+query → ?user=tanish
+
+Ye complete address hai.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3️⃣ Route kya hota hai
+
+Route = server ka rule
+
+Matlab:
+
+agar request ka path ye ho
+to ye function run karo
+
+Example:
+
+app.get("/login",(req,res)=>{
+   res.send("login page");
+});
+
+Yaha route hai:
+
+/login
+4️⃣ Difference samjho
+
+Example request:
+
+http://localhost:2700/login?user=tanish
+Browser
+full URL
+Server ko milta hai
+req.url = /login?user=tanish
+Express route match karta hai
+/login
+5️⃣ Simple Table
+Concept	Meaning
+URL	full address
+req.url	path + query received by server
+route	server ka matching rule
