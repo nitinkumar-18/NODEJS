@@ -2,14 +2,14 @@ import http from 'http';
 
 
 
-const server=http.createServer((req,res)=>{
-    // res.write("HELLO FROM HTTP");
+// const server=http.createServer((req,res)=>{
+//     // res.write("HELLO FROM HTTP");
 
-    res.end("TANISH TANDON HTTP MODULE");
+//     res.end("TANISH TANDON HTTP MODULE");
 
-})
+// })
 
-server.listen(2100);
+// server.listen(2100);
 
 
 
