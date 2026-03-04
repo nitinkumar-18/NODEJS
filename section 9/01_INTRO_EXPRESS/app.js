@@ -364,17 +364,17 @@
 
 // yeh erro nhi dega kyoki next ka flow dekho write end esse samjo flow uska bdia hai yeh
 
-import express from "express";
+// import express from "express";
 
-const app=express();
+// const app=express();
 
-const PORT=2700;
+// const PORT=2700;
 
 
 
-app.get("/",
+// app.get("/",
     // (req,res,next)=>{
-            (req,res)=>{
+            // (req,res)=>{
     // console.log("RUNNING MIDDLEWARE 1");
     //  next('TANISH');
     // res.end("TANISH TANDON IS HERE 1\n");
@@ -384,15 +384,15 @@ app.get("/",
     // yeh try catch mai humne error handling kia hai
 
  
-        console.log("RUNNING MIDDLEWARE 1");
+        // console.log("RUNNING MIDDLEWARE 1");
 
         // throw new Error("error Occured");
 
-        console.log(num);
-        res.end("hii");
+        // console.log(num);
+        // res.end("hii");
  // nex() ke andar kuch bhi pass karo jo truthy value ho toh error middleware
    
-},
+// },
 
 // (req,res)=>{
     //error ko handle karna
@@ -405,22 +405,22 @@ app.get("/",
 
 
 // agar yeh 4 params wala nhi likhoge toh crash hojaega server jaldi sai
- (err,req,res,next)=>{
+//  (err,req,res,next)=>{
     //error ko handle karna
-    console.log({err : err.message});
-    console.log(" ERROR RUNNING MIDDLEWARE");
+    // console.log({err : err.message});
+    // console.log(" ERROR RUNNING MIDDLEWARE");
  
     // res.end("TANISH TANDON IS HERE ERROR\n");
 
-    res.end(err.message);
+    // res.end(err.message);
    
-},
+// },
 
-);
+// );
 
-app.listen(PORT,()=>{
-    console.log(`SERVER IS LISTENING ON PORT ${PORT}`);
-})
+// app.listen(PORT,()=>{
+//     console.log(`SERVER IS LISTENING ON PORT ${PORT}`);
+// })
 
 
 
@@ -452,3 +452,114 @@ app.listen(PORT,()=>{
 
 
 // jabh next ko call karo with truthy value
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import express from "express";
+
+const app=express();
+
+const PORT=2700;
+
+
+
+
+
+
+
+app.get("/",(req,res)=>{
+   
+    res.end("Express HOME");
+});
+
+app.get("/login",(req,res)=>{
+   
+    res.end("THIS IS TANISH EXPRESS");
+});
+
+
+
+
+
+
+
+
+app.post("/",(req,res)=>{
+    res.end("POST HOME ROUTE");
+})
+
+
+
+app.put("/",(req,res)=>{
+    res.end("PUT HOME ROUTE");
+})
+
+
+
+
+
+app.patch("/",(req,res)=>{
+    res.end("PATCH HOME ROUTE");
+})
+
+
+
+
+app.delete("/",(req,res)=>{
+    res.end("DELETE HOME ROUTE");
+})
+
+
+app.listen(PORT,()=>{
+    console.log(`TANISH app listen on port ${PORT}`);
+});
+
+
+
+
+
