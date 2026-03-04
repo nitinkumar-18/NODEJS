@@ -518,25 +518,25 @@ const PORT=2700;
 
 
 // yeh below mai humne custom middleware banaya hai jo body parse kar rha hai
-app.use((req,res,next)=>{
+// app.use((req,res,next)=>{
     // res.end("GLOBAL MIDDLEWARE");
 
     
 
 
 
-    req.on("data",(chunk)=>{
-        const reqBody=JSON.parse(chunk.toString());
+    // req.on("data",(chunk)=>{
+    //     const reqBody=JSON.parse(chunk.toString());
    
 
 
-        req.body=reqBody;
+    //     req.body=reqBody;
 
 
 
-          next();
+    //       next();
 
-    })
+    // })
     
 
 
@@ -544,9 +544,20 @@ app.use((req,res,next)=>{
 
   
 
-})
+// })
 
 
+
+
+
+// upar humne apna kudh kaa middleware banaya hai custom middleware use that but use this app.use(express.json()) best hai yeh
+app.use(express.json());// yeh ek function hi return karta hai
+// yeh bana banaya function hai express mai phele kya tha express mai yeh ek body-parser use karta thaa yeh yeh ek library hai
+
+
+
+
+//app.use(express.json()).  app.use ek middle ware set karne ka tarika hai jo express.json return karega vo function middleware hai debug console mai debugger laghakar check karo
 
 app.get("/",(req,res)=>{
 
