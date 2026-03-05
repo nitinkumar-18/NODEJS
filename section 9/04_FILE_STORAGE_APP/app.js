@@ -69,53 +69,207 @@
 // res.set("Access-Control-Allow-Origin","*"); CORS ERROR RESOLVE
 
 
-import express from "express";
-import {readdir} from "fs/promises"; 
+// import express from "express";
+// import {readdir,rm,rename} from "fs/promises"; 
 
 
-const app=express();
+
+// const app=express();
+
+// app.use(express.json());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // setting enable cors
-app.use((req,res,next)=>{
-  res.set("Access-Control-Allow-Origin","*");
-  next();
-});
+// app.use((req,res,next)=>{
+  // res.set("Access-Control-Allow-Origin","*");
+  // res.set("Access-Control-Allow-Method","*");
+  // OR
 
+  // res.set({
+  //  "Access-Control-Allow-Origin" :"*",
+  //  "Access-Control-Allow-Methods":"*",
+  //   "Access-Control-Allow-Headers":"*",
+
+  // })
+
+
+
+
+//    if(req.method === "OPTIONS"){
+//     return res.sendStatus(200);
+//   }
+
+
+
+//   next();
+// });
+
+
+
+
+
+
+
+
+// app.use((req,res,next)=>{
+
+//   res.set({
+//     "Access-Control-Allow-Origin":"*",
+//     "Access-Control-Allow-Methods":"GET,POST,PATCH,DELETE,OPTIONS",
+//     "Access-Control-Allow-Headers":"Content-Type"
+//   });
+
+//   if(req.method === "OPTIONS"){
+//     return res.sendStatus(200);
+//   }
+
+//   next();
+// });
 
 
 // app.use(express.static("storage"));
 
 // serving files
-app.use((req,res,next)=>{
+// app.use((req,res,next)=>{
 
 
 
-  if(req.query.action === "download"){
-    res.set("Content-Disposition","attachment"); 
-  }
+//   if(req.query.action === "download"){
+//     res.set("Content-Disposition","attachment"); 
+//   }
 
 
 
 
-express.static("storage")(req,res,next);
+// express.static("storage")(req,res,next);
 
-})
+// })
+
+
+
+
+
+
+
+//READ
+
+
+
+
 
 
 //serve directory content
-app.get('/',async(req,res)=>{
-  const filesList=await readdir("./storage")// this fileList is an array
-  res.json(filesList);
-});
+// app.get('/',async(req,res)=>{
+//   const filesList=await readdir("./storage")// this fileList is an array
+//   res.json(filesList);
+// });
+
+
+
+
+
+// app.get("/:filename",(req,res)=>{
+//   const {filename}=req.params;
+
+
+//   if(req.query.action === "download"){
+//     res.set("Content-Disposition","attachment");
+
+
+
+//   }
+
+//   res.sendFile(`${import.meta.dirname}/storage/${filename}`);
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// rename ke liye
+
+//  app.patch("/:filename",async(req,res)=>{
+//   const {filename}=req.params;
+
+
+//   await rename(
+//     `./storage/${filename}`,
+//     `./storage/${req.body.newFilename}`
+//   )
+// res.json({message:"RENAMED SUCCESSFULLY"});
+
+
+
+
+//  })
+
+
+
+
+
+
+ 
+// // for delete
+// app.delete("/:filename",async(req,res)=>{
+//   const {filename}=req.params;
+//   const filePath=`./storage/${filename}`;
+
+//   try{
+//     await rm(filePath);
+
+//     res.json({message:"FILE DELETED SUCCESSFULLY"})
+//   }
+//   catch(err){
+//     res.status(404).json({message:"FILE NOT FOUND"});
+//   }
+
+
+
+// });
+
+
+
+
+
+
+
+
 
 //listen
 
-app.listen(2200,()=>{
-  console.log("SERVER STARTED"); 
+// app.listen(2200,()=>{
+//   console.log("SERVER STARTED"); 
 
-})
-
-
+// })
 
 
 
@@ -128,6 +282,8 @@ app.listen(2200,()=>{
 
 
 
+
+// yaha rm mai humne delete kardia toh phir delete hojata hai permannet recycle bin aur trash wali facility alag sai lagani hoti hai
 
 
 
@@ -139,3 +295,109 @@ app.listen(2200,()=>{
 // app.use((req,res,next)=>{
 //   express.static("storage")(req,res,next);
 // })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//REAL CODE IS HERE
+
+
+
+
+import express from "express";
+import { readdir, rename, rm } from "fs/promises";
+
+const app = express();
+
+app.use(express.json());
+
+// Enabling CORS
+app.use((req, res, next) => {
+  res.set({
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "*",
+    "Access-Control-Allow-Headers": "*",
+  });
+  next();
+});
+
+// Read
+app.get("/", async (req, res) => {
+  const filesList = await readdir("./storage");
+  res.json(filesList);
+});
+
+app.get("/:filename", (req, res) => {
+  const { filename } = req.params;
+  if (req.query.action === "download") {
+    res.set("Content-Disposition", "attachment");
+  }
+  res.sendFile(`${import.meta.dirname}/storage/${filename}`);
+});
+
+// Update
+app.patch("/:filename", async (req, res) => {
+  const { filename } = req.params;
+  await rename(`./storage/${filename}`, `./storage/${req.body.newFilename}`);
+  res.json({ message: "Renamed" });
+});
+
+// Delete
+app.delete("/:filename", async (req, res) => {
+  const { filename } = req.params;
+  const filePath = `./storage/${filename}`;
+  try {
+    await rm(filePath);
+    res.json({ message: "File Deleted Successfully" });
+  } catch (err) {
+    res.status(404).json({ message: "File Not Found!" });
+  }
+});
+
+app.listen(2200, () => {
+  console.log(`Server Started`);
+});
