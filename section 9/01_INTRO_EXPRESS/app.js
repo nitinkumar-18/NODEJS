@@ -505,11 +505,11 @@
 
 
 
-import express from "express";
+// import express from "express";
 
-const app=express();
+// const app=express();
 
-const PORT=2700;
+// const PORT=2700;
 
 
 
@@ -551,7 +551,14 @@ const PORT=2700;
 
 
 // upar humne apna kudh kaa middleware banaya hai custom middleware use that but use this app.use(express.json()) best hai yeh
-app.use(express.json());// yeh ek function hi return karta hai
+
+
+
+
+// app.use(express.json());
+// 
+
+// yeh ek function hi return karta hai
 // yeh bana banaya function hai express mai phele kya tha express mai yeh ek body-parser use karta thaa yeh yeh ek library hai
 
 
@@ -559,16 +566,16 @@ app.use(express.json());// yeh ek function hi return karta hai
 
 //app.use(express.json()).  app.use ek middle ware set karne ka tarika hai jo express.json return karega vo function middleware hai debug console mai debugger laghakar check karo
 
-app.get("/",(req,res)=>{
+// app.get("/",(req,res)=>{
 
 
 
-    console.log(req.headers);
+//     console.log(req.headers);
 
-    console.log(req.url);
+//     console.log(req.url);
    
-    res.end("Express HOME\n");
-});
+//     res.end("Express HOME\n");
+// });
 
 
 
@@ -581,11 +588,11 @@ app.get("/",(req,res)=>{
 
 
 //user
-app.get("/user",(req,res)=>{
-    console.log(req.url);
+// app.get("/user",(req,res)=>{
+//     console.log(req.url);
    
-    res.end("TANISH CODER\n");
-});
+//     res.end("TANISH CODER\n");
+// });
 
 
 
@@ -594,12 +601,12 @@ app.get("/user",(req,res)=>{
 
 
 
-app.post("/user",(req,res)=>{
-    console.log(req.url);
-    console.log(req.body);
+// app.post("/user",(req,res)=>{
+//     console.log(req.url);
+//     console.log(req.body);
    
-    res.end("post CODER\n");
-});
+//     res.end("post CODER\n");
+// });
 
 
 
@@ -609,12 +616,12 @@ app.post("/user",(req,res)=>{
 
 
 
-//login
-app.get("/login",(req,res)=>{
-    console.log(req.url);
+// //login
+// app.get("/login",(req,res)=>{
+//     console.log(req.url);
    
-    res.end("LOGIN  IS TANISH EXPRESS\n");
-});
+//     res.end("LOGIN  IS TANISH EXPRESS\n");
+// });
 
 
 
@@ -629,9 +636,9 @@ app.get("/login",(req,res)=>{
 
 
 
-app.listen(PORT,()=>{
-    console.log(`TANISH app listen on port ${PORT}\n`);
-});
+// app.listen(PORT,()=>{
+//     console.log(`TANISH app listen on port ${PORT}\n`);
+// });
 
 
 
@@ -665,3 +672,219 @@ app.listen(PORT,()=>{
 
 
 // jo request url ki request ko handle karega vo route.path
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import express from "express";
+
+const app=express();
+
+const PORT=2700;
+
+app.use(express.json());// body parse karega
+// req.url is only trimmed in app.use
+
+
+app.use("/admin",(req,res,next)=>{
+ //   console.log(req.url) // issai tumhe sirf slash / milega kyoki app.use jo hota hai kuch part trim kartdeta hai
+   // console.log(req.originalUrl)// issai correct /admin yeh url milega har ke liye sirf app.use ke liye trim karega
+
+    if(req.body.password === "SECRET"){
+        next();
+
+
+
+    }
+
+    else {
+        res.end("INVALID CREDENTIALS");
+    }
+    
+
+
+   
+})
+
+
+
+
+app.post("/admin",(req,res)=>{
+    res.end("HELLO ADMIN");
+})
+
+
+// order ka bhaut dhyan do
+
+// but in app.use we isme alaga trah sai comparision hota hai yeh level ke roop mai match karta hai /users/1 toh /users yeh first level,/1 second level hua yeh check karega match hua toh aage jaega atleast pura level toh match hona hi chaiyeh isme
+
+// app.use("/users",(req,res,next)=>{
+
+
+//     res.send("FIRST MIDDLEWARE");
+
+    // res.end("MY MIDDLEWARE")
+// })
+
+
+// app.use("/user/1",(req,res,next)=>{
+
+   
+
+    // res.send("SECOND MIDDLEWARE ");
+
+    // res.end("MY MIDDLEWARE")
+// })
+
+
+
+
+
+// app.get("/",(req,res)=>{
+
+
+
+  
+
+//     console.log(req.url);
+
+//         console.log(req.route.path);
+
+
+    
+
+//     res.end("Express HOME\n");
+// });
+
+
+
+
+
+
+
+
+
+
+
+//user
+// app.get("/user",(req,res)=>{
+//     console.log(req.url);
+   
+//     res.end("TANISH CODER\n");
+// });
+
+
+
+
+
+
+
+
+// app.post("/user",(req,res)=>{
+//     console.log(req.url);
+//     console.log(req.body);
+   
+//     res.end("post CODER\n");
+// });
+
+
+
+
+
+
+
+
+
+//login
+// app.get("/login",(req,res)=>{
+//     console.log(req.url);
+   
+//     res.end("LOGIN  IS TANISH EXPRESS\n");
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+app.listen(PORT,()=>{
+    console.log(`TANISH app listen on port ${PORT}\n`);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//yeh post patch put delete mai hota hai 
+// if req.url === routeName tabh hi chalega yeh yaad rakho tabhi vo login middleware mai jaega
+// example "/login" === "/login"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// app.use kaise run hota hai yeh hai ki yhe check js ka function like /users===/users/1 means startswith() agar start bhi horha hai toh wahi run hojaega    "/users/1".startsWith("/users");
