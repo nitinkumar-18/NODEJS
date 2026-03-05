@@ -21,26 +21,28 @@ app.get("/", (req, res) => {
 
 
 // isme humko isko cursor sai forward nhi kar skte hai yeh dikaat hai aur code bhi jyada line ka hai yeh
-app.get("/test",async(req,res)=>{
+app.get("/test",(req,res)=>{
 
 
-  // const fileHandle=await open("STARS.mp4");
-  // const readStream=fileHandle.createReadStream();
+//   const fileHandle=await open("STARS.mp4");
+//   const readStream=fileHandle.createReadStream();
 
-  // const stats=await fileHandle.stat();
-  // res.setHeader("Content-Length",stats.size);
-  // res.setHeader("Content-Type","video/mp4");
+//   const stats=await fileHandle.stat();
+//   res.setHeader("Content-Length",stats.size);
+//   res.setHeader("Content-Type","video/mp4");
+//     res.setHeader("Accept-Ranges","bytes");// issai video age piche ho skti hai but not optimised because hamesha zero sai start ho rha hai hamesha
   // readStream.pipe(res);
 
 
 
-  // THIS sendFile method want absolute path thats why we use this give us the absolute path of any file
+  // THIS sendFile method want absolute path thats why we use this give us the absolute path of any file and this line is equal res.sendFile(`${import.meta.dirname}/STARS.mp4`); to above full code
 
 
   res.sendFile(`${import.meta.dirname}/STARS.mp4`);
-})
+  
 
 
+});
 
 
 
