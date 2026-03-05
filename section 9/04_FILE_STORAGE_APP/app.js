@@ -349,11 +349,21 @@
 
 
 import express from "express";
+import { createWriteStream } from "fs";
 import { readdir, rename, rm } from "fs/promises";
 
 const app = express();
 
 app.use(express.json());
+
+
+
+
+
+
+
+
+
 
 // Enabling CORS
 app.use((req, res, next) => {
@@ -364,6 +374,22 @@ app.use((req, res, next) => {
   });
   next();
 });
+
+
+//create
+app.post('/:filename',(req,res)=>{
+   const writeStream=createWriteStream(`./storage/${req.params.filename}`);
+
+   req.pipe(writeStream);
+   req.on('end',()=>{
+    res.json({message:"file Uploaded"});
+
+   })
+})
+
+
+
+
 
 // Read
 app.get("/", async (req, res) => {
