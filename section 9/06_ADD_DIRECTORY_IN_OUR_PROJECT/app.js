@@ -349,8 +349,8 @@
 
 
 import express from "express";
-import { createWriteStream } from "fs";
-import { readdir, rename, rm, stat } from "fs/promises";
+import { createWriteStream} from "fs";
+import { readdir, rename, rm, stat,mkdir  } from "fs/promises";
 import cors from "cors";
 
 const app = express();
@@ -403,6 +403,28 @@ app.get("/directory/?*", async (req, res) => {
   res.json(resData);
 });
 
+
+
+
+
+
+
+
+
+
+
+app.post("/directory/?*",async(req,res)=>{
+  const {0 : dirname}=req.params;
+
+  try{
+  await mkdir(`./storage/${dirname}`,{recursive:true})
+  res.json({message :"DIRECTORY CREATED"});
+  }
+  catch(err){
+    res.json({err: err.message});
+  }
+
+})
 
 
 
