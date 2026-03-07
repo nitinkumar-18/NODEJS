@@ -349,9 +349,11 @@
 
 
 import express from "express";
+import path from "path";
 import { createReadStream, createWriteStream} from "fs";
 import { readdir, rename, rm, stat,mkdir  } from "fs/promises";
 import cors from "cors";
+import { error } from "console";
 
 const app = express();
 
@@ -389,9 +391,13 @@ app.use(cors());
 
 // Read
 app.get("/directory/?*", async (req, res) => {
-  const {0 :dirname}=req.params;
+  // const {0 :dirname}=req.params;
+
+  const dirname=path.join("/",req.params[0]);
 
   const fullDirPath=`./storage/${dirname ? dirname : ""}`;
+
+  try{
   const filesList = await readdir(fullDirPath);
   const resData=[]
   
@@ -399,8 +405,18 @@ app.get("/directory/?*", async (req, res) => {
     const stats=await stat(`${fullDirPath}/${item}`);
     resData.push({name : item,isDirectory:stats.isDirectory()});
 
+  
+
+
+
   }
   res.json(resData);
+
+
+
+} catch(err){
+  res.json({error : err.message});
+}
 });
 
 
@@ -414,13 +430,14 @@ app.get("/directory/?*", async (req, res) => {
 
 
 app.post("/directory/?*",async(req,res)=>{
-  const {0 : dirname}=req.params;
+  const dirname=path.join("/",req.params[0]);
 
   try{
   await mkdir(`./storage/${dirname}`,{recursive:true})
   res.json({message :"DIRECTORY CREATED"});
   }
   catch(err){
+    
     res.json({err: err.message});
   }
 
@@ -469,7 +486,7 @@ app.post('/files/*',(req,res)=>{
 
 // PATH TRAVERSAL VULNERABILITY
 app.get("/files/*", (req, res) => {
-    const filePath = req.params[0];
+    const filePath = path.join("/",req.params[0]); 
   // const { 0:filePath } = req.params;
   if (req.query.action === "download") {
     res.set("Content-Disposition", "attachment");
@@ -484,7 +501,12 @@ app.get("/files/*", (req, res) => {
 
 
 
-  res.sendFile(`${import.meta.dirname}/storage/${filePath}`);
+  res.sendFile(`${import.meta.dirname}/storage/${filePath}`,(err)=>{
+
+    if(err){
+    res.json({err : "file not found"});
+    }
+  });
 });
 
 
