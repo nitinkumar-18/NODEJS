@@ -475,16 +475,16 @@ app.get("/files/*", (req, res) => {
     res.set("Content-Disposition", "attachment");
   }
 
-  const readStream=createReadStream(
-    `${import.meta.dirname}/storage/${filePath}`
-  );
-  readStream.pipe(res);
+  // const readStream=createReadStream(
+  //   `${import.meta.dirname}/storage/${filePath}`
+  // );
+  // readStream.pipe(res);
   
 
 
 
 
-  // res.sendFile(`${import.meta.dirname}/storage/${filePath}`);
+  res.sendFile(`${import.meta.dirname}/storage/${filePath}`);
 });
 
 
