@@ -349,7 +349,7 @@
 
 
 import express from "express";
-import { createWriteStream} from "fs";
+import { createReadStream, createWriteStream} from "fs";
 import { readdir, rename, rm, stat,mkdir  } from "fs/promises";
 import cors from "cors";
 
@@ -466,13 +466,25 @@ app.post('/files/*',(req,res)=>{
 
 
 
+
+// PATH TRAVERSAL VULNERABILITY
 app.get("/files/*", (req, res) => {
     const filePath = req.params[0];
   // const { 0:filePath } = req.params;
   if (req.query.action === "download") {
     res.set("Content-Disposition", "attachment");
   }
-  res.sendFile(`${import.meta.dirname}/storage/${filePath}`);
+
+  const readStream=createReadStream(
+    `${import.meta.dirname}/storage/${filePath}`
+  );
+  readStream.pipe(res);
+  
+
+
+
+
+  // res.sendFile(`${import.meta.dirname}/storage/${filePath}`);
 });
 
 
