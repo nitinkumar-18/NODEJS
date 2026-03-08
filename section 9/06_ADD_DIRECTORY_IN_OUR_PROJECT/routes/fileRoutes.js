@@ -1,152 +1,6 @@
 
 
 
-// import express from "express";
-// import path from "path";
-// import {  createWriteStream} from "fs";
-// import {  rename, rm  } from "fs/promises";
-// import router from "./directoryRoutes";
-// // import cors from "cors";
-
-
-
-
-
-
-
-// //create
-// router.post('/*',(req,res)=>{
-//   const filePath = req.params[0]; 
-//   //  const writeStream=createWriteStream(`./storage/${req.params.filename}`);
-
-
-
-//   const writeStream = createWriteStream(`./storage/${filePath}`);
-
-//    req.pipe(writeStream);
-//    req.on('end',()=>{
-//     res.json({message:"file Uploaded"});
-
-//    })
-// })
-
-
-// //app.get("/files/:filename".   or app.post('/files/:*' yeh star wala kitne takh bhi jaa skte ho file/file/file
-
-
-
-// //app.get("/users", handler)
-
-// // Sirf yeh match karega:
-
-// // /users
-
-// // Lekin agar wildcard use kare:
-
-// // app.get("/users/*", handler)
-
-
-
-
-
-// // PATH TRAVERSAL VULNERABILITY
-// router.get("/*", (req, res) => {
-//     // const filePath = path.join("/",req.params[0]); 
-//   // const { 0:filePath } = req.params;
-
-//   const filePath = req.params[0];
-//   if (req.query.action === "download") {
-//     res.set("Content-Disposition", "attachment");
-//   }
-
-//   // const readStream=createReadStream(
-//   //   `${import.meta.dirname}/storage/${filePath}`
-//   // );
-//   // readStream.pipe(res);
-  
-
-
-
-
-//   const fullPath = path.join(process.cwd(),"storage",filePath);
-
-//   res.sendFile(fullPath,(err)=>{
-
-//     if(err){
-//     res.json({err : "file not found"});
-//     }
-//   });
-// });
-
-
-
-
-
-
-
-
-
-
-
-// // Update
-// router.patch("/*", async (req, res) => {
-//     const filePath = req.params[0];
-//   await rename(`./storage/${filePath}`, `./storage/${req.body.newFilename}`);
-//   res.json({ message: "Renamed" });
-// });
-
-
-
-
-
-
-
-
-
-
-// // Delete
-// router.delete("/*", async (req, res) => {
-//   const filePath = req.params[0];
-
-//   // const { filename } = req.params;
-//   // const filePath = `./storage/${filename}`;
-//   try {
-//     await rm(`./storage/${filePath}`,{recursive:true});
-//     res.json({ message: "File Deleted Successfully" });
-//   } catch (err) {
-
-//     res.status(404).json({ message: "File Not Found!" });
-//   }
-// });
-
-
-
-
-
-
-
-
-
-
-
-
-// export default router;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 import express from "express";
@@ -167,6 +21,9 @@ router.post("/:filename", (req, res) => {
 
   const {filename}=req.params;
 
+  const parentDirId=req.headers.parentdirid || directoriesData[0].id;
+
+
    const id=crypto.randomUUID();
 
   const extension=path.extname(filename);
@@ -185,9 +42,19 @@ router.post("/:filename", (req, res) => {
     filesData.push({
       id,
       extension,
-      name : filename
+      name : filename,
+      parentDirId,
     })
+
+    const parentDirData=directoriesData.find((directoryData)=>
+      directoryData.id === parentDirId
+    )
+    parentDirData.files.push(id);
    await writeFile('./filesDB.json',JSON.stringify(filesData))
+
+
+   await writeFile('./directoriesDB.json',JSON.stringify(directoriesData))
+   
     res.json({ message: "File Uploaded" });
   });
 });
@@ -203,7 +70,7 @@ router.get("/:id", (req, res) => {
   if (req.query.action === "download") {
     res.set("Content-Disposition", "attachment");
   }
-  res.sendFile(`${process.cwd()}/storage/${id}${fileData}.extension`, (err) => {
+  res.sendFile(`${process.cwd()}/storage/${id}${fileData.extension}`, (err) => {
     if (err) {
       res.json({ error: "File not found!" });
     }
@@ -238,9 +105,9 @@ router.delete("/:id", async (req, res) => {
 
 
     filesData.splice(fileIndex,1)
-    const parentDirData=directoriesData.find((directoryData)=>
-      directoryData.id === fileData.parentId
-    )
+   const parentDirData = directoriesData.find(
+  (directoryData) => directoryData.id === fileData.parentDirId
+);
     parentDirData.files=parentDirData.files.filter((fileId)=>fileId!==id)
 
 
