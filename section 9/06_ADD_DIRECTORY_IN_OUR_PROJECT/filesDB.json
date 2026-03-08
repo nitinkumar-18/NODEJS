@@ -4,10 +4,6 @@
         "extension": ".js"
     },
     {
-        "id": "e242fb3a-a572-4325-92bf-3a00fa6f35ae",
-        "extension": ".png"
-    },
-    {
         "id": "32a9d8fe-7d7e-4beb-8661-0d799f0285df",
         "extension": "",
         "name": "564529ab-9d51-43fa-a0fb-ab2ca79528e8"
@@ -20,6 +16,7 @@
     {
         "id": "27e950b2-2525-411b-93f4-5110775dcd75",
         "extension": ".js",
-        "name": "tadn.js"
+        "name": "tadn.js",
+        "parentId": "9e754cfc-55bb-4e59-b770-60db28f4db45"
     }
 ]

@@ -154,7 +154,7 @@ import { createWriteStream } from "fs";
 import { rename, rm, writeFile } from "fs/promises";
 import path from "path";
 import filesData from '../filesDB.json' with {type :"json"};
-
+import directoriesData from  "../directoriesDB.json" with {type:"json"};
 
 
 
@@ -238,6 +238,14 @@ router.delete("/:id", async (req, res) => {
 
 
     filesData.splice(fileIndex,1)
+    const parentDirData=directoriesData.find((directoryData)=>
+      directoryData.id === fileData.parentId
+    )
+    parentDirData.files=parentDirData.files.filter((fileId)=>fileId!==id)
+
+
+       await writeFile('./directoriesDB.json',JSON.stringify(directoriesData))
+
     await writeFile('./filesDB.json',JSON.stringify(filesData))
     res.json({ message: "File Deleted Successfully" });
   } catch (err) {
