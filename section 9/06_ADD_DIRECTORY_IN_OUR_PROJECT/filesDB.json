@@ -16,5 +16,11 @@
         "extension": ".mp4",
         "name": "STARS.mp4",
         "parentDirId": "9e754cfc-55bb-4e59-b770-60db28f4db45"
+    },
+    {
+        "id": "aa381e04-0fd4-4f51-8b51-1e17ceee4095",
+        "extension": ".js",
+        "name": "app.js",
+        "parentDirId": "9e754cfc-55bb-4e59-b770-60db28f4db45"
     }
 ]

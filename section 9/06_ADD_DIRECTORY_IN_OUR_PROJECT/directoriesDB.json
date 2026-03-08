@@ -6,8 +6,34 @@
         "files": [
             "db3783f5-a179-4d68-857a-677664ea67c1",
             "71dfbec3-9436-4ad8-a32a-4c3b97385900",
-            "1e9d5115-3f8f-41c3-b59c-110597314200"
+            "1e9d5115-3f8f-41c3-b59c-110597314200",
+            "aa381e04-0fd4-4f51-8b51-1e17ceee4095"
         ],
+        "directories": [
+            "5bc0487b-b99e-427c-a874-b02922e014e3",
+            "b3327822-5d46-408e-b505-4a30a63b052f",
+            "90fe6602-1854-4d37-863e-a4428704128a"
+        ]
+    },
+    {
+        "id": "5bc0487b-b99e-427c-a874-b02922e014e3",
+        "name": "d",
+        "parentDir": "9e754cfc-55bb-4e59-b770-60db28f4db45",
+        "files": [],
+        "directories": []
+    },
+    {
+        "id": "b3327822-5d46-408e-b505-4a30a63b052f",
+        "name": "",
+        "parentDir": "9e754cfc-55bb-4e59-b770-60db28f4db45",
+        "files": [],
+        "directories": []
+    },
+    {
+        "id": "90fe6602-1854-4d37-863e-a4428704128a",
+        "name": "dd",
+        "parentDir": "9e754cfc-55bb-4e59-b770-60db28f4db45",
+        "files": [],
         "directories": []
     }
 ]

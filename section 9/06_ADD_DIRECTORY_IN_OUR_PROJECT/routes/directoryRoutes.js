@@ -1,80 +1,3 @@
-// import express from "express";
-// import path from "path";
-
-// import { readdir, stat,mkdir  } from "fs/promises";
-// // import cors from "cors";
-// // import { error } from "console";
-
-
-
-
-
-// const router=express.Router();
-
-
-
-
-// // Read
-// router.get("/?", async (req, res) => {
-//   // const {0 :dirname}=req.params;
-
-//   // const dirname=path.join("/",req.params[0]);
-
-//   const dirname = req.params[0] || "";
-
-//   const fullDirPath=`./storage/${dirname ? dirname : ""}`;
-
-//   try{
-//   const filesList = await readdir(fullDirPath);
-//   const resData=[]
-  
-//   for(const item of filesList){
-//     const stats=await stat(`${fullDirPath}/${item}`);
-//     resData.push({name : item,isDirectory:stats.isDirectory()});
-
-  
-
-
-
-//   }
-//   res.json(resData);
-
-
-
-// } catch(err){
-//   res.json({error : err.message});
-// }
-// });
-
-
-
-
-
-
-
-
-
-
-
-// router.post("/*",async(req,res)=>{
-//   // const dirname=path.join("/",req.params[0]);
-
-//   const dirname = req.params[0] || "";
-
-//   try{
-//   await mkdir(`./storage/${dirname}`,{recursive:true})
-//   res.json({message :"DIRECTORY CREATED"});
-//   }
-//   catch(err){
-    
-//     res.json({err: err.message});
-//   }
-
-// })
-
-
-
-// export default router;
 
 
 
@@ -82,10 +5,11 @@
 
 
 import express from "express";
-import { mkdir, readdir, stat } from "fs/promises";
+import { mkdir, readdir, stat,writeFile } from "fs/promises";
 import path from "path";
 import directoriesData from  "../directoriesDB.json" with {type:"json"};
 import filesData from '../filesDB.json' with {type :"json"};
+
 
 const router = express.Router();
 
@@ -93,33 +17,45 @@ const router = express.Router();
 router.get("/:id?", async (req, res) => {
   const {id}=req.params
 
-  if(!id){
-    const directoryData=directoriesData[0];
-     const files=directoryData.files.map((fileId)=>
-      filesData.find((file)=>file.id === fileId)
-    )
-    res.json({...directoryData,files});
-  }
-
-  else{
-      const directoryData=directoriesData.find((directory)=>directory.id===id)
-
-  res.json(directoryData)
-
-  }
-
-
+  const directoryData=id ? directoriesData.find((directory)=>directory.id===id) :  directoriesData[0] 
   
-  
+   
+ 
+
+ const files = directoryData.files.map((fileId) =>
+    filesData.find((file) => file.id === fileId)
+  )
+
+
+    const directories = directoryData.directories.map((dirId) =>
+    directoriesData.find((dir) => dir.id === dirId)
+  ).map((({ id, name }) => ({ id, name })))
+  res.json({ ...directoryData, files, directories })
 });
 
-router.post ("/*", async (req, res) => {
-  const dirname = path.join("/", req.params[0]);
+
+
+router.post("/:parentDirId?", async (req, res) => {
+  const parentDirId = req.params.parentDirId || directoriesData[0].id
+  const { dirname } = req.headers
+  const id = crypto.randomUUID()
+  const parentDir = directoriesData.find((dir) => dir.id === parentDirId)
+  parentDir.directories.push(id)
+    if (!parentDir) {
+    return res.status(404).json({ message: "Parent directory not found" });
+  }
+  directoriesData.push({
+    id,
+    name: dirname,
+    parentDir: parentDirId,
+    files: [],
+    directories: []
+  })
   try {
-    await mkdir(`./storage/${dirname}`);
-    res.json({ message: "Directory Created!" });
+    await writeFile('./directoriesDB.json', JSON.stringify(directoriesData))
+    res.json({ message: "Directory Created!" })
   } catch (err) {
-    res.json({ err: err.message });
+    res.status(404).json({ err: err.message });
   }
 });
 
