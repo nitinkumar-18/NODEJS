@@ -192,7 +192,7 @@ router.post("/:filename", (req, res) => {
   });
 });
 
-// Path Traversal Vulnerability
+//READ
 router.get("/:id", (req, res) => {
   // const filePath = path.join("/", req.params[0]);
 
@@ -211,17 +211,34 @@ router.get("/:id", (req, res) => {
 });
 
 // Update
-router.patch("/*", async (req, res) => {
-  const { 0: filePath } = req.params;
-  await rename(`./storage/${filePath}`, `./storage/${req.body.newFilename}`);
+router.patch("/:id", async (req, res) => {
+  // const { 0: filePath } = req.params;
+  // await rename(`./storage/${filePath}`, `./storage/${req.body.newFilename}`);
+
+
+  const {id}=req.params;
+
+    const fileData=filesData.find((file)=>file.id === id)
+
+    fileData.name=req.body.newFilename;
+
+       await writeFile('./filesDB.json',JSON.stringify(filesData))
+
   res.json({ message: "Renamed" });
 });
 
 // Delete
-router.delete("/*", async (req, res) => {
-  const { 0: filePath } = req.params;
+router.delete("/:id", async (req, res) => {
+  const {id} = req.params;
+    const fileIndex=filesData.findIndex((file)=>file.id === id)
+
+        const fileData=filesData[fileIndex]
   try {
-    await rm(`./storage/${filePath}`, { recursive: true });
+    await rm(`./storage/${id}${fileData.extension}`, { recursive: true });
+
+
+    filesData.splice(fileIndex,1)
+    await writeFile('./filesDB.json',JSON.stringify(filesData))
     res.json({ message: "File Deleted Successfully" });
   } catch (err) {
     res.status(404).json({ message: err.message });
