@@ -1,39 +1,20 @@
 [
     {
-        "id": "564529ab-9d51-43fa-a0fb-ab2ca79528e8",
-        "extension": ".js"
-    },
-    {
-        "id": "32a9d8fe-7d7e-4beb-8661-0d799f0285df",
-        "extension": "",
-        "name": "564529ab-9d51-43fa-a0fb-ab2ca79528e8"
-    },
-    {
-        "id": "06b934f0-13d9-4b27-ad72-7e393f628e14",
-        "extension": "",
-        "name": "32a9d8fe-7d7e-4beb-8661-0d799f0285df"
-    },
-    {
-        "id": "27e950b2-2525-411b-93f4-5110775dcd75",
-        "extension": ".js",
-        "name": "tadn.js",
-        "parentId": "9e754cfc-55bb-4e59-b770-60db28f4db45"
-    },
-    {
-        "id": "3f2879e6-31e8-4d88-94fd-f3054bf4ac92",
+        "id": "db3783f5-a179-4d68-857a-677664ea67c1",
         "extension": ".txt",
-        "name": "num.txt"
-    },
-    {
-        "id": "ca7fb01c-26f1-484d-b12d-6bedd57bfed3",
-        "extension": ".txt",
-        "name": "tanish.txt",
+        "name": "num.txt",
         "parentDirId": "9e754cfc-55bb-4e59-b770-60db28f4db45"
     },
     {
-        "id": "5bf54371-e47c-44c9-afae-92b516990121",
-        "extension": ".txt",
-        "name": "tanish.txt",
+        "id": "71dfbec3-9436-4ad8-a32a-4c3b97385900",
+        "extension": ".png",
+        "name": "3000.png",
+        "parentDirId": "9e754cfc-55bb-4e59-b770-60db28f4db45"
+    },
+    {
+        "id": "f0e01eed-e959-4d34-ad28-9eaf92eb9b34",
+        "extension": ".mp4",
+        "name": "STARS.mp4",
         "parentDirId": "9e754cfc-55bb-4e59-b770-60db28f4db45"
     }
 ]

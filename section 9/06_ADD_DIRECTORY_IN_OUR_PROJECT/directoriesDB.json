@@ -3,7 +3,11 @@
         "id": "9e754cfc-55bb-4e59-b770-60db28f4db45",
         "name": "/",
         "parentDir": null,
-        "files": [],
+        "files": [
+            "db3783f5-a179-4d68-857a-677664ea67c1",
+            "71dfbec3-9436-4ad8-a32a-4c3b97385900",
+            "f0e01eed-e959-4d34-ad28-9eaf92eb9b34"
+        ],
         "directories": []
     }
 ]
