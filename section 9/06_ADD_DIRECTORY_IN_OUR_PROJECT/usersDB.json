@@ -1,0 +1,23 @@
+[
+    {
+        "id": "random id",
+        "name": "TANISH TANDON",
+        "email": "tandon@gmail.com",
+        "password": "abcd",
+        "rootDirId": "id"
+    },
+    {
+        "id": "3d52d1af-4c45-4c86-bcae-26a37426a20b",
+        "name": "Anuragee Singh",
+        "email": "anuerag@gmail.com",
+        "password": "abcdee",
+        "rootDirId": "eaba8a2a-618b-48b8-8b55-893c028cd936"
+    },
+    {
+        "id": "44e4273e-7c4d-44cc-bbc9-65c0bd5a368b",
+        "name": "Anurag Singh",
+        "email": "anurag@gmail.com",
+        "password": "abcd",
+        "rootDirId": "5f3a4802-5965-4815-a02e-94b084815692"
+    }
+]
