@@ -69,7 +69,7 @@ router.post("/:parentDirId?", (req, res,next) => {
 
 // Read
 router.get("/:id", (req, res) => {
-  const {id} = req.params.id
+  const {id} = req.params
   const fileData = filesData.find((file) => file.id === id)
 
   if(!fileData){
@@ -114,7 +114,7 @@ router.patch("/:id", async (req, res,next) => {
 
 try{
 
-  throw new Error("hi")
+ 
   await writeFile('./filesDB.json', JSON.stringify(filesData))
  return res.status(200).json({ message: "Renamed" });
 }
