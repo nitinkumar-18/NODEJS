@@ -12,7 +12,7 @@ const router = express.Router();
 
 
 
-router.post('/',async(req,res,next)=>{
+router.post('/register',async(req,res,next)=>{
     const {name,email,password}=req.body
     const dirId=crypto.randomUUID();
     const userId=crypto.randomUUID();
@@ -69,6 +69,35 @@ directoriesData.push({
 
 
 
+
+router.post('/login',async(req,res,next)=>{
+    // console.log(req.body);
+
+    const {email,password}=req.body;
+
+    const user=usersData.find((user)=>user.email === email)
+
+    console.log(user);
+
+    if(!user || user.password!==password){
+        return res.status(404).json({error : "INVALID CREDENTIALS"});
+    }
+
+  res.cookie("uid", user.id, {
+  httpOnly: true,
+  sameSite: "none",
+  maxAge: 1000 * 60 * 60 * 24 * 7
+});
+
+
+//     res.cookie("uid", user.id, {
+//   httpOnly: true,
+//   sameSite: "none",
+//   secure: false
+// });
+
+    res.json({message : 'LOGGED IN'})
+})
 
 
 
