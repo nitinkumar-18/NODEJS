@@ -85,7 +85,7 @@ router.post('/login',async(req,res,next)=>{
 
   res.cookie("uid", user.id, {
   httpOnly: true,
-  sameSite: "none",
+  sameSite: "lax",
   maxAge: 1000 * 60 * 60 * 24 * 7
 });
 

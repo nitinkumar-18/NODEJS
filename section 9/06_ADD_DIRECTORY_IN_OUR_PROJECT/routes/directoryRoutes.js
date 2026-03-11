@@ -13,6 +13,13 @@ const router = express.Router();
 
 // Read
 router.get("/:id?", async (req, res) => {
+
+
+
+
+  if (!directoriesData || directoriesData.length === 0) {
+    return res.status(500).json({ message: "No directories found" });
+  }
  
   // console.log(uid)
   const id  = req.params.id || directoriesData[0].id
@@ -42,7 +49,8 @@ router.get("/:id?", async (req, res) => {
 router.post("/:parentDirId?", async (req, res,next) => {
   const parentDirId = req.params.parentDirId || directoriesData[0].id
   // const dirname  = req.headers || 'NEW FOLDER'
-  const  dirname = "NEW FOLDER" || req.headers.dirname;
+  // const  dirname = "NEW FOLDER" || req.headers.dirname;
+  const dirname = req.headers.dirname || "NEW FOLDER";
   const id = crypto.randomUUID()
   const parentDir = directoriesData.find((dir) => dir.id === parentDirId)
   if(!parentDir)return res.status(404).json({message : "PARENT DIRECTORY DOES NOT EXIST"})
@@ -78,7 +86,10 @@ router.patch('/:id', async (req, res,next) => {
   const {newDirName} = req.body
   const dirData = directoriesData.find((dir) => dir.id === id)
 
-  if(!dirData)res.status(404).json({message : "DIRECTORY NOT FOUND"})
+  if(!dirData){
+    return res.status(404).json({message : "DIRECTORY NOT FOUND"})
+  }
+
   dirData.name = newDirName
   try{
   await writeFile('./directoriesDB.json', JSON.stringify(directoriesData))

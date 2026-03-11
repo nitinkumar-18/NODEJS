@@ -1,1 +1,19 @@
-[{"id":"eaba8a2a-618b-48b8-8b55-893c028cd936","name":"root-anuerag@gmail.com","userId":"e2bb0399-ef8f-410c-b5f8-e3c3c4800446","parentDirId":null,"files":["15736846-6bd2-45af-b813-66ec81dedfe2"],"directories":["8ee5a000-cd3c-45ba-9f04-57e1466c9100","a22c6416-d715-4042-9309-bf62369dffd6","46f6f4a3-90e4-49db-80a5-0d4816b53bb8","95d82c30-968e-418d-bb0c-6b14a6114c33","2c9805bd-835e-497f-a4d0-0584ba9b9f69"]},{"id":"5f3a4802-5965-4815-a02e-94b084815692","name":"root-anurag@gmail.com","userId":"b55d72a3-ed3a-48fb-9478-53c40ece3bd8","parentDirId":null,"files":[],"directories":[]},{"id":"8ee5a000-cd3c-45ba-9f04-57e1466c9100","name":"NEW FOLDER","parentDirId":"eaba8a2a-618b-48b8-8b55-893c028cd936","files":[],"directories":[]},{"id":"a22c6416-d715-4042-9309-bf62369dffd6","name":"NEW FOLDER","parentDirId":"eaba8a2a-618b-48b8-8b55-893c028cd936","files":[],"directories":[]},{"id":"46f6f4a3-90e4-49db-80a5-0d4816b53bb8","name":"NEW FOLDER","parentDirId":"eaba8a2a-618b-48b8-8b55-893c028cd936","files":[],"directories":[]},{"id":"95d82c30-968e-418d-bb0c-6b14a6114c33","name":"NEW FOLDER","parentDirId":"eaba8a2a-618b-48b8-8b55-893c028cd936","files":[],"directories":[]},{"id":"2c9805bd-835e-497f-a4d0-0584ba9b9f69","name":"NEW FOLDER","parentDirId":"eaba8a2a-618b-48b8-8b55-893c028cd936","files":[],"directories":[]},{"id":"ca31037f-0701-40c1-ae22-48acc20058d5","name":"root-anuragd@gmail.com","userId":"681009ad-147b-4c5a-ac57-96fa422150cf","parentDirId":null,"files":[],"directories":[]}]
+[
+    {
+        "id": "root123",
+        "name": "root-anurag@gmail.com",
+        "userId": "user123",
+        "parentDirId": null,
+        "files": [],
+        "directories": [
+            "96d05d04-bbae-486f-885d-248e42c574bb"
+        ]
+    },
+    {
+        "id": "96d05d04-bbae-486f-885d-248e42c574bb",
+        "name": "TANISH",
+        "parentDirId": "root123",
+        "files": [],
+        "directories": []
+    }
+]
