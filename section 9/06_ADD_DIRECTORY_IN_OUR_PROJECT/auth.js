@@ -7,5 +7,6 @@ export default function CheckAuth(req,res,next){
   if(!uid || !user){
     return res.status(401).json({error :"NOT LOGGED IN"})
   }
+  req.user=user
   next();
 }

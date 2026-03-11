@@ -1,18 +1,58 @@
 [
     {
-        "id": "root123",
-        "name": "root-anurag@gmail.com",
-        "userId": "user123",
+        "id": "ea69ad37-fa99-49fe-8214-d62bf320dc84",
+        "name": "root-tanish",
+        "userId": "224e1ea0-7cba-466d-9d0c-00bf5eb426e7",
         "parentDirId": null,
-        "files": [],
+        "files": [
+            "339d7514-c769-4c5a-b92c-94ae03908951"
+        ],
+        "directories": []
+    },
+    {
+        "id": "6569372c-68c9-4000-9957-f9069fadcb14",
+        "name": "root-tanish@gmail.com",
+        "userId": "c9112739-b7d8-4d68-b37a-534240a8e3b2",
+        "parentDirId": null,
+        "files": [
+            "20e4fcc1-aa52-44be-8271-fe232b6f69fd",
+            "b1a9fa12-4cb1-45e0-adb9-fbe8a3c458ff"
+        ],
         "directories": [
-            "96d05d04-bbae-486f-885d-248e42c574bb"
+            "6c192251-a449-423c-9d04-814bbe0963eb"
         ]
     },
     {
-        "id": "96d05d04-bbae-486f-885d-248e42c574bb",
-        "name": "TANISH",
-        "parentDirId": "root123",
+        "id": "3abc1a3a-0c40-4bd3-ac59-1a9ffdd296d0",
+        "name": "root-qe@gmail.com",
+        "userId": "151c2850-4326-4227-8425-509bfb8c9096",
+        "parentDirId": null,
+        "files": [],
+        "directories": []
+    },
+    {
+        "id": "6c192251-a449-423c-9d04-814bbe0963eb",
+        "name": "y",
+        "parentDirId": "6569372c-68c9-4000-9957-f9069fadcb14",
+        "userId": "c9112739-b7d8-4d68-b37a-534240a8e3b2",
+        "files": [],
+        "directories": []
+    },
+    {
+        "id": "debd93ea-b50e-43fc-a9d1-0fb76bcd3f96",
+        "name": "root-anuragg@gmail.com",
+        "userId": "4005fd1c-78c4-4231-95ef-07939dbdd068",
+        "parentDirId": null,
+        "files": [],
+        "directories": [
+            "61db647d-450e-4d96-8755-e3ef358d0524"
+        ]
+    },
+    {
+        "id": "61db647d-450e-4d96-8755-e3ef358d0524",
+        "name": "New Folderr",
+        "parentDirId": "debd93ea-b50e-43fc-a9d1-0fb76bcd3f96",
+        "userId": "5bd5bf45-8b5f-4047-b6a3-d4aceb2b02de",
         "files": [],
         "directories": []
     }

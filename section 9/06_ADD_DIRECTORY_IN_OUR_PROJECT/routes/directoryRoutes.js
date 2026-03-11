@@ -1,4 +1,5 @@
 import express from "express";
+import { readFile } from "fs/promises"
 import { mkdir, readdir, rm, stat, writeFile } from "fs/promises";
 import path from "path";
 import directoriesData from '../directoriesDB.json' with {type: "json"}
@@ -12,28 +13,139 @@ const router = express.Router();
 
 
 // Read
+// router.get("/:id?", async (req, res) => {
+
+//     const { uid } = req.cookies
+
+//   const user = usersData.find((user) => user.id === uid)
+
+
+
+
+
+//     if (!user) {
+//     return res.status(401).json({ message: "User not found" })
+//   }
+
+//   const id = req.params.id || user.rootDirId
+
+//   const directoryData = directoriesData.find(
+//     (directory) => directory.id === id
+//   )
+
+
+
+//   if (!directoriesData || directoriesData.length === 0) {
+//     return res.status(500).json({ message: "No directories found" });
+//   }
+ 
+//   // console.log(uid)
+//   const id  = req.params.id || user.rootDirId
+//   const directoryData =  directoriesData.find((directory) => directory.id === id)
+
+//   if(!directoryData)return res.status(404).json({message:"Directory not found"})
+//   const files = directoryData.files.map((fileId) =>
+//     filesData.find((file) => file.id === fileId)
+//   )
+//   const directories = directoryData.directories.map((dirId) =>
+//     directoriesData.find((dir) => dir.id === dirId)
+//   ).map((({ id, name }) => ({ id, name })))
+//  return res.status(200).json({ ...directoryData, files, directories })
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 router.get("/:id?", async (req, res) => {
 
+  const { uid } = req.cookies
 
+  const user = usersData.find((user) => user.id === uid)
 
-
-  if (!directoriesData || directoriesData.length === 0) {
-    return res.status(500).json({ message: "No directories found" });
+  if (!user) {
+    return res.status(401).json({ message: "User not found" })
   }
- 
-  // console.log(uid)
-  const id  = req.params.id || directoriesData[0].id
-  const directoryData =  directoriesData.find((directory) => directory.id === id)
 
-  if(!directoryData)return res.status(404).json({message:"Directory not found"})
+  const directoriesData = JSON.parse(
+    await readFile("./directoriesDB.json", "utf-8")
+  )
+
+  const filesData = JSON.parse(
+    await readFile("./filesDB.json", "utf-8")
+  )
+
+
+
+
+  const id = req.params.id || user.rootDirId
+
+  const directoryData = directoriesData.find(
+    (directory) => directory.id === id
+  )
+
+  if (!directoryData) {
+    return res.status(404).json({ message: "Directory not found" })
+  }
+
   const files = directoryData.files.map((fileId) =>
     filesData.find((file) => file.id === fileId)
   )
-  const directories = directoryData.directories.map((dirId) =>
-    directoriesData.find((dir) => dir.id === dirId)
-  ).map((({ id, name }) => ({ id, name })))
- return res.status(200).json({ ...directoryData, files, directories })
-});
+
+  const directories = directoryData.directories
+    .map((dirId) => directoriesData.find((dir) => dir.id === dirId))
+    .map(({ id, name }) => ({ id, name }))
+
+  return res.status(200).json({ ...directoryData, files, directories })
+
+})
+
+
+
+
+
+
+
+
+
+// router.post("/:parentDirId?", async (req, res,next) => {
+//   const {uid}=req.cookies
+//   const user=usersData.find((user)=>user.id === uid)
+//   const parentDirId = req.params.parentDirId || user.rootDirId
+//   // const dirname  = req.headers || 'NEW FOLDER'
+//   // const  dirname = "NEW FOLDER" || req.headers.dirname;
+//   const dirname = req.headers.dirname || "NEW FOLDER";
+//   const id = crypto.randomUUID()
+//   const parentDir = directoriesData.find((dir) => dir.id === parentDirId)
+//   if(!parentDir)return res.status(404).json({message : "PARENT DIRECTORY DOES NOT EXIST"})
+//   parentDir.directories.push(id)
+//   directoriesData.push({
+//     id,
+//     name: dirname,
+//     parentDirId,
+//     files: [],
+//     userId:user.id,
+//     directories: []
+//   })
+//   try {
+//     await writeFile('./directoriesDB.json', JSON.stringify(directoriesData))
+//     return res.json({ message: "Directory Created!" })
+//   } catch (err) {
+//   //  return res.status(404).json({ err: err.message });
+//   next(err)
+//   }
+// });
 
 
 
@@ -46,30 +158,118 @@ router.get("/:id?", async (req, res) => {
 
 
 
-router.post("/:parentDirId?", async (req, res,next) => {
-  const parentDirId = req.params.parentDirId || directoriesData[0].id
-  // const dirname  = req.headers || 'NEW FOLDER'
-  // const  dirname = "NEW FOLDER" || req.headers.dirname;
-  const dirname = req.headers.dirname || "NEW FOLDER";
-  const id = crypto.randomUUID()
-  const parentDir = directoriesData.find((dir) => dir.id === parentDirId)
-  if(!parentDir)return res.status(404).json({message : "PARENT DIRECTORY DOES NOT EXIST"})
-  parentDir.directories.push(id)
-  directoriesData.push({
-    id,
-    name: dirname,
-    parentDirId,
-    files: [],
-    directories: []
-  })
-  try {
-    await writeFile('./directoriesDB.json', JSON.stringify(directoriesData))
-    return res.json({ message: "Directory Created!" })
-  } catch (err) {
-  //  return res.status(404).json({ err: err.message });
+
+
+
+// router.post("/:parentDirId?", async (req, res, next) => {
+
+//   const { uid } = req.cookies
+
+//   const user = usersData.find((user) => user.id === uid)
+
+//   if (!user) {
+//     return res.status(401).json({ message: "User not found" })
+//   }
+
+//   const parentDirId = req.params.parentDirId || user.rootDirId
+
+//   const dirname = req.headers.dirname || "NEW FOLDER"
+
+//   const id = crypto.randomUUID()
+
+//   const parentDir = directoriesData.find((dir) => dir.id === parentDirId)
+
+//   if (!parentDir) {
+//     return res.status(404).json({ message: "Parent directory not found" })
+//   }
+
+//   parentDir.directories.push(id)
+
+//   directoriesData.push({
+//     id,
+//     name: dirname,
+//     parentDirId,
+//     files: [],
+//     userId: user.id,
+//     directories: []
+//   })
+
+//   try {
+//     await writeFile('./directoriesDB.json', JSON.stringify(directoriesData))
+
+//     return res.status(201).json({ message: "Directory Created!" })
+
+//   } catch (err) {
+//     next(err)
+//   }
+
+// })
+
+
+
+
+
+
+
+
+router.post("/:parentDirId?", async (req,res,next)=>{
+  //const user=req.user
+
+ const {uid}=req.cookies
+ const user = usersData.find((user)=>user.id === uid)
+
+ if(!user){
+   return res.status(401).json({message:"User not found"})
+ }
+
+
+ const directoriesData = JSON.parse(
+   await readFile("./directoriesDB.json","utf-8")
+ )
+
+ const parentDirId = req.params.parentDirId || user.rootDirId
+ const dirname = req.headers.dirname || "NEW FOLDER"
+
+ const id = crypto.randomUUID()
+
+ const parentDir = directoriesData.find(dir => dir.id === parentDirId)
+
+ if(!parentDir){
+   return res.status(404).json({message:"Parent directory not found"})
+ }
+
+ const newDir = {
+   id,
+   name: dirname,
+   parentDirId,
+   userId: user.id,
+  // userId:req.cookies.uid,
+   files: [],
+   directories: []
+ }
+
+ directoriesData.push(newDir)
+ parentDir.directories.push(id)
+
+
+ try{
+ await writeFile(
+   "./directoriesDB.json",
+   JSON.stringify(directoriesData,null,2)
+ )
+
+ return res.status(201).json({message:"Directory Created!"})
+}
+catch(err){
   next(err)
-  }
-});
+}
+
+
+
+})
+
+
+
 
 
 

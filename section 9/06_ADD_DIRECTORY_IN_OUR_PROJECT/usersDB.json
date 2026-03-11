@@ -1,16 +1,16 @@
 [
     {
-        "id": "224e1ea0-7cba-466d-9d0c-00bf5eb426e7",
+        "id": "c9112739-b7d8-4d68-b37a-534240a8e3b2",
         "name": "Tanish Tandon",
-        "email": "tanishtandon0@gmail.com",
-        "password": "1234",
-        "rootDirId": "ea69ad37-fa99-49fe-8214-d62bf320dc84"
+        "email": "tanish@gmail.com",
+        "password": "1",
+        "rootDirId": "6569372c-68c9-4000-9957-f9069fadcb14"
     },
     {
-        "id": "d0e49bca-4261-4ea5-b873-67d03a6ce9ae",
+        "id": "5bd5bf45-8b5f-4047-b6a3-d4aceb2b02de",
         "name": "Anurag Singh",
-        "email": "anurdag@gmail.com",
-        "password": "abcd",
-        "rootDirId": "b0e9b3e3-5094-4b1c-8105-4c5f9d9d699c"
+        "email": "anuragg@gmail.com",
+        "password": "7",
+        "rootDirId": "debd93ea-b50e-43fc-a9d1-0fb76bcd3f96"
     }
 ]

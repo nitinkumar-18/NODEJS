@@ -5,6 +5,7 @@ import path from "path";
 import directoriesData from '../directoriesDB.json' with {type: "json"}
 import filesData from '../filesDB.json' with {type: "json"}
 
+import crypto from "crypto";
 
 const router = express.Router();
 
@@ -17,22 +18,52 @@ const router = express.Router();
 
 // Create
 router.post("/:parentDirId?", (req, res,next) => {
-  const parentDirId = req.params.parentDirId || directoriesData[0].id
+  const parentDirId = req.params.parentDirId || req.user.rootDirId
+  console.log("parentDirId:", parentDirId);
+  console.log("directoriesData:", directoriesData);
   const filename = req.headers.filename || 'untitled';
   const id = crypto.randomUUID();
   const extension = path.extname(filename);
   const fullFileName = `${id}${extension}`;
   const writeStream = createWriteStream(`./storage/${fullFileName}`);
   req.pipe(writeStream);
-  req.on("end", async () => {
-    filesData.push({
-      id,
-      extension,
-      name: filename,
-      parentDirId,
-    })
-    const parentDirData = directoriesData.find((directoryData) => directoryData.id === parentDirId)
-    parentDirData.files.push(id)
+  writeStream.on("finish", async () => {
+//     filesData.push({
+//       id,
+//       extension,
+//       name: filename,
+//       parentDirId,
+//     })
+//     const parentDirData = directoriesData.find((directoryData) => directoryData.id === parentDirId)
+
+//     if (!parentDirData) {
+//   return res.status(400).json({ error: "Parent directory not found" });
+// }
+//     parentDirData.files.push(id)
+
+
+
+
+
+
+
+const parentDirData = directoriesData.find(
+  (directoryData) => directoryData.id === parentDirId
+);
+
+if (!parentDirData) {
+  return res.status(400).json({ error: "Parent directory not found" });
+}
+
+filesData.push({
+  id,
+  extension,
+  name: filename,
+  parentDirId,
+  userId: req.user.id
+});
+
+parentDirData.files.push(id);
 
 
     try{
@@ -68,28 +99,94 @@ router.post("/:parentDirId?", (req, res,next) => {
 
 
 // Read
-router.get("/:id", (req, res) => {
-  const {id} = req.params
-  const fileData = filesData.find((file) => file.id === id)
+// router.get("/:id", (req, res) => {
+//   const {id} = req.params
+//   const parentDir=directoriesData.find(dir=>dir.id === fileData.parentDirId);
+//   const fileData = filesData.find((file) => file.id === id)
 
-  if(!fileData){
-    return res.status(404).json({message : "FILE NOT FOUND!"});
+
+//   if(parentDir.userId !==req.user.id){
+//     return res.status(401).json({error : "YOU DO NOT HAVE ACCESS TO THIS FILE"})
+
+//   }
+//   if(!fileData){
+//     return res.status(404).json({message : "FILE NOT FOUND!"});
+//   }
+
+
+
+
+
+//   if (req.query.action === "download") {
+//     res.set("Content-Disposition", `attachment; filename=${fileData.name}`);
+//   }
+//  return res.sendFile(`${process.cwd()}/storage/${id}${fileData.extension}`, (err) => {
+//     // console.log(err);
+//     if (!res.headersSent && err) {
+//       return res.status(404).json({ error: "File not found!" });
+//     }
+//   });
+// });
+
+
+
+
+
+
+
+
+
+
+
+
+router.get("/:id", (req, res) => {
+
+  const { id } = req.params;
+
+  // const directoriesData = JSON.parse(
+  //   await readFile("./directoriesDB.json","utf-8")
+  // );
+
+  // const filesData = JSON.parse(
+  //   await readFile("./filesDB.json","utf-8")
+  // );
+
+
+
+  const fileData = filesData.find((file) => file.id === id);
+
+  if (!fileData) {
+    return res.status(404).json({ message: "FILE NOT FOUND!" });
   }
 
+  const parentDir = directoriesData.find(
+    (dir) => dir.id === fileData.parentDirId
+  );
 
-
-
+  if (!parentDir ||parentDir.userId !== req.user.id) {
+    return res.status(401).json({
+      error: "YOU DO NOT HAVE ACCESS TO THIS FILE"
+    });
+  }
 
   if (req.query.action === "download") {
     res.set("Content-Disposition", `attachment; filename=${fileData.name}`);
   }
- return res.sendFile(`${process.cwd()}/storage/${id}${fileData.extension}`, (err) => {
-    // console.log(err);
-    if (!res.headersSent && err) {
-      return res.status(404).json({ error: "File not found!" });
+
+  return res.sendFile(
+    `${process.cwd()}/storage/${id}${fileData.extension}`,
+    (err) => {
+      if (!res.headersSent && err) {
+        return res.status(404).json({ error: "File not found!" });
+      }
     }
-  });
+  );
 });
+
+
+
+
+
 
 
 
