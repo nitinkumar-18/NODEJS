@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import directoryRoutes from "./routes/directoryRoutes.js";
 import fileRoutes from "./routes/fileRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
+import CheckAuth from "./auth.js";
 
 const app = express();
 app.use(cookieParser());
@@ -17,8 +18,8 @@ app.use(cors({
 
 ;
 
-app.use("/directory", directoryRoutes);
-app.use("/file", fileRoutes);
+app.use("/directory", CheckAuth,directoryRoutes);
+app.use("/file",CheckAuth, fileRoutes);
 app.use("/user",userRoutes);
 
 

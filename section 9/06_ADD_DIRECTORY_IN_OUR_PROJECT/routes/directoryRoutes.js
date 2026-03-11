@@ -3,6 +3,7 @@ import { mkdir, readdir, rm, stat, writeFile } from "fs/promises";
 import path from "path";
 import directoriesData from '../directoriesDB.json' with {type: "json"}
 import filesData from '../filesDB.json' with {type: "json"}
+import usersData from '../usersDB.json' with {type : "json"}
 
 const router = express.Router();
 
@@ -12,12 +13,8 @@ const router = express.Router();
 
 // Read
 router.get("/:id?", async (req, res) => {
-  const {uid}=req.cookies
-
-  if(!uid){
-    return res.status(401).json({error :"NOT LOGGED IN"})
-  }
-  console.log(uid)
+ 
+  // console.log(uid)
   const id  = req.params.id || directoriesData[0].id
   const directoryData =  directoriesData.find((directory) => directory.id === id)
 
