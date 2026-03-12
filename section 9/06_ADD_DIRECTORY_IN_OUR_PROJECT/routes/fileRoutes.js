@@ -13,6 +13,7 @@ const router = express.Router();
 
 
 
+
 // res.json karo return laga do 
 
 
@@ -141,12 +142,18 @@ router.get("/:id", (req, res) => {
     });
   }
 
+
+
+
+  const filePath=  `${process.cwd()}/storage/${id}${fileData.extension}`
   if (req.query.action === "download") {
-    res.set("Content-Disposition", `attachment; filename=${fileData.name}`);
+    // res.set("Content-Disposition", `attachment; filename=${fileData.name}`);
+    //OR
+    res.download(filePath,fileData.name);
   }
 
   return res.sendFile(
-    `${process.cwd()}/storage/${id}${fileData.extension}`,
+    filePath,
     (err) => {
       if (!res.headersSent && err) {
         return res.status(404).json({ error: "File not found!" });
