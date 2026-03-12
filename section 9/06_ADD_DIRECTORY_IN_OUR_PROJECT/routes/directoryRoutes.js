@@ -5,53 +5,13 @@ import path from "path";
 import directoriesData from '../directoriesDB.json' with {type: "json"}
 import filesData from '../filesDB.json' with {type: "json"}
 import usersData from '../usersDB.json' with {type : "json"}
+import crypto from "crypto";
 
 const router = express.Router();
 
 
 
 
-
-// Read
-// router.get("/:id?", async (req, res) => {
-
-//     const { uid } = req.cookies
-
-//   const user = usersData.find((user) => user.id === uid)
-
-
-
-
-
-//     if (!user) {
-//     return res.status(401).json({ message: "User not found" })
-//   }
-
-//   const id = req.params.id || user.rootDirId
-
-//   const directoryData = directoriesData.find(
-//     (directory) => directory.id === id
-//   )
-
-
-
-//   if (!directoriesData || directoriesData.length === 0) {
-//     return res.status(500).json({ message: "No directories found" });
-//   }
- 
-//   // console.log(uid)
-//   const id  = req.params.id || user.rootDirId
-//   const directoryData =  directoriesData.find((directory) => directory.id === id)
-
-//   if(!directoryData)return res.status(404).json({message:"Directory not found"})
-//   const files = directoryData.files.map((fileId) =>
-//     filesData.find((file) => file.id === fileId)
-//   )
-//   const directories = directoryData.directories.map((dirId) =>
-//     directoriesData.find((dir) => dir.id === dirId)
-//   ).map((({ id, name }) => ({ id, name })))
-//  return res.status(200).json({ ...directoryData, files, directories })
-// });
 
 
 
@@ -70,13 +30,14 @@ const router = express.Router();
 
 router.get("/:id?", async (req, res) => {
 
-  const { uid } = req.cookies
+  // const { uid } = req.cookies
+   const user = req.user
 
-  const user = usersData.find((user) => user.id === uid)
+  // const user = usersData.find((user) => user.id === uid)
 
-  if (!user) {
-    return res.status(401).json({ message: "User not found" })
-  }
+  // if (!user) {
+  //   return res.status(401).json({ message: "User not found" })
+  // }
 
   const directoriesData = JSON.parse(
     await readFile("./directoriesDB.json", "utf-8")
@@ -119,33 +80,6 @@ router.get("/:id?", async (req, res) => {
 
 
 
-// router.post("/:parentDirId?", async (req, res,next) => {
-//   const {uid}=req.cookies
-//   const user=usersData.find((user)=>user.id === uid)
-//   const parentDirId = req.params.parentDirId || user.rootDirId
-//   // const dirname  = req.headers || 'NEW FOLDER'
-//   // const  dirname = "NEW FOLDER" || req.headers.dirname;
-//   const dirname = req.headers.dirname || "NEW FOLDER";
-//   const id = crypto.randomUUID()
-//   const parentDir = directoriesData.find((dir) => dir.id === parentDirId)
-//   if(!parentDir)return res.status(404).json({message : "PARENT DIRECTORY DOES NOT EXIST"})
-//   parentDir.directories.push(id)
-//   directoriesData.push({
-//     id,
-//     name: dirname,
-//     parentDirId,
-//     files: [],
-//     userId:user.id,
-//     directories: []
-//   })
-//   try {
-//     await writeFile('./directoriesDB.json', JSON.stringify(directoriesData))
-//     return res.json({ message: "Directory Created!" })
-//   } catch (err) {
-//   //  return res.status(404).json({ err: err.message });
-//   next(err)
-//   }
-// });
 
 
 
@@ -161,49 +95,7 @@ router.get("/:id?", async (req, res) => {
 
 
 
-// router.post("/:parentDirId?", async (req, res, next) => {
 
-//   const { uid } = req.cookies
-
-//   const user = usersData.find((user) => user.id === uid)
-
-//   if (!user) {
-//     return res.status(401).json({ message: "User not found" })
-//   }
-
-//   const parentDirId = req.params.parentDirId || user.rootDirId
-
-//   const dirname = req.headers.dirname || "NEW FOLDER"
-
-//   const id = crypto.randomUUID()
-
-//   const parentDir = directoriesData.find((dir) => dir.id === parentDirId)
-
-//   if (!parentDir) {
-//     return res.status(404).json({ message: "Parent directory not found" })
-//   }
-
-//   parentDir.directories.push(id)
-
-//   directoriesData.push({
-//     id,
-//     name: dirname,
-//     parentDirId,
-//     files: [],
-//     userId: user.id,
-//     directories: []
-//   })
-
-//   try {
-//     await writeFile('./directoriesDB.json', JSON.stringify(directoriesData))
-
-//     return res.status(201).json({ message: "Directory Created!" })
-
-//   } catch (err) {
-//     next(err)
-//   }
-
-// })
 
 
 
@@ -213,14 +105,14 @@ router.get("/:id?", async (req, res) => {
 
 
 router.post("/:parentDirId?", async (req,res,next)=>{
-  //const user=req.user
+  const user=req.user
 
- const {uid}=req.cookies
- const user = usersData.find((user)=>user.id === uid)
+//  const {uid}=req.cookies
+//  const user = usersData.find((user)=>user.id === uid)
 
- if(!user){
-   return res.status(401).json({message:"User not found"})
- }
+//  if(!user){
+//    return res.status(401).json({message:"User not found"})
+//  }
 
 
  const directoriesData = JSON.parse(
@@ -360,53 +252,3 @@ export default router;
 
 
 
-
-// import express from "express";
-// import multer from "multer";
-// import path from "path";
-
-// const storage = multer.diskStorage({
-//   destination: function (req, file, cb) {
-//     cb(null, './uploads')
-//   },
-//   filename: function (req, file, cb) {
-//     const id=crypto.randomUUID();
-//     const extension=path.extname(file.originalname);
-//     file.id=id;
-  
-//     cb(null, `${id}${extension}`);
-//   }
-// })
-
-// const upload = multer({  storage })
-
-// // const upload=multer({dest : 'uploads/'})
-
-// const app = express();
-// const PORT = 2800;
-
-// app.get("/", (req, res) => {
-//   res.send("Hello, world!");
-// });
-
-// app.post("/upload",upload.fields([
-//   {name:"profilePic",maxCount:1},
-//    {name:"bg",maxCount:5},
-
-// ]), (req, res) => {
-//   // req.on("data", (chunk) => {
-//   //   console.log(chunk.toString());
-//   // });
-
-
-//   console.log(req.body)
-//   console.log(req.file)
-//   res.json(req.files)
-  
-//     res.json({ message: "Data Sent!" });
-  
-// });
-
-// app.listen(PORT, () => {
-//   console.log(`Server is running on http://localhost:${PORT}`);
-// });

@@ -98,35 +98,7 @@ parentDirData.files.push(id);
 
 
 
-// Read
-// router.get("/:id", (req, res) => {
-//   const {id} = req.params
-//   const parentDir=directoriesData.find(dir=>dir.id === fileData.parentDirId);
-//   const fileData = filesData.find((file) => file.id === id)
 
-
-//   if(parentDir.userId !==req.user.id){
-//     return res.status(401).json({error : "YOU DO NOT HAVE ACCESS TO THIS FILE"})
-
-//   }
-//   if(!fileData){
-//     return res.status(404).json({message : "FILE NOT FOUND!"});
-//   }
-
-
-
-
-
-//   if (req.query.action === "download") {
-//     res.set("Content-Disposition", `attachment; filename=${fileData.name}`);
-//   }
-//  return res.sendFile(`${process.cwd()}/storage/${id}${fileData.extension}`, (err) => {
-//     // console.log(err);
-//     if (!res.headersSent && err) {
-//       return res.status(404).json({ error: "File not found!" });
-//     }
-//   });
-// });
 
 
 

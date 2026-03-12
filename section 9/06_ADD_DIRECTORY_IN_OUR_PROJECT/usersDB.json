@@ -12,5 +12,12 @@
         "email": "anuragg@gmail.com",
         "password": "7",
         "rootDirId": "debd93ea-b50e-43fc-a9d1-0fb76bcd3f96"
+    },
+    {
+        "id": "435b3fb9-9665-4e8f-9c29-32d163caf3eb",
+        "name": "Anurag Singh",
+        "email": "ab@gmail.com",
+        "password": "1",
+        "rootDirId": "11a04e15-7227-4834-bc63-cf3914548f9f"
     }
 ]
