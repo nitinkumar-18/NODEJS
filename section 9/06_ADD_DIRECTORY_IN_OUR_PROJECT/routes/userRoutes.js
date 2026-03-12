@@ -10,6 +10,8 @@ import CheckAuth from "../middlewares/authMiddleware.js";
 
 
 
+// status code 300 ka aur headers location agaya redirect hojaega http
+
 
 const router = express.Router();
 
