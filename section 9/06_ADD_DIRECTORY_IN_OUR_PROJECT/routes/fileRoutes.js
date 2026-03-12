@@ -6,8 +6,30 @@ import directoriesData from '../directoriesDB.json' with {type: "json"}
 import filesData from '../filesDB.json' with {type: "json"}
 
 import crypto from "crypto";
+import validateIdMiddleware from "../middlewares/validateIdMiddleware.js";
 
 const router = express.Router();
+
+
+
+
+
+
+
+
+
+
+
+// router param UUID ka check karega
+//router.param() Express ka special middleware hai jo URL parameter ko handle karne ke liye use hota hai.
+
+// Simple language me:
+
+// 👉 Jab bhi route me :id ya koi param use hota hai,
+// router.param() automatically run ho sakta hai us param ko validate / process karne ke liye.
+
+router.param("parentDirId",validateIdMiddleware)
+router.param("id",validateIdMiddleware)
 
 
 
@@ -268,6 +290,26 @@ router.delete("/:id", async (req, res,next) => {
     next(err);
   }
 });
+
+
+
+
+
+
+
+
+
+
+
+router.param("id",(req,res,next)=>{
+  console.log('running router.param ')
+  console.log(req.method);
+next()
+})
+
+
+
+
 
 export default router;
 

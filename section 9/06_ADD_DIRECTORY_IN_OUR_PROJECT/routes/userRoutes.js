@@ -6,7 +6,9 @@ import directoriesData from '../directoriesDB.json' with {type: "json"}
 
 import usersData from "../usersDB.json" with {type :'json'};
 import { error } from "console";
-import CheckAuth from "../auth.js";
+import CheckAuth from "../middlewares/authMiddleware.js";
+
+
 
 
 const router = express.Router();

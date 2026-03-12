@@ -6,11 +6,17 @@ import directoriesData from '../directoriesDB.json' with {type: "json"}
 import filesData from '../filesDB.json' with {type: "json"}
 import usersData from '../usersDB.json' with {type : "json"}
 import crypto from "crypto";
+import validateIdMiddleware from "../middlewares/validateIdMiddleware.js";
+
 
 const router = express.Router();
 
 
 
+
+
+router.param("parentDirId",validateIdMiddleware)
+router.param("id",validateIdMiddleware)
 
 
 
