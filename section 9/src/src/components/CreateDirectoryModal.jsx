@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import PropTypes from "prop-types";
 
 function CreateDirectoryModal({
   newDirname,
@@ -10,31 +9,32 @@ function CreateDirectoryModal({
   const inputRef = useRef(null);
 
   useEffect(() => {
-    // focus input and place cursor at end
+    // Focus and select text only once on mount
     if (inputRef.current) {
       inputRef.current.focus();
-      const length = inputRef.current.value.length;
-      inputRef.current.setSelectionRange(length, length);
+      inputRef.current.select();
     }
 
-    // listen escape key
+    // Listen for "Escape" key to close the modal
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
         onClose();
       }
     };
-
     document.addEventListener("keydown", handleKeyDown);
 
+    // Cleanup keydown event listener on unmount
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [onClose]);
+  }, []);
 
+  // Stop propagation when clicking inside the content
   const handleContentClick = (e) => {
     e.stopPropagation();
   };
 
+  // Close when clicking outside the modal content
   const handleOverlayClick = () => {
     onClose();
   };
@@ -43,7 +43,6 @@ function CreateDirectoryModal({
     <div className="modal-overlay" onClick={handleOverlayClick}>
       <div className="modal-content" onClick={handleContentClick}>
         <h2>Create a new directory</h2>
-
         <form onSubmit={onCreateDirectory}>
           <input
             ref={inputRef}
@@ -53,12 +52,10 @@ function CreateDirectoryModal({
             value={newDirname}
             onChange={(e) => setNewDirname(e.target.value)}
           />
-
           <div className="modal-buttons">
             <button className="primary-button" type="submit">
               Create
             </button>
-
             <button
               className="secondary-button"
               type="button"
@@ -72,12 +69,5 @@ function CreateDirectoryModal({
     </div>
   );
 }
-
-CreateDirectoryModal.propTypes = {
-  newDirname: PropTypes.string.isRequired,
-  setNewDirname: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
-  onCreateDirectory: PropTypes.func.isRequired,
-};
 
 export default CreateDirectoryModal;

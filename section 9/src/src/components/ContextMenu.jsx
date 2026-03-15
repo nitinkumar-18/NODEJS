@@ -1,5 +1,3 @@
-import PropTypes from 'prop-types';
-
 function ContextMenu({
     item,
     contextMenuPos,
@@ -79,26 +77,7 @@ function ContextMenu({
         );
       }
     }
-    }
+  }
   
-  ContextMenu.propTypes = {
-    item: PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      isDirectory: PropTypes.bool.isRequired,
-      isUploading: PropTypes.bool,
-    }).isRequired,
-    contextMenuPos: PropTypes.shape({
-      x: PropTypes.number.isRequired,
-      y: PropTypes.number.isRequired,
-    }).isRequired,
-    isUploadingItem: PropTypes.bool.isRequired,
-    handleCancelUpload: PropTypes.func.isRequired,
-    handleDeleteFile: PropTypes.func.isRequired,
-    handleDeleteDirectory: PropTypes.func.isRequired,
-    openRenameModal: PropTypes.func.isRequired,
-    BASE_URL: PropTypes.string.isRequired,
-  };
-    
-    export default ContextMenu;
+  export default ContextMenu;
   

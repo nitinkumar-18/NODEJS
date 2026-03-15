@@ -9,7 +9,6 @@ import {
 } from "react-icons/fa";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import ContextMenu from "../components/ContextMenu";
-import PropTypes from "prop-types";
 
 function DirectoryItem({
   item,
@@ -26,6 +25,7 @@ function DirectoryItem({
   openRenameModal,
   BASE_URL,
 }) {
+  // Convert the file icon string to the actual Icon component
   function renderFileIcon(iconString) {
     switch (iconString) {
       case "pdf":
@@ -66,6 +66,7 @@ function DirectoryItem({
           <span>{item.name}</span>
         </div>
 
+        {/* Three dots for context menu */}
         <div
           className="context-menu-trigger"
           onClick={(e) => handleContextMenu(e, item.id)}
@@ -74,6 +75,7 @@ function DirectoryItem({
         </div>
       </div>
 
+      {/* PROGRESS BAR: shown if an item is in queue or actively uploading */}
       {isUploadingItem && (
         <div className="progress-container">
           <span className="progress-value">{Math.floor(uploadProgress)}%</span>
@@ -87,6 +89,7 @@ function DirectoryItem({
         </div>
       )}
 
+      {/* Context menu, if active */}
       {activeContextMenu === item.id && (
         <ContextMenu
           item={item}
@@ -102,21 +105,5 @@ function DirectoryItem({
     </div>
   );
 }
-
-DirectoryItem.propTypes = {
-  item: PropTypes.object.isRequired,
-  handleRowClick: PropTypes.func.isRequired,
-  activeContextMenu: PropTypes.any,
-  contextMenuPos: PropTypes.object,
-  handleContextMenu: PropTypes.func.isRequired,
-  getFileIcon: PropTypes.func.isRequired,
-  isUploading: PropTypes.bool,
-  uploadProgress: PropTypes.number,
-  handleCancelUpload: PropTypes.func,
-  handleDeleteFile: PropTypes.func,
-  handleDeleteDirectory: PropTypes.func,
-  openRenameModal: PropTypes.func,
-  BASE_URL: PropTypes.string,
-};
 
 export default DirectoryItem;

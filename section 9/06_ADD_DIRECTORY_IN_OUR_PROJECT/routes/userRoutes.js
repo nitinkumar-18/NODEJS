@@ -7,7 +7,7 @@ import directoriesData from '../directoriesDB.json' with {type: "json"}
 import usersData from "../usersDB.json" with {type :'json'};
 import { error } from "console";
 import CheckAuth from "../middlewares/authMiddleware.js";
-
+import crypto from "crypto";
 
 
 // status code 300 ka aur headers location agaya redirect hojaega http
@@ -77,7 +77,7 @@ directoriesData.push({
 
 router.post('/login',async(req,res,next)=>{
     // console.log(req.body);
-
+ 
     const {email,password}=req.body;
 
     const user=usersData.find((user)=>user.email === email)

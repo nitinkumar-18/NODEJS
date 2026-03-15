@@ -1,5 +1,4 @@
 import DirectoryItem from "./DirectoryItem";
-import PropTypes from "prop-types";
 
 function DirectoryList({
   items,
@@ -43,21 +42,5 @@ function DirectoryList({
     </div>
   );
 }
-
-DirectoryList.propTypes = {
-  items: PropTypes.array.isRequired,
-  handleRowClick: PropTypes.func.isRequired,
-  activeContextMenu: PropTypes.any,
-  contextMenuPos: PropTypes.object,
-  handleContextMenu: PropTypes.func.isRequired,
-  getFileIcon: PropTypes.func.isRequired,
-  isUploading: PropTypes.bool,
-  progressMap: PropTypes.object,
-  handleCancelUpload: PropTypes.func,
-  handleDeleteFile: PropTypes.func,
-  handleDeleteDirectory: PropTypes.func,
-  openRenameModal: PropTypes.func,
-  BASE_URL: PropTypes.string,
-};
 
 export default DirectoryList;

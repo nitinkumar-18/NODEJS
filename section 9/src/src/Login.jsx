@@ -1,9 +1,10 @@
-import  { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Auth.css";
 
 const Login = () => {
-  const BASE_URL = "http://localhost:2200";
+  // const BASE_URL = "http://localhost:4000";
+  const BASE_URL = "http://10.78.24.55:2200";
 
   const [formData, setFormData] = useState({
     email: "anurag@gmail.com",
@@ -33,12 +34,13 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`${BASE_URL}/login`, {
+      const response = await fetch(`${BASE_URL}/user/login`, {
         method: "POST",
         body: JSON.stringify(formData),
         headers: {
           "Content-Type": "application/json",
         },
+        credentials: "include",
       });
 
       const data = await response.json();
@@ -105,7 +107,7 @@ const Login = () => {
 
       {/* Link to the register page */}
       <p className="link-text">
-        Do not have an account? <Link to="/register">Register</Link>
+        Don't have an account? <Link to="/register">Register</Link>
       </p>
     </div>
   );

@@ -1,5 +1,4 @@
 import { useEffect, useRef } from "react";
-import PropTypes from "prop-types";
 
 function RenameModal({
   renameType,
@@ -11,6 +10,7 @@ function RenameModal({
   const inputRef = useRef(null);
 
   useEffect(() => {
+    // Focus and select text only once on mount
     if (inputRef.current) {
       inputRef.current.focus();
 
@@ -22,23 +22,26 @@ function RenameModal({
       }
     }
 
+    // Listen for "Escape" key to close the modal
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
         onClose();
       }
     };
-
     document.addEventListener("keydown", handleKeyDown);
 
+    // Cleanup keydown event listener on unmount
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [renameValue, onClose]);
+  }, []);
 
+  // Stop propagation when clicking inside the content
   const handleContentClick = (e) => {
     e.stopPropagation();
   };
 
+  // Close when clicking outside the modal content
   const handleOverlayClick = () => {
     onClose();
   };
@@ -47,7 +50,6 @@ function RenameModal({
     <div className="modal-overlay" onClick={handleOverlayClick}>
       <div className="modal-content" onClick={handleContentClick}>
         <h2>Rename {renameType === "file" ? "File" : "Folder"}</h2>
-
         <form onSubmit={onRenameSubmit}>
           <input
             ref={inputRef}
@@ -57,12 +59,10 @@ function RenameModal({
             value={renameValue}
             onChange={(e) => setRenameValue(e.target.value)}
           />
-
           <div className="modal-buttons">
             <button className="primary-button" type="submit">
               Save
             </button>
-
             <button
               className="secondary-button"
               type="button"
@@ -76,13 +76,5 @@ function RenameModal({
     </div>
   );
 }
-
-RenameModal.propTypes = {
-  renameType: PropTypes.string.isRequired,
-  renameValue: PropTypes.string.isRequired,
-  setRenameValue: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
-  onRenameSubmit: PropTypes.func.isRequired,
-};
 
 export default RenameModal;

@@ -1,9 +1,10 @@
-import  { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Auth.css";
 
 const Register = () => {
-  const BASE_URL = "http://localhost:2200";
+  // const BASE_URL = "http://localhost:4000";
+  const BASE_URL = "http://10.78.24.55:2200";
 
   const [formData, setFormData] = useState({
     name: "Anurag Singh",
@@ -39,7 +40,7 @@ const Register = () => {
     setIsSuccess(false); // reset success if any
 
     try {
-      const response = await fetch(`${BASE_URL}/user`, {
+      const response = await fetch(`${BASE_URL}/user/register`, {
         method: "POST",
         body: JSON.stringify(formData),
         headers: {
@@ -56,7 +57,7 @@ const Register = () => {
         // Registration success
         setIsSuccess(true);
         setTimeout(() => {
-          navigate("/");
+          navigate("/login");
         }, 2000);
       }
     } catch (error) {
