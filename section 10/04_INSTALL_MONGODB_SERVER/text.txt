@@ -36,3 +36,62 @@ switched to db local
 local> show collections
 startup_log
 local> 
+
+
+
+
+
+
+
+test> show databases
+admin        40.00 KiB
+config      108.00 KiB
+expenseApp   40.00 KiB
+local        40.00 KiB
+test> use expenseApp
+switched to db expenseApp
+expenseApp> show collections
+users
+expenseApp> db
+expenseApp
+expenseApp> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+expenseApp> db.users
+expenseApp.users
+expenseApp> db.users.find()
+[
+  {
+    _id: ObjectId('69b848ec6a308d94900f010f'),
+    name: 'TANISH TANDON',
+    email: 'tandon@gmail.com',
+    age: 50
+  }
+]
+expenseApp> 
+
+
+
+expenseApp> db.dropDatabase()
+
+
+
+
+
+
+
+
+
+expenseApp> db.users.insert({name : "TANISH",age:90})
