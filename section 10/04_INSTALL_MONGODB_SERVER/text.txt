@@ -1,0 +1,38 @@
+mongodb data ko document ki format mai represent karta hai
+
+document like json object in mongodb we called BSON binary json binary form
+
+
+
+
+ test> show databases.   db
+test by default database hi hai
+
+console.dir(db)
+
+
+
+  _session: undefined
+}
+
+test> use('TANISH')
+switched to db TANISH
+TANISH> 
+
+
+
+
+
+est> show collections
+
+test> use admin
+switched to db admin
+admin> show collections
+system.version
+admin> startup_log
+ReferenceError: startup_log is not defined
+admin> use local
+switched to db local
+local> show collections
+startup_log
+local> 
