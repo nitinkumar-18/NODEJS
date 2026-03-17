@@ -95,3 +95,312 @@ expenseApp> db.dropDatabase()
 
 
 expenseApp> db.users.insert({name : "TANISH",age:90})
+
+
+
+
+
+
+
+test> db
+test
+test> use expenseApp
+switched to db expenseApp
+expenseApp> db.expenses.find()
+
+
+
+expenseApp> db.expenses.find({currency:'USD',paymentMethod:'Debit Card'})
+
+
+
+
+db.expenses.findOne().  yeh object miljaega normal object
+
+
+
+db.expenses.findOne().constructor
+
+findOne ek object return single object find ek object return karega 
+
+
+
+
+
+expenseApp> db.expenses.find({amount:{$gt:200}}) yeh gt greater than 200
+
+
+expenseApp> db.expenses.find({amount:{$gte:200}}) greater than equal to
+
+
+
+expenseApp> db.expenses.find({amount:{$lte:200}}) less than equal to
+
+
+
+
+
+
+
+
+
+
+
+🔁 3-Way Handshake Steps
+1️⃣ SYN (Synchronize)
+
+Client → Server ko request bhejta hai
+
+Message: SYN = 1
+
+Iska matlab: "Mujhe connection start karna hai"
+
+Client apna sequence number bhi bhejta hai
+
+👉 Example:
+
+Client → Server : SYN, Seq = x
+2️⃣ SYN-ACK (Synchronize + Acknowledge)
+
+Server → Client ko reply deta hai
+
+Message: SYN = 1, ACK = 1
+
+Matlab:
+
+SYN: "Main ready hoon connection ke liye"
+
+ACK: "Maine tumhara request receive kar liya"
+
+Server apna sequence number + client ka acknowledgment bhejta hai
+
+👉 Example:
+
+Server → Client : SYN, ACK, Seq = y, Ack = x+1
+3️⃣ ACK (Acknowledge)
+
+Client → Server ko final confirmation deta hai
+
+Message: ACK = 1
+
+Matlab: "Connection successfully establish ho gaya"
+
+👉 Example:
+
+Client → Server : ACK, Seq = x+1, Ack = y+1
+✅ Final Result
+
+✔ Connection establish ho jata hai
+✔ Ab data transfer start ho sakta hai
+
+🔥 Simple Analogy (Easy yaad rakhne ke liye)
+
+Socho phone call:
+
+Client: "Hello, baat karni hai?" (SYN)
+
+Server: "Haan, sun raha hoon" (SYN-ACK)
+
+Client: "Theek hai, start karte hain" (ACK)
+
+👉 Ab conversation start 👍
+
+📊 Summary Table
+Step	Sender	Message	Meaning
+1	Client	SYN	Connection request
+2	Server	SYN + ACK	Accept + acknowledge
+3	Client	ACK	Final confirmation
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// heartbeat monitoring request
+💓 Heartbeat Monitoring kya hota hai?
+
+Ek system dusre system ko regular interval par small request (heartbeat) bhejta hai:
+
+👉 Purpose:
+
+Check karna: "System alive hai ya down?"
+
+Failure detection
+
+High availability systems me use hota hai
+
+🔁 Basic Flow
+1️⃣ Heartbeat Request
+
+Client → Server (ya Node → Node)
+
+Ek chhota sa message send hota hai: "Are you alive?"
+
+2️⃣ Heartbeat Response
+
+Server → Client
+
+Reply: "Yes, I am alive"
+
+3️⃣ Timeout Check
+
+Agar response time par nahi aata → system assume karta hai:
+❌ Server down hai / unreachable hai
+
+📊 Example
+Client → Server : HEARTBEAT REQUEST
+Server → Client : HEARTBEAT RESPONSE
+
+Agar:
+
+Client → Server : HEARTBEAT REQUEST
+(no response)
+
+👉 Then:
+
+System mark karega: Server = DOWN
+
+🔥 Real-Life Use Cases
+✔ Distributed Systems
+
+Cluster me nodes check karna (e.g. databases)
+
+✔ Load Balancers
+
+Healthy servers ko hi traffic bhejna
+
+✔ Microservices
+
+Service alive hai ya crash ho gaya
+
+✔ DevOps / Cloud
+
+Kubernetes, AWS health checks
+
+⚙️ Types of Heartbeats
+1. Active Heartbeat
+
+Ek system actively ping karta hai dusre ko
+
+2. Passive Heartbeat
+
+System khud hi periodically signal bhejta hai
+
+⏱️ Important Terms
+
+Interval → kitni der me heartbeat bhejna (e.g. every 5 sec)
+
+Timeout → kitni der wait karna response ke liye
+
+Threshold → kitni baar miss hone par system down declare hoga
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🏓 Ping kya karta hai?
+
+👉 Ping ek message bhejta hai aur wait karta hai reply ka:
+
+Request: "Hello, tum online ho?"
+
+Reply: "Haan, main online hoon"
+
+Agar reply aa gaya → ✅ system reachable
+Agar reply nahi aaya → ❌ system down ya network issue
+
+🔁 Ping ka working (simple)
+
+1️⃣ Tum ping send karte ho
+2️⃣ Dusra system reply bhejta hai
+3️⃣ Tum measure karte ho kitna time laga
+
+📡 Technical naam
+
+Ping actually use karta hai:
+👉 ICMP (Internet Control Message Protocol)
+
+Request: Echo Request
+
+Reply: Echo Reply
+
+📊 Example (Terminal)
+ping google.com
+
+Output kuch aisa aata hai:
+
+Reply from 142.250.xxx.xxx: time=20ms
+
+👉 Iska matlab:
+
+Server reachable hai
+
+20ms me response mila
+
+⏱️ Ping kya measure karta hai?
+✔ Latency (delay)
+
+Kitna time laga request → reply me
+
+Lower = better
+
+✔ Packet Loss
+
+Kitne packets lost ho gaye
+
+Zyada loss = network problem
+
+🔥 Real Life Use
+
+Internet slow hai ya nahi check karna
+
+Server down hai ya nahi
+
+Gaming me lag check karna
+
+🧠 Short Definition (Interview)
+
+👉 Ping is a tool that checks network connectivity using ICMP echo request and reply.
+
+
+
+
+
+
+//database network ke through communicate karta hai
+
+
+shell jo hota hai sync call karta hai
+
+
+
