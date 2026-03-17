@@ -403,4 +403,48 @@ Gaming me lag check karna
 shell jo hota hai sync call karta hai
 
 
+db.expenses.findOne({title:"Electricity bill"})
+///updation ke liye below code 
 
+db.expenses.updateOne({title:"Electricity bill"},{$set:{amount:500}})
+
+
+
+
+
+db.expenses.updateOne({title:"Electricity bill"},{$set:{amount:500}})
+
+
+
+
+
+
+//replace kardia pura document
+
+db.expenses.replaceOne({title:"Electricity bill"},{name:'TANISH'})
+
+
+
+
+//sabh jagah 500 jaha electricity bill ho
+db.expenses.updateMany({title:"Electricity bill"},{$set:{amount:500}})
+
+
+
+
+
+
+db.expenses.updateMany({title:"Electricity bill",currency:'JPY'},{$set:{amount:5000}})
+
+
+db.expenses.updateMany({title:"Electricity bill",currency:'JPY'},{$set:{amount:5000}})
+
+
+
+db.expenses.findOne({_id:ObjectId('69b84d9b9459462ea3b43f11')})
+
+
+
+
+
+db.expenses.updateMany({_id:ObjectId('69b84d9b9459462ea3b43f11')},{$set:{amount:1000}})
