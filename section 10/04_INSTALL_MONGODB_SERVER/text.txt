@@ -448,3 +448,39 @@ db.expenses.findOne({_id:ObjectId('69b84d9b9459462ea3b43f11')})
 
 
 db.expenses.updateMany({_id:ObjectId('69b84d9b9459462ea3b43f11')},{$set:{amount:1000}})
+
+
+db.expenses.updateOne({name:'TANISH'},{$set:{age:90}})
+
+
+
+// unset kardia abh age ki jagah kuch bhi kardo delete kardega
+db.expenses.updateOne({name:'TANISH'},{$unset:{age:900}})
+
+
+// yeh bhi9 delete karega
+db.expenses.updateOne({name:'TANISH'},{$unset:{age:''}})
+
+
+
+db.expenses.updateOne({name:'TANISH'},{$unset:{name:''}})
+
+
+
+
+//delete
+db.expenses.deleteOne({_id:ObjectId('69b84d9b9459462ea3b43f0c')})
+
+
+db.expenses.deleteMany({title:'Electricity bill'});
+
+
+delete object.  drop ko collections database
+
+//yeh collections add kia hai
+ db.fruits.insertOne({name:'orange'})
+  db.fruits.insertOne({name:'apple'})
+
+
+// pura hello database delete hojaega
+  hello> db.dropDatabase()
