@@ -484,3 +484,55 @@ delete object.  drop ko collections database
 
 // pura hello database delete hojaega
   hello> db.dropDatabase()
+
+
+
+
+
+  test> ObjectId
+[Function: ObjectId] {
+  cacheHexString: undefined,
+  help: [Function (anonymous)] Help
+}
+test>    test ka naam ka database and ObjectId ek Function hai
+
+
+'69babc1b6c469d62e00333ff'. 2character 1 byte.  start mai 4 bytes represnt time 
+
+Date.now()
+
+Date.now()/1000 time in miliseconds
+
+parseInt('69babc1b',16)
+
+parseInt('69babc1b',16)*1000 ISSAI DATE AAEGI AAJ ki current Date
+
+
+3 bytes machine ke Bare mai
+3 bytes jo counter hai inc hogha
+
+
+
+
+test> ObjectId()
+ObjectId('69babc1b6c469d62e00333ff')
+test> old.getTimestamp()
+ReferenceError: old is not defined
+test> const old=ObjectId()
+
+test> old.getTimestamp()
+ISODate('2026-03-18T16:14:00.000Z')
+test> 
+
+
+69bacf486c469d62e0033400
+
+
+
+
+db.fruits.insertOne({name:"apple"})
+
+test> db.fruits.insertOne({name:"Mango"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('69bad01d6c469d62e0033401')
