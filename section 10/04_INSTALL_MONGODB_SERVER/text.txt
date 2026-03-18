@@ -536,3 +536,169 @@ test> db.fruits.insertOne({name:"Mango"})
 {
   acknowledged: true,
   insertedId: ObjectId('69bad01d6c469d62e0033401')
+
+
+
+  db.numbers.insertOne({a:10})
+{
+  acknowledged: true,
+  insertedId: ObjectId('69bad62cf70c133d296db26d')
+}
+test> db.numbers.find()
+
+
+Number.MAX_SAFE_INTEGER
+
+db.numbers.insertOne({a:9007199254740991})
+
+// bigInt to int
+
+db.numbers.insertOne({a:9007199254740991n})
+
+
+
+
+
+
+db.dataTypes.insertOne({a:'TANISH',b:true,c:new Date(),d:[1],e:{name:'Tanish'},f:null,g:/\d/})
+
+
+
+
+
+// normal datatype sirf store karte hai 
+// BSON data type query ke liye use hota hai
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SON ka full form hota hai Binary JSON.
+
+🔹 Simple samajh:
+
+BSON ek data format hai jo JSON jaisa hi hota hai, bas difference ye hai ki:
+
+JSON → text format (readable)
+
+BSON → binary format (machine-friendly, fast)
+
+🔹 BSON kyu use hota hai?
+
+Mainly MongoDB me use hota hai.
+
+Kyuki:
+
+Data ko fast read/write kar sakte hain ⚡
+
+Extra data types support karta hai (jo JSON nahi karta)
+
+Storage aur processing efficient hoti hai
+
+🔹 Example (compare JSON vs BSON)
+
+JSON:
+
+{
+  "name": "Tanish",
+  "age": 20
+}
+
+BSON:
+
+Ye same data binary form me store hota hai (human readable nahi hota)
+
+🔹 BSON ke special features
+
+JSON se better isliye:
+
+Extra Data Types
+
+Date
+
+ObjectId
+
+Binary data
+
+int32, int64
+
+Fast traversal
+
+Binary hone ki wajah se parsing fast hoti hai
+
+Efficient storage
+
+Compact format
+
+🔹 Easy analogy
+
+JSON = 📄 readable document
+
+BSON = ⚙️ optimized machine file
+
+🔹 Interview line (important 💯)
+
+👉 BSON is a binary-encoded serialization format used in MongoDB that extends JSON by supporting additional data types and enabling faster data processing.
+
+
+
+
+
+
+
+
+
+
+
+db.users.insertMany([{
+    
+    name: "Alice",
+    info: "Hello, I am a string",
+    age: 25,
+  },
+  {
+    name: "Bob",
+    info: 42,
+    age: 30,
+  },
+  {
+    name: "Charlie",
+    info: true,
+    age: 35,
+  },
+  {
+    name: "Diana",
+    info: { hobby: "Reading", level: "Expert" },
+    age: 28,
+  },
+])
+
+
+
+db.users.find({info:{$type:"bool"}})
+
+
+
+db.users.find({info:{$type:"string"}})
+
+
+
+
+db.users.find({info:{$type:"object"}})
+//OR dono same hai number do yaha phir yeh do
+db.users.find({info:{$type:3}})
+
+
+
+
+
+db.users.find({info:{$type:"int"}})
