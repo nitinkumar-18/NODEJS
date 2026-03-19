@@ -702,3 +702,5 @@ db.users.find({info:{$type:3}})
 
 
 db.users.find({info:{$type:"int"}})
+
+
