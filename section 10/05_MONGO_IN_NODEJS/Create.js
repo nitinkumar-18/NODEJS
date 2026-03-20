@@ -38,6 +38,16 @@ const db=client.db('school2')
 
 
 
+// const tanishCollection=db.collection("tanish");
+// const teacherCollection=db.collection("teacher")
+
+// const result1=await tanishCollection.insertOne({name:"DHOn",age:200});
+
+// const result2=await teacherCollection.insertMany([
+//     {name : "shubh",age:8},
+
+// ])
+
 
 
 client.close();

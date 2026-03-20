@@ -1,0 +1,25 @@
+
+
+🔹 Cursor kya hota hai?
+
+Cursor ek pointer/iterator hota hai jo database ke results ko ek-ek karke access karne deta hai.
+
+👉 Jab tum query run karte ho (like find()), database saare data ek saath memory me nahi deta — wo ek cursor return karta hai.
+
+🔹 Example (MongoDB)
+const users = db.users.find();
+
+Yeh kya return karega?
+
+❌ Pure data nahi
+✅ Ek cursor object
+
+🔹 Cursor ka kaam
+
+Cursor:
+
+Results ko batch me fetch karta hai
+
+Ek-ek document ko iterate karne deta hai
+
+Memory efficient hota hai
