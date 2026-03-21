@@ -23,3 +23,109 @@ Results ko batch me fetch karta hai
 Ek-ek document ko iterate karne deta hai
 
 Memory efficient hota hai
+
+
+
+
+
+
+
+
+
+
+Batch size ka matlab hota hai: ek baar me kitna data process hoga.
+
+👉 Ye concept tumhe databases (MongoDB), backend APIs, aur ML (Deep Learning) sab jagah milega.
+
+🔹 Simple example (database / cursor)
+
+Jab tum query run karte ho:
+
+db.users.find()
+
+👉 Database ek saath 10,000 records nahi bhejta
+👉 Wo chhote chunks (batches) me bhejta hai
+
+➡️ Har chunk ka size = batch size
+
+🔹 Cursor + Batch Size connection
+
+Cursor data ko batch me fetch karta hai
+
+Har batch me fixed number of documents hote hain
+
+Example:
+
+Total records = 1000
+
+Batch size = 100
+
+👉 Cursor 100-100 karke data fetch karega
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Projection ka matlab hota hai: database se sirf required fields (columns) ko fetch karna, poora data nahi.
+
+
+
+
+
+projection kya hai
+🔹 Projection kya hota hai? (Backend / MongoDB)
+
+Projection ka matlab hota hai: database se sirf required fields (columns) ko fetch karna, poora data nahi.
+
+🔹 Simple example
+
+Suppose tumhare database me document hai:
+
+{
+  "name": "Tanish",
+  "age": 21,
+  "email": "tanish@gmail.com",
+  "password": "12345"
+}
+
+👉 Agar tum normal query likhte ho:
+
+db.users.find()
+
+➡️ Yeh sab fields return karega ❌ (password bhi)
+
+🔹 Projection use karo
+db.users.find({}, { name: 1, email: 1 })
+
+👉 Output:
+
+{
+  "name": "Tanish",
+  "email": "tanish@gmail.com"
+}
+
+✔️ Sirf required fields aaye
+❌ Extra data (age, password) nahi
+
+🔹 1 aur 0 ka matlab
+Value	Meaning
+1	Include field
+0	Exclude field

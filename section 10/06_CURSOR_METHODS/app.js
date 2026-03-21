@@ -5,9 +5,10 @@ const client=new MongoClient("mongodb://localhost:27017/");
 await client.connect();
 // yaha vo dekh rhe hai jo cursor return karte hai 
 
-// const db=client.db("todoApp");
-
 const db=client.db("expenseApp");
+
+
+// const db=client.db("expenseApp");
 
 const collection=db.collection("expenses");
 
@@ -28,7 +29,17 @@ const collection=db.collection("expenses");
 
 //map hai jiski server takh nhi jaegi
 
-const cursor=collection.find().limit(0).skip(0).sort({title:1}).filter({title:"Books"}).map(({title,amount})=>({title,amount}))
+// const cursor=collection.find().limit(0).skip(0).sort({title:1}).filter({title:"Books"}).map(({title,amount})=>({title,amount}))
+
+// const cursor=collection.find().batchSize(100);
+
+// const cursor=collection.find().map(({title,amount})=>({title,amount}));
+
+
+const cursor=collection.find({},{projection:{title:1,amount:1,_id:0}})
+
+
+
 
 
 
@@ -39,9 +50,17 @@ const cursor=collection.find().limit(0).skip(0).sort({title:1}).filter({title:"B
 
 const data=await cursor.toArray();
 
+
+console.log(data);
+
+// console.log(data.map(({title,completed})=>({title,completed})))
+
+
+// batch size process
 // console.log(data.map(({title,amount})=>({title,amount})));
 
 client.close();
+
 
 
 
