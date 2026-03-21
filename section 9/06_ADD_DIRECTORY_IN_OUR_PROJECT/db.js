@@ -9,14 +9,14 @@ export async function connectDB() {
     await client.connect();
     const db=client.db();
     console.log('database connected');
-    return db;
+   return db;
     
 }
 
-
+// yeh ek event hota hai jabh cltrl+c sai apna application cut karte hai
 process.on('SIGINT',async()=>{
     await client.close();
-    console.Console.log("CLIENT DISCONNECTED")
+    console.log("CLIENT DISCONNECTED")
     process.exit(0);
 })
 

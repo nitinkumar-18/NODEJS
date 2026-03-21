@@ -73,7 +73,6 @@ app.use("/user",userRoutes);
 
 
 
-
 app.use((err,req,res,next)=>{
   // console.log('ERROR Occurred');
 
