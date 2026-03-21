@@ -18,6 +18,7 @@ process.on('SIGINT',async()=>{
     await client.close();
     console.log("CLIENT DISCONNECTED")
     process.exit(0);
+    
 })
 
 

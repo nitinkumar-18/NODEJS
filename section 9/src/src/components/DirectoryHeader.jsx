@@ -147,7 +147,7 @@ function DirectoryHeader({
             className="icon-button"
             title="User Menu"
             onClick={handleUserIconClick}
-            disabled={disabled}
+            // disabled={disabled}
           >
             <FaUser />
           </button>

@@ -51,7 +51,8 @@ function DirectoryView() {
       try {
         const data = await response.json();
         if (data.error) errMsg = data.error;
-      } catch (_) {
+      } catch (err) {
+        console.log(err);
         // If JSON parsing fails, default errMsg stays
       }
       throw new Error(errMsg);
@@ -247,10 +248,18 @@ function DirectoryView() {
     setFilesList((prev) => prev.filter((f) => f.id !== tempId));
 
     // Remove from progressMap
+    // setProgressMap((prev) => {
+    //   const { [tempId]: _, ...rest } = prev;
+    //   return rest;
+    // });
+
+
+
     setProgressMap((prev) => {
-      const { [tempId]: _, ...rest } = prev;
-      return rest;
-    });
+  const copy = { ...prev };
+  delete copy[tempId];
+  return copy;
+});
 
     // Remove from Xhr map
     setUploadXhrMap((prev) => {
@@ -464,3 +473,32 @@ function DirectoryView() {
 }
 
 export default DirectoryView;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

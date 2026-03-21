@@ -425,7 +425,17 @@ router.post("/:parentDirId?", (req, res, next) => {
 
   const writeStream = createWriteStream(`./storage/${fullFileName}`);
 
-  req.pipe(writeStream);
+  // req.pipe(writeStream);
+
+
+
+  req.on("data", (chunk) => {
+  writeStream.write(chunk);
+});
+
+req.on("end", () => {
+  writeStream.end();
+});
 
   writeStream.on("finish", async () => {
 
