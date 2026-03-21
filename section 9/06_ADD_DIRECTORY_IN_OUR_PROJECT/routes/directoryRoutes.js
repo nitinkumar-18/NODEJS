@@ -2,8 +2,8 @@ import express from "express";
 import { readFile } from "fs/promises"
 import { mkdir, readdir, rm, stat, writeFile } from "fs/promises";
 import path from "path";
-import directoriesData from '../directoriesDB.json' with {type: "json"}
-import filesData from '../filesDB.json' with {type: "json"}
+// import directoriesData from '../directoriesDB.json' with {type: "json"}
+// import filesData from '../filesDB.json' with {type: "json"}
 import usersData from '../usersDB.json' with {type : "json"}
 import crypto from "crypto";
 import validateIdMiddleware from "../middlewares/validateIdMiddleware.js";
@@ -37,6 +37,21 @@ router.param("id",validateIdMiddleware)
 router.get("/:id?", async (req, res) => {
 
   // const { uid } = req.cookies
+
+  const db=req.db;
+
+  console.log(db);
+
+
+  const collection=db.collection('expenses');
+
+const data=await collection.find().toArray();
+
+
+console.log(data);
+
+
+
    const user = req.user
 
   // const user = usersData.find((user) => user.id === uid)

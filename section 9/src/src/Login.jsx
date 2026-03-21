@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import "./Auth.css";
 
@@ -107,7 +107,7 @@ const Login = () => {
 
       {/* Link to the register page */}
       <p className="link-text">
-        Don't have an account? <Link to="/register">Register</Link>
+        Do not have an account? <Link to="/register">Register</Link>
       </p>
     </div>
   );
