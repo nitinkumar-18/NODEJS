@@ -11,6 +11,8 @@ import crypto from "crypto";
 import { Db } from "mongodb";
 
 
+// mongodb size 16 megabyte
+
 // status code 300 ka aur headers location agaya redirect hojaega http
 
 
@@ -133,8 +135,7 @@ const userRootDir=await dirCollection.insertOne({
     name:`root-${email}`,
     // userId,
     parentDirId:null,
-    files:[],
-    directories:[],
+ 
     
 });
 
@@ -217,6 +218,7 @@ router.post('/login',async(req,res,next)=>{
     // console.log(user._id.toString());
 
     // return;
+
 
 
   res.cookie("uid", user._id.toString() , {

@@ -3,95 +3,59 @@
     "id": "ea69ad37-fa99-49fe-8214-d62bf320dc84",
     "name": "root-tanish",
     "userId": "224e1ea0-7cba-466d-9d0c-00bf5eb426e7",
-    "parentDirId": null,
-    "files": [],
-    "directories": []
+    "parentDirId": null
   },
   {
     "id": "6490567f-8d64-41b3-b78e-e3102de50345",
     "name": "root-tani@gmail.com",
     "userId": "85f4bc4e-0f94-4547-9a80-0907cb5f5cca",
-    "parentDirId": null,
-    "files": [
-      "39dc4a68-6e51-47e7-827a-ee19ef8ddb09",
-      "014344b3-c0b0-4765-b868-7df483edfd6b"
-    ],
-    "directories": [
-      "ca5017cb-ffb6-4a36-9960-48f6846725d7",
-      "1ca426b5-5aad-48c0-a550-b010fc69f6cc"
-    ]
+    "parentDirId": null
+  
   },
   {
     "id": "ca5017cb-ffb6-4a36-9960-48f6846725d7",
     "name": "T",
     "parentDirId": "6490567f-8d64-41b3-b78e-e3102de50345",
-    "userId": "dfab7921-0dac-4bba-b269-7f8fab89924f",
-    "files": [],
-    "directories": []
+    "userId": "dfab7921-0dac-4bba-b269-7f8fab89924f"
+    
   },
   {
     "id": "1ca426b5-5aad-48c0-a550-b010fc69f6cc",
     "name": "I",
     "parentDirId": "6490567f-8d64-41b3-b78e-e3102de50345",
-    "userId": "dfab7921-0dac-4bba-b269-7f8fab89924f",
-    "files": [
-      "7dc86fc1-bb3a-4bd0-9f37-9db964207816"
-    ],
-    "directories": []
+    "userId": "dfab7921-0dac-4bba-b269-7f8fab89924f"
+    
   },
   {
     "id": "dfdb5595-e4a0-4d1b-ab8f-031fb313daa7",
     "name": "root-ii@gmail.com",
     "userId": "19184a3d-2e9a-4225-826b-a1465ad78913",
-    "parentDirId": null,
-    "files": [],
-    "directories": [
-      "d239ded0-91a4-49d9-b0f9-b41a818d9b74"
-    ]
+    "parentDirId": null
+   
   },
   {
     "id": "d239ded0-91a4-49d9-b0f9-b41a818d9b74",
     "name": "New Folder",
     "parentDirId": "dfdb5595-e4a0-4d1b-ab8f-031fb313daa7",
-    "userId": "9ba51a96-aac6-4705-acba-9d2a967a3849",
-    "files": [
-      "aa4503ee-d1f3-4cc0-94c2-d6bf1e2fc3ad"
-    ],
-    "directories": [
-      "d8481377-0443-471c-bd22-568e4f5981f9"
-    ]
+    "userId": "9ba51a96-aac6-4705-acba-9d2a967a3849"
+ 
   },
   {
     "id": "d8481377-0443-471c-bd22-568e4f5981f9",
     "name": "New Folder",
     "parentDirId": "d239ded0-91a4-49d9-b0f9-b41a818d9b74",
-    "userId": "9ba51a96-aac6-4705-acba-9d2a967a3849",
-    "files": [],
-    "directories": [
-      "0603129d-7749-47be-9654-179ab47d4e75"
-    ]
+    "userId": "9ba51a96-aac6-4705-acba-9d2a967a3849"
   },
   {
     "id": "0603129d-7749-47be-9654-179ab47d4e75",
     "name": "New Folder",
     "parentDirId": "d8481377-0443-471c-bd22-568e4f5981f9",
-    "userId": "9ba51a96-aac6-4705-acba-9d2a967a3849",
-    "files": [
-      "799137eb-07e3-4639-83cb-553c332d478e"
-    ],
-    "directories": [
-      "10a327d1-397b-43ed-b476-0c3416c90ca9"
-    ]
+    "userId": "9ba51a96-aac6-4705-acba-9d2a967a3849"
   },
   {
     "id": "10a327d1-397b-43ed-b476-0c3416c90ca9",
     "name": "New Folder",
     "parentDirId": "0603129d-7749-47be-9654-179ab47d4e75",
-    "userId": "9ba51a96-aac6-4705-acba-9d2a967a3849",
-    "files": [
-      "f8c21444-9e7c-4edc-b33a-42c6d7865b4a",
-      "c6a9de12-da39-4602-8070-3a93244f7641"
-    ],
-    "directories": []
+    "userId": "9ba51a96-aac6-4705-acba-9d2a967a3849"
   }
 ]
