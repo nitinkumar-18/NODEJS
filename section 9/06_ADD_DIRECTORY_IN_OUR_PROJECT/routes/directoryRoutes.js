@@ -48,12 +48,20 @@ router.get("/:id?", async (req, res) => {
       await readFile("./filesDB.json", "utf-8")
     );
 
-    const id = req.params.id || user.rootDirId;
+    const _id = req.params.id ? new ObjectId(req.params.id): user.rootDirId;
 
     // const directoryData = directoriesData.find((dir) => dir.id === id);
 
 
-const directoryData=await db.collection("directories").findOne({_id:new ObjectId(id)})
+// const directoryData=await db.collection("directories").findOne({_id:new ObjectId(id)})
+
+
+
+const directoryData = await db.collection("directories").findOne({
+  _id: _id,
+    userId: user._id
+});
+
 
 // console.log(directoryData);
 // return;
@@ -69,10 +77,19 @@ const directoryData=await db.collection("directories").findOne({_id:new ObjectId
 
 
 
-    const files=[]
+    // const files=await db.collection('files').find({parentDirId:directoryData._id}).toArray();
 
-    const directories=await dirCollection.find({parentDirId :new ObjectId(id)}).toArray();
+    // const directories=await dirCollection.find({parentDirId :_id}).toArray();
 
+
+
+    const files = await db.collection('files')
+  .find({ parentDirId: directoryData._id, userId: user._id })
+  .toArray();
+
+const directories = await dirCollection
+  .find({ parentDirId: _id, userId: user._id })
+  .toArray();
 
 
     // const directories = directoryData.directories
@@ -81,7 +98,7 @@ const directoryData=await db.collection("directories").findOne({_id:new ObjectId
 
     return res.status(200).json({
       ...directoryData,
-      files,
+      files:files.map((dir)=>({...dir,id:dir._id})),
       directories:directories.map((dir)=>({...dir,id:dir._id})),
     });
 
@@ -170,7 +187,8 @@ router.post("/:parentDirId?", async (req, res, next) => {
 
   const savedDir=  await dirCollection.insertOne({
       name:dirname,
-      parentDirId,
+      // parentDirId,
+       parentDirId: parentDir._id,
 
       userId:user._id,
 
@@ -215,6 +233,9 @@ router.patch("/:id", async (req, res, next) => {
     // }
 
 
+
+
+    const user = req.user;
  await dirCollection.updateOne({_id:new ObjectId(id),userId:user._id},{$set:{name:newDirName }})
   
 

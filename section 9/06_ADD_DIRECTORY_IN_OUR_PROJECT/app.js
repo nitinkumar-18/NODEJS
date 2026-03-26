@@ -38,7 +38,9 @@ app.use(express.json());
 app.use(cors({
   // origin :"http://localhost:5173",
   // origin: true,
-    origin: "http://10.78.24.55:5173",
+  origin: "http://localhost:5173",
+    // origin: "http://10.78.24.55:5173",
+
   credentials:true,
 }));
 

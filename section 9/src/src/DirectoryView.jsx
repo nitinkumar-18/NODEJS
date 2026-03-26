@@ -8,7 +8,8 @@ import "./DirectoryView.css";
 
 function DirectoryView() {
   // const BASE_URL = "http://localhost:4000";
-  const BASE_URL = "http://10.78.24.55:2200";
+  // const BASE_URL = "http://10.78.24.55:2200";
+  const BASE_URL = "http://localhost:2200";
   const { dirId } = useParams();
   const navigate = useNavigate();
 
