@@ -349,7 +349,7 @@ router.delete("/:id", async (req, res, next) => {
 
 
 
-  let directories=await dirCollection.find({parentDirId:id ,   userId: user._id},{projection:{_id:1,extension:1}}).toArray();
+  let directories=await dirCollection.find({parentDirId:id ,   userId: user._id},{projection:{_id:1}}).toArray();
 
 
 
