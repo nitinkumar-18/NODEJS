@@ -1,0 +1,37 @@
+test> db.users.find({name : {$in :["a","ae","aww"]}})
+
+
+
+
+
+
+db.users.updateMany({name : {$in :["a","ae","aww"]}},
+{$set:{hobbies:"CRICKET","TABLE TENNIS"}
+})
+
+
+
+db.users.updateMany(
+  { name: { $in: ["a", "ae", "aww"] } },
+  { $set: { hobbies: ["CRICKET", "TABLE TENNIS"] } }
+);
+
+
+
+
+
+
+
+db.users.deleteOne(
+  { name: { $in: [ "ae", "aww"] } }
+);
+
+
+
+
+
+
+
+db.users.deleteMany(
+  { name: { $in: [ "ae", "aww"] } }
+);

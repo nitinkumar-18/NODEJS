@@ -53,3 +53,192 @@
         "directories": []
     }
 ]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// try {
+  //   const directoriesData = JSON.parse(
+  //     await readFile("./directoriesDB.json", "utf-8")
+  //   );
+
+  //   const filesData = JSON.parse(
+  //     await readFile("./filesDB.json", "utf-8")
+  //   );
+
+  //   const dirIndex = directoriesData.findIndex(
+  //     (dir) => dir.id === id
+  //   );
+
+  //   if (dirIndex === -1) {
+  //     return res.status(404).json({ message: "Directory not found" });
+  //   }
+
+  //   const directoryData = directoriesData[dirIndex];
+
+  //   // ❌ remove directory
+  //   directoriesData.splice(dirIndex, 1);
+
+  //   // 🧹 delete files inside
+  //   for (const fileId of directoryData.files) {
+  //     const fileIndex = filesData.findIndex((file) => file.id === fileId);
+
+  //     if (fileIndex !== -1) {
+  //       const fileData = filesData[fileIndex];
+
+  //       await rm(`./storage/${fileId}${fileData.extension}`);
+  //       filesData.splice(fileIndex, 1);
+  //     }
+  //   }
+
+  //   // 🧹 delete child directories (simple version)
+  //   for (const childId of directoryData.directories) {
+  //     const childIndex = directoriesData.findIndex(
+  //       (d) => d.id === childId
+  //     );
+
+  //     if (childIndex !== -1) {
+  //       directoriesData.splice(childIndex, 1);
+  //     }
+  //   }
+
+  //   // 🧹 remove from parent
+  //   const parentDir = directoriesData.find(
+  //     (dir) => dir.id === directoryData.parentDirId
+  //   );
+
+  //   if (parentDir) {
+  //     parentDir.directories = parentDir.directories.filter(
+  //       (dirId) => dirId !== id
+  //     );
+  //   }
+
+  //   await writeFile(
+  //     "./filesDB.json",
+  //     JSON.stringify(filesData, null, 2)
+  //   );
+
+  //   await writeFile(
+  //     "./directoriesDB.json",
+  //     JSON.stringify(directoriesData, null, 2)
+  //   );
+
+  //   return res.status(200).json({ message: "Directory Deleted!" });
+
+  // } catch (err) {
+  //   console.log("DELETE ERROR:", err);
+  //   next(err);
+  // }
