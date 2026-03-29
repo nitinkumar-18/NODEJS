@@ -125,31 +125,78 @@
 
 
 
-import { MongoClient,ObjectId } from "mongodb";
+// import { MongoClient,ObjectId } from "mongodb";
+
+
+// const client=new MongoClient("mongodb://localhost:27017");
+
+// await client.connect();
+
+// const db=client.db();
+
+
+// const collection=db.collection("users");
+
+
+// const a=await collection.insertMany([
+//     {name : "TASH"},
+//      {_id:new ObjectId('69c8fe5e91a72a3bd8ee8175'),name : "NIN"},
+//       {name : "AN"},
+//        {name : "DHI"},
+
+// ],{ordered:false})
+// console.log(a);
+
+// // const data=await collection.find().toArray();
+
+
+// // console.log(data);
+
+// client.close();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//upsert bolo toh insert aur update ko mila kar bana hai
+
+// upsert lagate hi agar nhi hai toh insert karke update karega true karoge toh hogha vrna false par nhi hogha upsert
+
+
+
+// upsert by default value false
+
+
+
+import { MongoClient } from "mongodb";
 
 
 const client=new MongoClient("mongodb://localhost:27017");
+
 
 await client.connect();
 
 const db=client.db();
 
-
 const collection=db.collection("users");
 
-
-const a=await collection.insertMany([
-    {name : "TASH"},
-     {_id:new ObjectId('69c8fe5e91a72a3bd8ee8175'),name : "NIN"},
-      {name : "AN"},
-       {name : "DHI"},
-
-],{ordered:false})
-console.log(a);
-
-// const data=await collection.find().toArray();
+const result=await collection.updateOne(
+    {name :"Ai"},
+    {$set:{age:90}},
+    {upsert : true}
+);
 
 
-// console.log(data);
+console.log(result);
 
 client.close();
