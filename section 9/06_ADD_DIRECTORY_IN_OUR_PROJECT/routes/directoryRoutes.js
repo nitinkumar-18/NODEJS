@@ -218,6 +218,11 @@ router.post("/:parentDirId?", async (req, res, next) => {
 
 
 
+
+
+
+
+
 // =========================
 // RENAME DIRECTORY
 // =========================
@@ -260,6 +265,14 @@ router.patch("/:id", async (req, res, next) => {
     next(err);
   }
 });
+
+
+
+
+
+
+
+
 
 
 
@@ -333,6 +346,8 @@ router.delete("/:id", async (req, res, next) => {
 
 
   // console.log({files,directories});
+
+
 
 
 
@@ -434,8 +449,12 @@ directories=[...directories,...childDirectories];
 
 
 // 🔍 DEBUG LOGS (YAHI LAGANA HAI)
-console.log("FILES IDS:", files.map(f => f._id));
-console.log("DIR IDS:", directories.map(d => d._id));
+// console.log("FILES IDS:", files.map(f => f._id));
+// console.log("DIR IDS:", directories.map(d => d._id));
+
+
+
+
 
 
   console.log(files,directories);
@@ -448,6 +467,8 @@ console.log("DIR IDS:", directories.map(d => d._id));
 
 
 
+
+
   // console.log(files);
   // console.log(files.map(({_id})=>_id));
   // console.log(directories);
@@ -457,11 +478,19 @@ console.log("DIR IDS:", directories.map(d => d._id));
 
 
 
+
+  
+
+
+
+
  await  filesCollection.deleteMany({_id : {$in :files.map(({_id})=>_id)}})
 
 
 
  await  dirCollection.deleteMany({_id : {$in :[...directories.map(({_id})=>_id),dirObjId]}})
+
+//  const {old,new}=directo
 
 
 
@@ -478,6 +507,33 @@ console.log("DIR IDS:", directories.map(d => d._id));
 
 
 export default router;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
