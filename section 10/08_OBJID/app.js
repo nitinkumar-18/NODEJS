@@ -1,4 +1,4 @@
-import { MongoClient, ObjectId } from "mongodb";
+// import { MongoClient, ObjectId } from "mongodb";
 
 
 
@@ -35,7 +35,7 @@ import { MongoClient, ObjectId } from "mongodb";
 
 
 
-console.log(ObjectId.isValid("69c173bbb89f53c6217fd59d"));
+// console.log(ObjectId.isValid("69c173bbb89f53c6217fd59d"));
 
 
 
@@ -102,3 +102,54 @@ console.log(ObjectId.isValid("69c173bbb89f53c6217fd59d"));
 // client.close();
 
 
+
+
+
+
+
+
+
+
+// multiple document ordered insert
+
+// bole toh agar ek fail hua toh agee bhi insert nhi hote hai thik na
+
+
+
+//by default test banta hai thik na
+
+
+
+// ordered by default value true hoti hai thik na aur suno agar tum vo bhi true karoge ordered true so means ki toh agar phir kuch galat hogha toh agee nhi jaega in case false karoge set toh galat bhi hua aur error bhi hua toh bhi insert ho skta hain
+
+
+
+
+import { MongoClient,ObjectId } from "mongodb";
+
+
+const client=new MongoClient("mongodb://localhost:27017");
+
+await client.connect();
+
+const db=client.db();
+
+
+const collection=db.collection("users");
+
+
+const a=await collection.insertMany([
+    {name : "TASH"},
+     {_id:new ObjectId('69c8fe5e91a72a3bd8ee8175'),name : "NIN"},
+      {name : "AN"},
+       {name : "DHI"},
+
+],{ordered:false})
+console.log(a);
+
+// const data=await collection.find().toArray();
+
+
+// console.log(data);
+
+client.close();
