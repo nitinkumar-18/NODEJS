@@ -8,7 +8,8 @@ import usersData from "../usersDB.json" with {type :'json'};
 import { dir, error } from "console";
 import CheckAuth from "../middlewares/authMiddleware.js";
 import crypto from "crypto";
-import { Db } from "mongodb";
+import { Db, ObjectId } from "mongodb";
+import { use } from "react";
 
 
 // mongodb size 16 megabyte
@@ -25,13 +26,6 @@ router.post('/register',async(req,res,next)=>{
 
     const db=req.db;
 
-
-    // const dirId=crypto.randomUUID();
-    // const userId=crypto.randomUUID();
-
-
-    // const foundUser=usersData.find((user)=>user.email === email)
-
     const foundUser=await db.collection('users').findOne({email});
 
 
@@ -44,18 +38,6 @@ router.post('/register',async(req,res,next)=>{
 
     
 
-// const dirCollection=db.collection("directories");
-
-
-
-// // directoriesData.push({
-// //     id:dirId,
-// //     name:`root-${email}`,
-// //     userId,
-// //     parentDirId:null,
-// //     files:[],
-// //     directories:[]
-// // })
 
 
 
@@ -63,65 +45,26 @@ router.post('/register',async(req,res,next)=>{
 
 
 
-// const userRootDir=await dirCollection.insertOne({
-   
-//     // id:dirId,
-//     name:`root-${email}`,
-//     // userId,
-//     parentDirId:null,
-//     files:[],
-//     directories:[],
-// });
-
-// // const rootDirId=userRootDir.insertId;
-// const rootDirId = userRootDir.insertedId.toString();
-// console.log(rootDirId);
 
 
 
 
-//     // const userid=crypto.randomUUID();
-//     // usersData.push({
-//     //     id:userid,
-//     //     name,
-//     //     email,
-//     //     password,
-//     //     rootDirId:dirId
-
-//     // })
 
 
 
-//     const createdUser=db.collection("users").insertOne({
-//         name,
-//         email,
-//         password,
-//         rootDirId,
-//     }
 
 
-//     )
-
-//     const userId=createdUser.insertedId;
-//     await db.collection("directories").updateOne({_id:rootDirId},
-//         {$set:{userId}}
-//     )
-
-  const dirCollection=db.collection("directories");
+//   const dirCollection=db.collection("directories");
     try{
 
       
+        const rootDirId=new ObjectId()
+        const userId=new ObjectId()
 
 
 
-// directoriesData.push({
-//     id:dirId,
-//     name:`root-${email}`,
-//     userId,
-//     parentDirId:null,
-//     files:[],
-//     directories:[]
-// })
+
+          const dirCollection=db.collection("directories");
 
 
 
@@ -129,36 +72,31 @@ router.post('/register',async(req,res,next)=>{
 
 
 
-const userRootDir=await dirCollection.insertOne({
+
+
+
+await dirCollection.insertOne({
    
     // id:dirId,
+    _id:rootDirId,
     name:`root-${email}`,
     // userId,
     parentDirId:null,
+    userId,
  
     
 });
 
 // const rootDirId=userRootDir.insertId;
-const rootDirId = userRootDir.insertedId;
-console.log(rootDirId);
+// const rootDirId = userRootDir.insertedId;
+// console.log(rootDirId);
 
 
 
 
-    // const userid=crypto.randomUUID();
-    // usersData.push({
-    //     id:userid,
-    //     name,
-    //     email,
-    //     password,
-    //     rootDirId:dirId
 
-    // })
-
-
-
-    const createdUser=await db.collection("users").insertOne({
+   await db.collection("users").insertOne({
+        _id:userId,
         name,
         email,
         password,
@@ -168,20 +106,13 @@ console.log(rootDirId);
 
     )
 
-    const userId=createdUser.insertedId;
-    await db.collection("directories").updateOne({_id:rootDirId},
-        {$set:{userId}}
-    )
+    // const userId=createdUser.insertedId;
+    // await db.collection("directories").updateOne({_id:rootDirId},
+    //     {$set:{userId}}
+    // )
 
 
 
-
-
-        //   await
-        //  writeFile('./directoriesDB.json', JSON.stringify(directoriesData));
-
-
-        //     await writeFile('./usersDB.json', JSON.stringify(usersData));
 
 
             res.status(201).json({message:"User registered"})
@@ -204,7 +135,7 @@ router.post('/login',async(req,res,next)=>{
 
     const db=req.db
 
-    // const user=usersData.find((user)=>user.email === email)
+  
 
 
     const user=await db.collection('users').findOne({email,password});
@@ -214,10 +145,7 @@ router.post('/login',async(req,res,next)=>{
     if(!user ){
         return res.status(404).json({error : "INVALID CREDENTIALS"});
     }
-    // const userOid=user._id;
-    // console.log(user._id.toString());
-
-    // return;
+  
 
 
 
@@ -230,11 +158,6 @@ router.post('/login',async(req,res,next)=>{
 });
 
 
-//     res.cookie("uid", user.id, {
-//   httpOnly: true,
-//   sameSite: "none",
-//   secure: false
-// });
 
     res.json({message : 'LOGGED IN'})
 })
