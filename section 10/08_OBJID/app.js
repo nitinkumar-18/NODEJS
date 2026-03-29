@@ -3,6 +3,9 @@ import { MongoClient, ObjectId } from "mongodb";
 
 
 
+
+
+
 // const oid1=new ObjectId('69c173bbb89f53c6217fd59d')
 
 // const oid2=new ObjectId('69c173bbb89f53c6217fd59d')
@@ -33,6 +36,8 @@ import { MongoClient, ObjectId } from "mongodb";
 
 
 console.log(ObjectId.isValid("69c173bbb89f53c6217fd59d"));
+
+
 
 // yeh above code ek js object hai
 

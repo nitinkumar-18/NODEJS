@@ -242,3 +242,47 @@
   //   console.log("DELETE ERROR:", err);
   //   next(err);
   // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🔹 2. ObjectId ka structure (yeh main reason hai 🔥)
+
+| 4 bytes | 5 bytes        | 3 bytes |
+| time    | machine+process| counter |
+
+ObjectId = 12 bytes (24 hex characters)
+
+  🔍 Detail:
+Timestamp (4 bytes)
+→ kab document create hua
+→ isse sorting fast ho jati hai
+Machine + Process ID (5 bytes)
+→ kis system se generate hua
+→ distributed systems me unique banata hai
+Counter (3 bytes)
+→ auto-increment type value
+→ same second me bhi unique
