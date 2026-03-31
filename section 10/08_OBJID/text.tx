@@ -29,3 +29,21 @@ db.getCollectionInfos({name:'user'})
     }
   }
 }
+
+
+
+
+
+
+
+
+
+“Data ka structure kaisa hona chahiye”
+
+kya check karna hai
+kab check karna hai
+galti pe kya karna hai
+
+👉 validator → data ka rule
+👉 validationLevel → kab check karna hai
+👉 validationAction → galti pe kya karna hai

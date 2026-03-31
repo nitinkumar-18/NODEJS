@@ -50,25 +50,82 @@ await client.connect();
 
 const db=client.db();
 
-const collection=db.collection('user')
-/// collection modifier colMod
 
-await db.command({collMod:'user',
-     validator:{
+
+
+
+await db.createCollection("users",{
+ 
+       validator:{
     
   name: {
     $type: 'string'
   },
   age: {
     $type: 'int',
-    $gte: 18,
-    $lte: 80
+   
   }
 
 },
-validationAction:'warn'
-}
-)
+})
+
+
+
+
+
+
+// isme hum validation create karte time hi set kar dee rhe hai dekho   create karte time jo dena hai vo do baadh mai modify nahi kar skte ho aap like bich mai aap modify karo esaa kuch change karna hai toh collMod command dekho
+
+
+
+// await db.command({
+//   create:"users",
+//        validator:{
+    
+//   name: {
+//     $type: 'string'
+//   },
+//   age: {
+//     $type: 'int',
+   
+//   }
+
+// },
+
+// });
+
+// const collection=db.collection('user')//implicit
+// db.createCollection//explicit
+/// collection modifier colMod
+
+
+
+
+
+// await db.createCollection("user")//explicit
+
+
+// await db.command({create:'user'});//explicit
+
+
+
+
+// await db.command({collMod:'user',
+//      validator:{
+    
+//   name: {
+//     $type: 'string'
+//   },
+//   age: {
+//     $type: 'int',
+//     $gte: 18,
+//     $lte: 80
+//   }
+
+// },
+// validationAction:'warn'
+// }
+// )
 
 
 
