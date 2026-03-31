@@ -265,15 +265,15 @@
 
 
 
-import { MongoClient } from "mongodb";
+// import { MongoClient } from "mongodb";
 
 
-const client=new MongoClient("mongodb://localhost:27017/newDB");
+// const client=new MongoClient("mongodb://localhost:27017/newDB");
 
 
-await client.connect();
+// await client.connect();
 
-const db=client.db();
+// const db=client.db();
 
 
 // const result=await db.command({listCommands :1 });
@@ -393,7 +393,7 @@ const db=client.db();
 
 
 
-await db.command({ dropDatabase: 1 });
+// await db.command({ dropDatabase: 1 });
 
 
 
@@ -401,4 +401,168 @@ await db.command({ dropDatabase: 1 });
 
 
 
-client.close();
+// client.close();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// schema ka matlab hai structure 
+
+
+
+
+
+
+
+// inline 
+
+// const users:{
+//   name:string;
+//   age:number;  
+// }[]=[
+//     {
+//         name:"TANISH",
+//         age:50,
+//     },
+
+
+//       {
+//         name:"TAISH",
+//         age:50,
+//     },
+// ];
+
+
+
+
+
+
+
+// users.push({
+//     name:"THE",
+//     age:90,
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// mongo db koi bhi schema enforce nhi karta 
+// but in sql mai hum logho ko vo type dena padhta hai phele sai
+
+ 
+// sql world mai collection karte hai create toh vo type dena hogha
+
+
+// mongo db schema less hota hai
+// schema basically humare database ke collection ka structure hota hai
+
+
+type User={
+    name:string;
+    age:number;
+};
+
+
+const users:User[]=[
+    {
+        name:"TANISH",
+        age:50,
+    },
+
+
+      {
+        name:"TAISH",
+        age:50,
+    },
+];
+
+
+
+
+
+
+
+users.push({
+    name:"THE",
+    age:90,
+})
+
+
+
+
