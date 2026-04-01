@@ -39,35 +39,35 @@
 
 
 
-import { MongoClient } from "mongodb";
+// import { MongoClient } from "mongodb";
 
 
-const client=new MongoClient("mongodb://localhost:27017/")
+// const client=new MongoClient("mongodb://localhost:27017/")
 
 
-await client.connect();
+// await client.connect();
 
 
-const db=client.db();
+// const db=client.db();
 
 
 
 
 
-await db.createCollection("users",{
+// await db.createCollection("users",{
  
-       validator:{
+//        validator:{
     
-  name: {
-    $type: 'string'
-  },
-  age: {
-    $type: 'int',
+//   name: {
+//     $type: 'string'
+//   },
+//   age: {
+//     $type: 'int',
    
-  }
+//   }
 
-},
-})
+// },
+// })
 
 
 
@@ -150,5 +150,71 @@ await db.createCollection("users",{
 
 
 
-client.close();
+// client.close();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import { MongoClient } from "mongodb";
+
+const client=new MongoClient("mongodb://localhost:27017/")
+
+await client.connect();
+
+const db=client.db();
+
+
+
+
+
+await db.command({
+  collMod:"users",
+  validator:{
+    
+  $jsonSchema: {
+    required: [
+      'name',
+      'age'
+    ],
+    properties: {
+      _id: {
+        bsonType: 'objectId'
+      },
+      name: {
+        bsonType: 'string',
+        minLength: 7
+      },
+      age: {
+        bsonType: 'int',
+        minimum: 18,
+        maximum: 80,
+      
+      }
+    },
+    additionalProperties: false
+  }
+}
+  
+})
+
+
 
