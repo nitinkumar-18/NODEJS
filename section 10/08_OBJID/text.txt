@@ -274,3 +274,292 @@ With enum ✅
 Data clean rahega
 Bugs kam honge
 System predictable banega
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+What is validationAction?
+
+In MongoDB:
+
+👉 validationAction decide karta hai:
+
+Agar data validation fail ho jaye → system kya kare?
+
+🔹 2 Types of validationAction
+✅ 1. "error" (MOST IMPORTANT)
+validationAction: "error"
+
+👉 Matlab:
+
+Invalid data → reject ❌
+Insert/update fail ho jayega
+🔹 Example
+
+Schema:
+
+age: { bsonType: "int", minimum: 18 }
+
+Insert:
+
+db.users.insertOne({
+  name: "Tanish",
+  age: 15
+})
+
+❌ Result:
+
+Error aayega
+Data insert nahi hoga
+
+👉 Use when:
+
+Production system
+Clean data chahiye
+Strict rules
+⚠️ 2. "warn"
+validationAction: "warn"
+
+👉 Matlab:
+
+Invalid data → allow ho jayega ✅
+Sirf warning milegi ⚠️
+🔹 Example
+
+Same insert:
+
+{ name: "Tanish", age: 15 }
+
+✅ Insert ho jayega
+⚠️ Warning log hogi
+
+👉 Use when:
+
+Testing phase
+Migration (old data clean nahi hai)
+Debugging
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+validator = rule engine
+
+Yeh define karta hai ki database me kaunsa data allowed hai aur kaunsa nahi
+
+🔹 Simple Understanding
+
+👉 Jab bhi:
+
+insert
+update
+
+hota hai…
+
+👉 MongoDB check karta hai:
+
+“Kya yeh document rules follow kar raha hai?”
+
+🔥 Basic Syntax
+db.createCollection("users", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["name"],
+      properties: {
+        name: { bsonType: "string" },
+        age: { bsonType: "int" }
+      }
+    }
+  }
+})
+🔹 Breakdown (IMPORTANT)
+🔸 validator
+
+👉 main field jahan rules define hote hain
+
+🔸 $jsonSchema
+
+👉 JSON Schema use karke validation likhte hain
+
+🔸 bsonType
+
+👉 MongoDB-specific datatype
+
+🔸 required
+
+👉 mandatory fields
+
+🔸 properties
+
+👉 fields + rules
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🔹 3 Types of validationLevel
+✅ 1. "strict" (Default)
+validationLevel: "strict"
+🔹 Behavior:
+ALL inserts → validate ✅
+ALL updates → validate ✅
+Old invalid docs → update bhi nahi kar paoge ❌
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"moderate"
+validationLevel: "moderate"
+🔹 Behavior:
+Case	Result
+New document	Validate ✅
+Valid doc update	Validate ✅
+Old invalid doc update	Allowed 😈
+🔹 Example
+
+Old data (already DB me):
+
+{ age: 10 }   // invalid
+
+Now update:
+
+db.users.updateOne({}, { $set: { name: "Tanish" } })
+
+✅ Allowed
+
+🔹 Meaning:
+
+“Old galtiyon ko ignore karo, naye data ko sahi rakho”
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3. "off"
+validationLevel: "off"
+🔹 Behavior:
+No validation ❌
+Schema ignore
+🔹 Meaning:
+
+“Validation band hai”
+
+🔹 Use:
+Testing/debugging
+Rare cases
+🔥 Full Example (IMPORTANT)
+db.createCollection("users", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["name", "age"],
+      properties: {
+        name: { bsonType: "string" },
+        age: { bsonType: "int", minimum: 18 }
+      }
+    }
+  },
+  validationLevel: "moderate"
+})

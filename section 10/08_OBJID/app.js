@@ -212,9 +212,14 @@ await db.command({
     },
     additionalProperties: false
   }
-}
+},
+validationAction:'warn',// error, warn, ignore
+validationLevel:"off"//strict, moderate, off
+
+
   
 })
+
 
 
 
