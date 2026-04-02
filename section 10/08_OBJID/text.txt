@@ -563,3 +563,14 @@ db.createCollection("users", {
   },
   validationLevel: "moderate"
 })
+
+
+
+
+
+
+
+shell ke liye
+
+
+db.users.find({  $nor:[{$jsonSchema:db.getCollectionInfos({name:"users"})[0].options.validator.$jsonSchema}]});

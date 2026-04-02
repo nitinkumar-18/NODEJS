@@ -174,7 +174,79 @@
 
 
 
-import { MongoClient } from "mongodb";
+// import { MongoClient } from "mongodb";
+
+// const client=new MongoClient("mongodb://localhost:27017/")
+
+// await client.connect();
+
+// const db=client.db();
+
+
+
+
+
+// await db.command({
+//   collMod:"users",
+//   validator:{
+    
+//   $jsonSchema: {
+//     required: [
+//       'name',
+//       'age'
+//     ],
+//     properties: {
+//       _id: {
+//         bsonType: 'objectId'
+//       },
+//       name: {
+//         bsonType: 'string',
+//         minLength: 7
+//       },
+//       age: {
+//         bsonType: 'int',
+//         minimum: 18,
+//         maximum: 80,
+      
+//       }
+//     },
+//     additionalProperties: false
+//   }
+// },
+// validationAction:'warn',// error, warn, ignore
+// validationLevel:"off"//strict, moderate, off
+
+
+  
+// })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import {MongoClient} from "mongodb";
 
 const client=new MongoClient("mongodb://localhost:27017/")
 
@@ -183,43 +255,40 @@ await client.connect();
 const db=client.db();
 
 
+const collection=db.collection("users");
 
 
 
-await db.command({
-  collMod:"users",
-  validator:{
-    
-  $jsonSchema: {
-    required: [
-      'name',
-      'age'
-    ],
-    properties: {
-      _id: {
-        bsonType: 'objectId'
-      },
-      name: {
-        bsonType: 'string',
-        minLength: 7
-      },
-      age: {
-        bsonType: 'int',
-        minimum: 18,
-        maximum: 80,
-      
-      }
+const collectionInfo=await db.listCollections({name:"users"}).toArray();
+
+// console.log(collectionInfo);
+
+
+
+const schema=collectionInfo[0].options.validator.$jsonSchema;
+
+// console.log(schema);
+
+
+// const result=await db.command({
+//   validate:'users',
+
+// })
+// console.log(result);
+
+
+
+
+const invalidDocuments=await collection.find({
+  $nor:[
+    {
+      $jsonSchema:schema,
     },
-    additionalProperties: false
-  }
-},
-validationAction:'warn',// error, warn, ignore
-validationLevel:"off"//strict, moderate, off
+  ],
+}).toArray();
 
 
-  
-})
+console.log(invalidDocuments);
 
 
-
-
+client.close();
