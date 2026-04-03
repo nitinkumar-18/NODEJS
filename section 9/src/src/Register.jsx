@@ -57,7 +57,7 @@ const Register = () => {
         setServerError(data.error);
       } else {
         // Registration success
-        setIsSuccess(true);
+       setIsSuccess(true);
         setTimeout(() => {
           navigate("/login");
         }, 2000);

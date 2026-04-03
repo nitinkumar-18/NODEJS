@@ -80,7 +80,7 @@ app.use("/user",userRoutes);
 app.use((err,req,res,next)=>{
   // console.log('ERROR Occurred');
 
-  res.status(err.status || 500).json({message : "SOMETHING WENT WRONG!"});
+  res.status(err.status || 500).json({error : "SOMETHING WENT WRONG!"});
 })
 
 

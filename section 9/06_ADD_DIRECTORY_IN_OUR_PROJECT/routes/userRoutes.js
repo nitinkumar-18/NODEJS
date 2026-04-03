@@ -126,7 +126,11 @@ await dirCollection.insertOne({
 
     }
     catch(err){
-        next(err)
+        if(err.code===121){
+            res.status(400).json({error:"Invalid fields,please enter valid details"});
+        }else{
+            next(err);
+        }
     }
 
 })
