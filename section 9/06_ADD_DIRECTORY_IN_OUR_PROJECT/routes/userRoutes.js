@@ -76,6 +76,9 @@ router.post('/register',async(req,res,next)=>{
 
 
 
+
+
+
 await dirCollection.insertOne({
    
     // id:dirId,
@@ -84,6 +87,8 @@ await dirCollection.insertOne({
     // userId,
     parentDirId:null,
     userId,
+
+
  
     
 });
@@ -139,14 +144,19 @@ router.post('/login',async(req,res,next)=>{
   
 
 
-    const user=await db.collection('users').findOne({email,password});
+    const user=await db.collection('users').findOne({email});
 
     console.log(user);
 
-    if(!user ){
-        return res.status(404).json({error : "INVALID CREDENTIALS"});
-    }
+    // if(!user || user.password !== password){
+    //     return res.status(401).json({error : "INVALID CREDENTIALS"});
+    // }
   
+
+    if(!user || user.password!==password){
+        return res.status(401).json({error : "INVALID CREDENTIALS"});
+    }
+
 
 
 

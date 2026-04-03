@@ -5,7 +5,8 @@ import directoryRoutes from "./routes/directoryRoutes.js";
 import fileRoutes from "./routes/fileRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import CheckAuth from "./middlewares/authMiddleware.js";
-import { connectDB } from "./db.js";
+import { connectDB } from "./config/db.js";
+
 
 
 
@@ -14,6 +15,7 @@ try{
 
 
 const db=await connectDB()
+
 
 // console.log(db.namespace)
 

@@ -1,0 +1,160 @@
+import {connectDB,client} from "./db.js";
+
+// const db= await connectDB()
+
+// const command='collMod'
+
+
+
+try{
+
+    const db= await connectDB()
+
+const command='collMod'
+
+await db.command({[command]:'users',
+    validator:{
+        
+  $jsonSchema: {
+    bsonType: 'object',
+    required: [
+      '_id',
+      'name',
+      'email',
+      'password',
+      'rootDirId'
+    ],
+
+    properties: {
+      _id: {
+        bsonType: 'objectId'
+      },
+      name: {
+        bsonType: 'string',
+        minLength: 3,
+        description:'name field should be a string with minimum length of 3 characters'
+      },
+      email: {
+        bsonType: 'string',
+        description:'email field should be a string and must be a valid email address',
+        pattern: '^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$'
+      },
+
+      password: {
+        bsonType: 'string',
+        minLength: 4
+      },
+      rootDirId: {
+        bsonType: 'objectId'
+      }
+    },
+    additionalProperties: false
+  }
+
+    
+},
+validationAction:"error",
+validationLevel:"strict",
+
+});
+
+
+
+ 
+
+
+
+
+
+await db.command({[command]:'directories',
+    validator:{
+        
+  
+  $jsonSchema: {
+    bsonType: 'object',
+    required: [
+      '_id',
+      'name',
+      'userId',
+      'parentDirId'
+    ],
+    properties: {
+      _id: {
+        bsonType: 'objectId'
+      },
+      name: {
+        bsonType: 'string',
+        minLength: 3
+      },
+      userId: {
+        bsonType: 'objectId'
+      },
+      parentDirId: {
+        bsonType: [
+          'objectId',
+          'null'
+        ]
+      }
+    },
+    additionalProperties: false
+  }
+
+
+    
+},
+validationAction:"error",
+validationLevel:"strict",
+
+})
+
+
+
+
+
+
+await db.command({[command]:"files",
+    validator:{
+        
+  $jsonSchema: {
+    bsonType: 'object',
+    required: [
+      '_id',
+      'name',
+      'extension',
+      'userId',
+      'parentDirId'
+    ],
+    properties: {
+      _id: {
+        bsonType: 'objectId'
+      },
+      name: {
+        bsonType: 'string',
+        minLength: 3
+      },
+      extension: {
+        bsonType: 'string'
+      },
+      userId: {
+        bsonType: 'objectId'
+      },
+      parentDirId: {
+        bsonType: [
+          'objectId',
+          'null'
+        ]
+      }
+    },
+    additionalProperties: false
+  }
+
+    }
+})
+
+} catch(err){
+    console.error("Error occurred while setting up validation:", err);
+} finally {
+    await client.close();
+}
+
+
