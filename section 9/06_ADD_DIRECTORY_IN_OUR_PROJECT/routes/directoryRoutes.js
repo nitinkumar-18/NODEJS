@@ -198,7 +198,17 @@ router.post("/:parentDirId?", async (req, res, next) => {
       // parentDirId,
        parentDirId: parentDir._id,
 
-      userId:user._id,
+      // userId:user._id,
+
+      userId: user._id,
+
+
+
+      // userId: 
+
+
+    
+
 
     })
     console.log(savedDir);

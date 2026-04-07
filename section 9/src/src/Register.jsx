@@ -50,7 +50,11 @@ const Register = () => {
         },
       });
 
-      const data = await response.json();
+      // const data = await response.json();
+
+      // const data=await response.json();
+      const data=await response.json();
+
 
       if (data.error) {
         // Show error below the email field (e.g., "Email already exists")
@@ -59,6 +63,7 @@ const Register = () => {
         // Registration success
        setIsSuccess(true);
         setTimeout(() => {
+          // navigate("/login");
           navigate("/login");
         }, 2000);
       }

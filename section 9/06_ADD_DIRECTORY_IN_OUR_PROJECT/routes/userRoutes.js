@@ -17,13 +17,14 @@ import { use } from "react";
 // status code 300 ka aur headers location agaya redirect hojaega http
 
 
-const router = express.Router();
+// const router = express.Router();
 
-
+const router=express.Router();
 
 router.post('/register',async(req,res,next)=>{
     const {name,email,password}=req.body
 
+    // const db=req.db;
     const db=req.db;
 
     const foundUser=await db.collection('users').findOne({email});
@@ -59,12 +60,14 @@ router.post('/register',async(req,res,next)=>{
 
       
         const rootDirId=new ObjectId()
-        const userId=new ObjectId()
+        // const userId=new ObjectId()
+        const userId=new ObjectId();
 
 
 
 
-          const dirCollection=db.collection("directories");
+        //   const dirCollection=db.collection("directories");
+        const dirCollection=db.collection("directories");
 
 
 
@@ -76,7 +79,7 @@ router.post('/register',async(req,res,next)=>{
 
 
 
-
+// start transaction
 
 
 await dirCollection.insertOne({
@@ -85,6 +88,10 @@ await dirCollection.insertOne({
     _id:rootDirId,
     name:`root-${email}`,
     // userId,
+
+
+
+
     parentDirId:null,
     userId,
 
@@ -112,6 +119,11 @@ await dirCollection.insertOne({
 
     )
 
+
+
+    // commit transaction
+
+
     // const userId=createdUser.insertedId;
     // await db.collection("directories").updateOne({_id:rootDirId},
     //     {$set:{userId}}
@@ -121,7 +133,8 @@ await dirCollection.insertOne({
 
 
 
-            res.status(201).json({message:"User registered"})
+            // res.status(201).json({message:"User registered"})
+            res.status(201).json({message:"User registered"});
 
 
     }
@@ -129,7 +142,9 @@ await dirCollection.insertOne({
         if(err.code===121){
             res.status(400).json({error:"Invalid fields,please enter valid details"});
         }else{
+
             next(err);
+
         }
     }
 
@@ -150,6 +165,9 @@ router.post('/login',async(req,res,next)=>{
 
     const user=await db.collection('users').findOne({email});
 
+    // console.log(user);
+
+    
     console.log(user);
 
     // if(!user || user.password !== password){
@@ -174,7 +192,9 @@ router.post('/login',async(req,res,next)=>{
 
 
 
-    res.json({message : 'LOGGED IN'})
+    // res.json({message : 'LOGGED IN'})
+
+    res.json({message: 'LOGGED IN'});
 })
 
 
