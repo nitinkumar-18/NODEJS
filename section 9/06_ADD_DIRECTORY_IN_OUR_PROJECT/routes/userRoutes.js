@@ -10,6 +10,8 @@ import CheckAuth from "../middlewares/authMiddleware.js";
 import crypto from "crypto";
 import { Db, ObjectId } from "mongodb";
 import { use } from "react";
+import { client } from "../dbTransaction.js";
+
 
 
 // mongodb size 16 megabyte
@@ -53,7 +55,7 @@ router.post('/register',async(req,res,next)=>{
 
 
 
-
+const session=client.startSession();
 
 //   const dirCollection=db.collection("directories");
     try{
@@ -82,6 +84,12 @@ router.post('/register',async(req,res,next)=>{
 // start transaction
 
 
+
+// const session=client.startSession();
+
+session.startTransaction();
+
+
 await dirCollection.insertOne({
    
     // id:dirId,
@@ -96,9 +104,10 @@ await dirCollection.insertOne({
     userId,
 
 
+
  
     
-});
+},{session});
 
 // const rootDirId=userRootDir.insertId;
 // const rootDirId = userRootDir.insertedId;
@@ -114,12 +123,16 @@ await dirCollection.insertOne({
         email,
         password,
         rootDirId,
-    }
+    },
+    {session}
 
 
     )
 
 
+    //Session = ek logical connection / context jisme multiple operations group hote hain
+
+    session.commitTransaction(); 
 
     // commit transaction
 
@@ -139,6 +152,8 @@ await dirCollection.insertOne({
 
     }
     catch(err){
+        
+        session.abortTransaction();
         if(err.code===121){
             res.status(400).json({error:"Invalid fields,please enter valid details"});
         }else{
