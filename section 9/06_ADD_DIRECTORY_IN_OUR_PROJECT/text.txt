@@ -374,3 +374,68 @@ mongodump --db storageApp \
 mongorestore --port 27018 --db storageApp \
 --archive=/Users/tanishtandon/dump/storageApp.archive \
 --gzip
+
+
+
+
+mongoexport --db storageApp --collection users --out usersArray.json --jsonArray
+
+
+
+
+
+mongoexport --port 27018 \
+--db storageApp \
+--collection
+ users \
+--out usersArray.json \
+--jsonArray
+
+
+//export data into json format and only collection data export not that validation data we export
+
+
+
+
+
+
+mongoexport --port 27018 \
+--db storageApp \
+--collection users \
+--out users.csv \
+--type csv --fields _id,name,email,password
+
+
+
+
+
+
+
+
+mongoexport --port 27018 \
+--db storageApp \
+--collection users \
+--out users.csv \
+--type csv --fields _id,name,email,password
+
+
+
+human readable format export use karo
+
+non human readable format database to database  dump karo use opposite is export
+
+
+
+
+mongoimport --port 27018 \
+--db storageApp \
+--collection customers \
+--file people.json \
+--jsonArray
+
+
+import karna csv mai thoda sahi nhi rheta hai thoda type bekar hojata hai
+
+
+
+

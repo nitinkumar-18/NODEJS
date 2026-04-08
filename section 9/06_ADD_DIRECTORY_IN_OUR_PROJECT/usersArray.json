@@ -1,0 +1,13 @@
+[
+    {
+        "_id": {
+            "$oid": "69d57d7f557ed8e9902c363b"
+        },
+        "name": "Anurag Singhhh",
+        "email": "taaaiush@gmail.com",
+        "password": "12345",
+        "rootDirId": {
+            "$oid": "69d57d7f557ed8e9902c363a"
+        }
+    }
+]
