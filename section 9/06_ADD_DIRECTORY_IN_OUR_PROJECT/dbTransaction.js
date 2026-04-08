@@ -1,55 +1,36 @@
-import { MongoClient } from "mongodb";
+// import { MongoClient } from "mongodb";
 
 
 
-export const client=new MongoClient("mongodb://localhost:27017/");
+// export const client=new MongoClient("mongodb://localhost:27017/");
 
 
-await client.connect();
+// await client.connect();
 
-console.log("DATABASE CONNECTED");
-
-
-
-const db=client.db();
-
-
-const directories=db.collection("directories");
-
-
-const users=db.collection("users");
-
-
-const session=client.startSession();
-session.startTransaction(); 
+// console.log("DATABASE CONNECTED");
 
 
 
+// const db=client.db();
+
+
+// const directories=db.collection("directories");
+
+
+// const users=db.collection("users");
+
+
+// const session=client.startSession();
+// session.startTransaction(); 
 
 
 
 
-try{
-    await directories.insertOne({name :"db",userName:"ta"},{session});
-
-
-// await users.insertOne({name:"tanish",rootDirName:"db"})
 
 
 
-// fails
-
-await users.insertOne({name:"ta",rootDirName:"db"},{session});
-
-
-
-await session.commitTransaction();
-}catch(err){
-    console.log(err);
-    await session.abortTransaction();
-}
-
-// await directories.insertOne({name :"db",userName:"ta"},{session});
+// try{
+//     await directories.insertOne({name :"db",userName:"ta"},{session});
 
 
 // // await users.insertOne({name:"tanish",rootDirName:"db"})
@@ -63,60 +44,69 @@ await session.commitTransaction();
 
 
 // await session.commitTransaction();
+// }catch(err){
+//     console.log(err);
+//     await session.abortTransaction();
+// }
 
+// // await directories.insertOne({name :"db",userName:"ta"},{session});
 
 
-await client.close();
+// // // await users.insertOne({name:"tanish",rootDirName:"db"})
 
 
-console.log("DATABASE DISCONNECTED");
 
+// // // fails
 
+// // await users.insertOne({name:"ta",rootDirName:"db"},{session});
 
-//A Replica Set is a group of MongoDB servers (nodes) that maintain multiple copies of the same data and automatically handle failover to ensure high availability and fault tolerance.
 
 
+// // await session.commitTransaction();
 
-// A Replica Set is a group of MongoDB servers (nodes) that maintain multiple copies of the same data and automatically handle failover to ensure high availability and fault tolerance.
 
 
-// Replica Set = ek main server + multiple backup servers
+// await client.close();
 
 
-// Replica matlab original data ki duplicate copy
+// console.log("DATABASE DISCONNECTED");
 
 
-//Replica Set = same database ki multiple copies (servers) ka group
 
-// 💡 Simple line:
+// //A Replica Set is a group of MongoDB servers (nodes) that maintain multiple copies of the same data and automatically handle failover to ensure high availability and fault tolerance.
 
-// Ek main server + multiple backup servers = Replica Set
 
 
-// replica set me ek server primary hota hai, jisme read/write operations hote hain, aur baaki servers secondary hote hain, jo primary server se data replicate karte hain. Agar primary server down ho jata hai, to secondary server automatically primary ban jata hai, isse high availability ensure hoti hai.
+// // A Replica Set is a group of MongoDB servers (nodes) that maintain multiple copies of the same data and automatically handle failover to ensure high availability and fault tolerance.
 
 
-// replica mai multiple servers hote hain, jisme se ek primary hota hai aur baaki secondary hote hain. Primary server me read/write operations hote hain, aur secondary servers primary server se data replicate karte hain. Agar primary server down ho jata hai, to secondary server automatically primary ban jata hai, isse high availability ensure hoti hai.
+// // Replica Set = ek main server + multiple backup servers
 
 
+// // Replica matlab original data ki duplicate copy
 
-// 🔹 Kyun use karte hain?
 
-// 👉 3 main reasons:
+// //Replica Set = same database ki multiple copies (servers) ka group
 
-// Data loss avoid karne ke liye
-// High availability (server down ho to bhi system chale)
-// Transactions enable karne ke liye (MongoDB me important 🔥)
+// // 💡 Simple line:
 
+// // Ek main server + multiple backup servers = Replica Set
 
 
+// // replica set me ek server primary hota hai, jisme read/write operations hote hain, aur baaki servers secondary hote hain, jo primary server se data replicate karte hain. Agar primary server down ho jata hai, to secondary server automatically primary ban jata hai, isse high availability ensure hoti hai.
 
 
+// // replica mai multiple servers hote hain, jisme se ek primary hota hai aur baaki secondary hote hain. Primary server me read/write operations hote hain, aur secondary servers primary server se data replicate karte hain. Agar primary server down ho jata hai, to secondary server automatically primary ban jata hai, isse high availability ensure hoti hai.
 
 
 
+// // 🔹 Kyun use karte hain?
 
+// // 👉 3 main reasons:
 
+// // Data loss avoid karne ke liye
+// // High availability (server down ho to bhi system chale)
+// // Transactions enable karne ke liye (MongoDB me important 🔥)
 
 
 
@@ -126,102 +116,112 @@ console.log("DATABASE DISCONNECTED");
 
 
 
-// 1. Primary Node
 
-// 👉 Ye “leader” hota hai
 
-// ✔ Kaam:
 
-// Saare write operations (insert/update/delete)
-// Reads bhi handle kar sakta hai
 
-// 💡 Example:
 
-// db.users.insertOne({name: "tanish"})
 
-// 👉 Ye sirf primary pe hota hai
 
-// 🔵 2. Secondary Nodes
 
-// 👉 Ye “followers” hote hain
 
-// ✔ Kaam:
 
-// Primary ka data copy karna
-// Read operations serve karna (optional)
-// 🟡 3. Arbiter (optional)
+// // 1. Primary Node
 
-// 👉 Sirf voting karta hai
-// ❌ Data store nahi karta
+// // 👉 Ye “leader” hota hai
 
-// 🔥 4. Internal Working (Most Important 🔥)
-// 🧠 Oplog Concept
+// // ✔ Kaam:
 
-// 👉 Primary ek special log maintain karta hai:
+// // Saare write operations (insert/update/delete)
+// // Reads bhi handle kar sakta hai
 
-// 👉 Oplog (Operations Log)
+// // 💡 Example:
 
-// ✔ Isme kya hota hai?
+// // db.users.insertOne({name: "tanish"})
 
-// Saare changes record hote hain
-// 🔁 Flow:
-// User data insert karta hai
-// Primary usko database + oplog me likhta hai
-// Secondary nodes oplog read karte hain
-// Same operations repeat karte hain
+// // 👉 Ye sirf primary pe hota hai
 
-// 👉 Result: Sab nodes sync ho jaate hain
+// // 🔵 2. Secondary Nodes
 
-// 🔥 5. Failover (Interview Favourite 🔥)
-// Situation:
-// Primary crash ho gaya ❌
-// Kya hoga?
-// Secondary nodes detect karte hain
-// Voting hoti hai
-// Ek secondary → new primary ban jata hai
+// // 👉 Ye “followers” hote hain
 
-// 👉 Is process ko bolte hain: Failover
+// // ✔ Kaam:
 
-// 🧠 Real-Life Analogy
+// // Primary ka data copy karna
+// // Read operations serve karna (optional)
+// // 🟡 3. Arbiter (optional)
 
-// 👉 Company ka CEO (Primary) chala gaya
+// // 👉 Sirf voting karta hai
+// // ❌ Data store nahi karta
 
-// Managers (Secondary) meeting karte hain
-// Naya CEO select hota hai
+// // 🔥 4. Internal Working (Most Important 🔥)
+// // 🧠 Oplog Concept
 
-// ✔ Company band nahi hoti
+// // 👉 Primary ek special log maintain karta hai:
 
-// 🔥 6. Real World Use Cases
-// 🏦 Banking System
-// Transactions safe hone chahiye
-// Server crash → data loss nahi hona chahiye
-// 📸 Instagram / Google Drive
-// Photos multiple servers par stored
-// Ek server down → bhi photo available
-// 🛒 E-commerce (Amazon)
-// Orders lose nahi hone chahiye
-// High traffic handle karna hai
-// 🔥 7. Replica Set kyun important hai?
-// Feature	Benefit
-// Replication	Data safe
-// Failover	No downtime
-// Load balancing	Fast reads
-// Transactions	Supported
-// 🔥 8. Interview Answer (Perfect बोलने लायक)
+// // 👉 Oplog (Operations Log)
 
-// 👉 Agar interviewer bole “Replica Set explain karo”:
+// // ✔ Isme kya hota hai?
 
-// Answer:
+// // Saare changes record hote hain
+// // 🔁 Flow:
+// // User data insert karta hai
+// // Primary usko database + oplog me likhta hai
+// // Secondary nodes oplog read karte hain
+// // Same operations repeat karte hain
 
-// A replica set in MongoDB is a group of database servers that maintain multiple copies of the same data. It consists of a primary node that handles all write operations and secondary nodes that replicate data from the primary using the oplog. In case the primary node fails, an automatic election process selects a new primary, ensuring high availability and fault tolerance. Replica sets are also required for supporting transactions in MongoDB.
+// // 👉 Result: Sab nodes sync ho jaate hain
 
-// 🎯 Final One-Line Memory Trick
+// // 🔥 5. Failover (Interview Favourite 🔥)
+// // Situation:
+// // Primary crash ho gaya ❌
+// // Kya hoga?
+// // Secondary nodes detect karte hain
+// // Voting hoti hai
+// // Ek secondary → new primary ban jata hai
 
-// 👉
-// Replica = copy of data
-// Replica Set = system jo data ko multiple nodes me copy karke safe + always available banata hai
+// // 👉 Is process ko bolte hain: Failover
 
+// // 🧠 Real-Life Analogy
 
-// Fault Tolerance is the ability of a system to continue working properly even if one or more components fail.
+// // 👉 Company ka CEO (Primary) chala gaya
+
+// // Managers (Secondary) meeting karte hain
+// // Naya CEO select hota hai
+
+// // ✔ Company band nahi hoti
+
+// // 🔥 6. Real World Use Cases
+// // 🏦 Banking System
+// // Transactions safe hone chahiye
+// // Server crash → data loss nahi hona chahiye
+// // 📸 Instagram / Google Drive
+// // Photos multiple servers par stored
+// // Ek server down → bhi photo available
+// // 🛒 E-commerce (Amazon)
+// // Orders lose nahi hone chahiye
+// // High traffic handle karna hai
+// // 🔥 7. Replica Set kyun important hai?
+// // Feature	Benefit
+// // Replication	Data safe
+// // Failover	No downtime
+// // Load balancing	Fast reads
+// // Transactions	Supported
+// // 🔥 8. Interview Answer (Perfect बोलने लायक)
+
+// // 👉 Agar interviewer bole “Replica Set explain karo”:
+
+// // Answer:
+
+// // A replica set in MongoDB is a group of database servers that maintain multiple copies of the same data. It consists of a primary node that handles all write operations and secondary nodes that replicate data from the primary using the oplog. In case the primary node fails, an automatic election process selects a new primary, ensuring high availability and fault tolerance. Replica sets are also required for supporting transactions in MongoDB.
+
+// // 🎯 Final One-Line Memory Trick
+
+// // 👉
+// // Replica = copy of data
+// // Replica Set = system jo data ko multiple nodes me copy karke safe + always available banata hai
+
+
+// // Fault Tolerance is the ability of a system to continue working properly even if one or more components fail.
 
 

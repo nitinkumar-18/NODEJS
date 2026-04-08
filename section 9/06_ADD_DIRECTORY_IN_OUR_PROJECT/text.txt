@@ -286,3 +286,91 @@ Machine + Process ID (5 bytes)
 Counter (3 bytes)
 → auto-increment type value
 → same second me bhi unique
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+mongodump is used to create a binary backup of MongoDB data, and mongorestore is used to restore it.
+
+
+
+
+
+
+mongodump
+mongorestore --port 27018 
+
+
+
+
+
+
+mongodump --host 127.0.0.1 --port 27017 --out /Users/tanishtandon/storageApp_dp_path --db storageApp
+
+
+
+
+
+
+
+mongodump --host 127.0.0.1 --port 27017 --out /Users/tanishtandon/storageApp_dp_path
+
+
+
+
+
+
+
+
+
+mongorestore --host 127.0.0.1 --port 27018 --dir /Users/tanishtandon/storageApp_dp_path/storageApp --db storageApp
+
+
+
+
+mongodump --host 127.0.0.1 --port 27017 --out /Users/tanishtandon/storageApp_dp_path/storageApp --db storageApp --gzip
+
+// size kam hota hai 
+
+
+
+
+
+mongorestore --host 127.0.0.1 --port 27018 --dir /Users/tanishtandon/storageApp_dp_path/storageApp --db storageApp --gzip
+
+
+mongodump --db storageApp \
+--archive=/Users/tanishtandon/dump/storageApp.archive \
+--gzip
+
+
+
+
+mongorestore --port 27018 --db storageApp \
+--archive=/Users/tanishtandon/dump/storageApp.archive \
+--gzip

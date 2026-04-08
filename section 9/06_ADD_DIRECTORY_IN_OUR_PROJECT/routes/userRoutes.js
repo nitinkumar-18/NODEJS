@@ -10,7 +10,7 @@ import CheckAuth from "../middlewares/authMiddleware.js";
 import crypto from "crypto";
 import { Db, ObjectId } from "mongodb";
 import { use } from "react";
-import { client } from "../dbTransaction.js";
+// import { client } from "../dbTransaction.js";
 
 
 
@@ -55,7 +55,12 @@ router.post('/register',async(req,res,next)=>{
 
 
 
-const session=client.startSession();
+// const session=client.startSession();
+
+
+
+
+
 
 //   const dirCollection=db.collection("directories");
     try{
@@ -87,7 +92,14 @@ const session=client.startSession();
 
 // const session=client.startSession();
 
-session.startTransaction();
+
+
+
+
+
+
+
+// session.startTransaction();
 
 
 await dirCollection.insertOne({
@@ -107,7 +119,7 @@ await dirCollection.insertOne({
 
  
     
-},{session});
+});
 
 // const rootDirId=userRootDir.insertId;
 // const rootDirId = userRootDir.insertedId;
@@ -123,8 +135,7 @@ await dirCollection.insertOne({
         email,
         password,
         rootDirId,
-    },
-    {session}
+    }
 
 
     )
@@ -132,7 +143,23 @@ await dirCollection.insertOne({
 
     //Session = ek logical connection / context jisme multiple operations group hote hain
 
-    session.commitTransaction(); 
+
+
+
+
+
+
+
+
+    // session.commitTransaction(); 
+
+
+
+
+
+
+
+
 
     // commit transaction
 
@@ -153,7 +180,7 @@ await dirCollection.insertOne({
     }
     catch(err){
         
-        session.abortTransaction();
+        // session.abortTransaction();
         if(err.code===121){
             res.status(400).json({error:"Invalid fields,please enter valid details"});
         }else{
