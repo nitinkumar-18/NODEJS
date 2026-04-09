@@ -1,0 +1,64 @@
+
+
+
+
+
+
+
+
+what npx does ?
+they searches for a file and excecute it. koi bhi file ho sakti hai jaruri nhi hai js file ho
+
+npx hello
+
+
+
+
+
+ Search step 1
+
+     searches for package.json in current working directory 
+      searches for name key in the json file
+      searches for bin key
+
+
+Search step 2
+     
+     searches for node_modules/.bin/hello in current working directory basically bin folder search karke dekhta hai and excecute this file
+
+
+ search step 3
+      package dekhege globally install hai kya   check karega
+      //npm root -g
+
+
+      // searches for hello file in global npm or vite 
+
+      and excecute the file
+
+
+
+Search step 4
+       Searches for hello package in npx caches
+        registry 
+       Prompts to install the package if found
+       Download and installs
+
+
+
+
+Search step 5
+       Searches for hello package in npm registry 
+       Prompts to install the package if found
+       Download and installs
+
+
+
+    
+
+
+
+
+    npx create-react-app
+
+    create-vite and vite dono alag hai 

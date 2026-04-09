@@ -1,0 +1,177 @@
+// IP ADDRESS KE THROUGH LOCATE HOGHA REQUEST KAHA TAKH PAHUCHANE HAI
+
+
+
+// CLIENT NOT ONLY REQUEST FOR IP ADDRESS
+
+
+jabh bhi request jaati toh  two requirnments hoti HAI
+
+one is source another is destination and both have their seperate port numbers
+
+ex 192.168.0.102:5000. thsi 5000 is port number
+
+
+
+request and respond vice versa jo source hogha vo destination hojaega aur jo destination hogha vo source hojaega
+
+
+
+// PORT KA CONCEPT ISLIYE HOTA HAI HUM MULTIPLE NETWORKING APPLICATIONS BANA SAKTE HAI
+
+
+
+
+
+
+
+
+
+
+
+
+// procodrr.com:80 iss par bhi same website hi open hoghi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ort Number = kya, kyon, kaise?
+
+👉 Port = computer ke andar service ka gate (door)
+👉 IP batata hai kaunsa device
+👉 Port batata hai kaunsi service
+
+Formula yaad rakho:
+
+IP + Port = specific service
+
+Example:
+
+192.168.1.5:2345  → tumhara Node server
+google.com:443    → secure website
+🧠 KYO zaroori hai port?
+
+Ek computer par ek saath bahut services chal sakti hain:
+
+Service	Port
+Website	80
+HTTPS	443
+SSH login	22
+Database	3306
+Node app	3000
+
+👉 Agar ports na ho → data mix ho jayega 😄
+
+⚙️ KAISE kaam karta hai?
+Jab tum open karte ho:
+http://localhost:2345
+
+Step-by-step:
+
+1️⃣ Browser request bhejta hai
+2️⃣ OS dekhta hai port 2345
+3️⃣ Node server ko request deta hai
+4️⃣ response milta hai 🎯
+
+🔢 Port ranges (yaad rakhne layak)
+🟢 0–1023 → system ports
+
+(important services)
+
+Port	Use
+80	HTTP
+443	HTTPS
+22	SSH
+53	DNS
+🟡 1024–49151 → applications
+Port	Use
+3306	MySQL
+5432	PostgreSQL
+8080	web testing
+🔵 49152–65535 → temporary ports
+
+(browser & OS use)
+
+🌐 Port kab likhna padta hai?
+❌ Nahi likhna padta:
+https://google.com
+
+👉 auto uses 443
+
+✅ Likna padta hai:
+localhost:3000
+localhost:5173
+localhost:2345
+💻 Developer commonly use ports
+Port	Use
+3000	React / Node
+5173	Vite
+8080	testing
+5000	APIs
+5500	Live server
+❗ Port conflict kya hota hai?
+
+Agar same port par 2 apps chalaye:
+
+Error: address already in use
+
+👉 dusra port use karo.
+
+🔐 Security importance
+
+Open ports = open doors 🚪
+
+Hackers scan karte hain:
+
+✔ kaunsa port open
+✔ kaunsi service chal rahi
+
+Isliye firewall important hai.
+
+✅ Advantages
+
+✔ multiple apps run
+✔ internet protocols possible
+✔ flexible communication
+✔ remote access
+
+❌ Disadvantages
+
+❌ open ports = security risk
+❌ port conflicts
+❌ firewall issues
+
+🧠 Real life example
+
+🏢 Building = IP
+🚪 Flat number = Port
+👤 Person = service

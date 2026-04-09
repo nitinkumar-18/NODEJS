@@ -1,0 +1,318 @@
+// Elizabeth J. Feinler — The Woman Behind Early DNS
+4
+🌐 The Problem in Early Internet (1970s)
+
+In the early days of ARPANET (the precursor to the Internet):
+
+Computers were identified by numeric addresses.
+//TELNET COMMAND IN TERMINAL JUST A APPLICATION
+Example: 26.0.0.73
+
+Humans found these hard to remember.
+
+👉 There was no Google, no domains, no easy naming system.
+
+🌐 Elizabeth Feinler’s Role
+
+Elizabeth Feinler worked at the Stanford Research Institute (SRI), running the Network Information Center (NIC).
+
+Her team:
+
+✔ Maintained the master directory of all connected computers
+✔ Created the HOSTS.TXT file
+✔ Assigned human-readable names to computers
+
+Example:
+
+SRI-NIC.ARPA → 26.0.0.73
+
+This was the first step toward DNS.
+
+🌐 Birth of Domain Naming Structure
+
+Feinler’s group introduced the idea of domain suffixes such as:
+
+.com → commercial organizations
+
+.edu → educational institutions
+
+.gov → government
+
+.mil → military
+
+.org → organizations
+
+👉 These categories are still used today.
+
+🌐 From HOSTS.TXT to DNS (1983)
+
+As the network grew:
+
+Manual HOSTS.TXT became impossible to manage.
+
+Engineers created the Domain Name System (DNS) in 1983.
+
+DNS automated name resolution.
+
+👉 Feinler’s naming structure and early directory system inspired DNS.
+
+🌐 Why She Matters
+
+Because of her work:
+
+✅ We use easy names like google.com instead of numbers
+✅ The Internet became user-friendly
+✅ The domain naming system structure was established
+
+✅ In simple words:
+
+Elizabeth Feinler helped create the first naming system for computers, which later evolved into DNS — the system that turns website names into IP addresses.
+
+
+
+
+
+
+
+
+
+
+
+
+🌐 DNS (Domain Name System)
+
+DNS is like the phonebook of the Internet.
+
+👉 It converts website names into IP addresses so computers can find each other.
+
+Example:
+
+google.com  →  142.250.183.206
+
+Humans remember names, computers use numbers.
+
+🧠 Why DNS is Needed
+
+Without DNS, you would need to remember:
+
+142.250.183.206
+31.13.71.36
+172.217.160.78
+
+Instead we use:
+
+✅ google.com
+✅ facebook.com
+✅ youtube.com
+
+⚙️ How DNS Works (Step-by-Step)
+
+When you type google.com in your browser:
+
+1️⃣ Browser Cache
+
+Checks if IP is already stored.
+
+2️⃣ DNS Resolver (ISP)
+
+Your Internet provider checks its database.
+
+3️⃣ Root DNS Server
+
+Directs request to the correct domain server.
+
+4️⃣ TLD Server (.com)
+
+Points to the authoritative server.
+
+5️⃣ Authoritative DNS Server
+
+Returns the exact IP address.
+
+6️⃣ Website Loads 🎉
+
+Browser connects to the server using the IP.
+
+🧩 Types of DNS Servers
+
+✔ Recursive Resolver → starts the lookup
+✔ Root Server → top-level directory
+✔ TLD Server → handles .com, .org, .edu
+✔ Authoritative Server → final IP provider
+
+🌍 Example in Real Life
+
+Think of DNS like:
+
+📱 Contact name → Phone number
+📍 Place name → GPS coordinates
+
+🧑‍💻 Who Helped Create DNS?
+
+Paul Mockapetris designed DNS in 1983.
+
+Elizabeth J. Feinler created early naming systems that inspired it.
+
+🚀 Advantages of DNS
+
+✅ Easy to remember names
+✅ Fast internet navigation
+✅ Scalable for billions of websites
+✅ Supports email & services
+
+✅ In one line:
+
+👉 DNS converts domain names into IP addresses so browsers can load websites.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// STORY OF WWW 
+
+// TIM BERNER'S LEE DEVELOPED HTML main bss click kare open hojae FIRST BROWSER IS WORLD WIDE WEB WWW.
+
+
+ // EK PROTOCOL BANAYA HTTP MOSAIC NETSCAPE BROWSER
+ // HTTP PROTOCOL TCP PROTOCOL KE UPAR BANA HAI
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// IMPORTANT NETWORKING DEVICES
+->HOST [data consume kare data produce kare]
+
+laptop,PC,MOBILE PHONE,TAB exact
+ek dusre host sai batt kar sakhe dusre client sai batt kar sakhe
+
+
+
+
+
+
+
+
+->repeater[bole toh enhance karta hai signal ko]
+// DATA LOSS NA HO 
+
+
+->HUB[ just like repeater BUST ITS A SPECIAL TYPE OF REPEATER  MATLAB KAFI DEVICE EK DUSRE SAI CONNECTED HAI TOH YEH MIDDLE KA KAAM KARTA THA SABKO CONTROL AUR SIGNAL BHEJTA HAI ]
+
+
+
+
+
+->SWITCH[JUST LIKE A HUB DATA BHEJTA HAI LEKIN INTELLIGENT HOTA HAI ]
+
+
+
+
+
+
+
+
+->ROUTER[INTERNET KA TRAFFIC ROUTE KARNA]
+NOW ROUTER CONNECT BY OWNSELF NO BRIDGE REQUIRE PHELE BRIDGE KI JARURAT HOTI THII
+
+
+
+
+
+
+
+->MODEM[EK TARAH KE SIGNAL KO DUSRE MAI CONVERT KARNA DIGITAL TO ANALOG SIGNAL]
+
+
+
+
+
+->ACCESS POINT[SIGNAL AMPLIFY KARTA HAi WIRE KE THROUGH CONNECT HOTA HAI]
+
+
+
+
+
+
+
+//NODE [DATA PASS HO SAKHE DATA PROCESS KAR SAKHE]
+
+
+
+
+
+
+
+// NETWORK Types
+LAN.[LOCAL AREA NETWORK] ek particular wifi sai multiple logh connected hai just like wifi or ethernet port sai.
+
+
+
+
+MAN.[METROPOLITAN AREA NETWORK]
+ISME PURI CITY VAGERA CONNECTED HOTI HAI YEH WIDE AREA NETWORK HOTA HAI
+
+
+
+
+
+WAN[WIDE AREA NETWORK] WORLD WIDE CONNECTED HOTA HAI
+
+
+
+
+
+
+more. EESE  hi bana di category
+CAP (CAMPUS AREA NETWORK)
+PAN(PERSONAL ARAE NETWORK)
+BAN(BODY AREA NETWORK)

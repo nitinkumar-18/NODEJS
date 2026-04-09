@@ -1,0 +1,515 @@
+jo terminal sai milega ipgconfig karke vo terminal wala  private ip addres hota hai issai server start hota hai lan banaate hai tabh
+
+
+aur jo public ip address hota hai vo apko dikta hai what is my ipaddress
+
+
+
+
+
+
+
+
+
+
+jo private address ko unko hum sirf LAN ke through access kar skte hai
+
+jo public address hote hai unko hum kahi bhi access karskte hai
+
+server hamara local par hi start kar skte hai
+
+
+
+
+kuch private address ki category bana di hai toh jo bahar sai hai vo access nhi kar paega sirf andar hi wale local wale access kar skte hai
+
+
+
+
+
+
+
+// LOCAL BATT KARNE KE LIYE HUMKO PRIVATE IP CHAIYEH HOGHI BUT BUT KISI DUSRE SERVER SAI BATT KARNE KE LIYE
+HUMKO HUMKO PUBLIC IP SAI KARNI HOGHI
+
+
+
+
+
+// TOH JBH ROUTER REQUEST karega toh vo server router ko response karegaa toh phir router mobile phone ko bhejega 
+
+
+
+
+
+
+
+
+
+
+
+
+NAT NETWORK ADDRESS TRANSLATION
+apka router jo private address lega aur apne sai public bhejega rrquest
+
+
+
+
+
+
+// IPv4 LIMITED NUMBER TAKH HI HAI
+
+// CG-NAT. CARRIER GRADE NAT
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2010 sai phele jabh hum router lete thee toh humko ek public ip address assign hota thaa toh hmarare router ke [pass] public ip address hogha aur hamrare device router ke throigh batt karegi
+
+
+
+
+
+
+
+
+CG-NAT 
+
+AAAJ KE TIME MAI ROUTER KO EK PRIVATE IP ADDRESS HI MILTA HAI VO CONNECT HOTA HAI USS COMPANY KE PUBLIC IP SAI VO PHIR REQUEST AGEE BHEJEGA TABH HUMKO RESPONSE AEGAA 
+
+
+
+
+
+
+// AGAR PUBLIC IP HAI TOH AAPKA LOCATION PATA KAR SKTE HAI
+
+
+
+
+// '0.0.0.0'  means yeh wild card entry hai yeh sabh server par chalu kardega ko bhu ho server
+jitne bhi ip available hai sabh par start kardo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+1️⃣ Public vs Private IP Address
+🔹 Public IP Address
+
+👉 Ye IP poore internet par unique hota hai.
+
+✔ ISP (Jio, Airtel, ACT etc.) tumhe deta hai
+✔ Internet par visible hota hai
+✔ Kisi bhi device ko internet par identify karta hai
+
+📌 Example:
+
+49.36.120.15
+
+💡 Agar koi website tumhe track kare → wo tumhara public IP dekhti hai.
+
+🔹 Private IP Address
+
+👉 Ye IP local network ke andar use hota hai.
+
+✔ Router assign karta hai
+✔ Internet par visible nahi hota
+✔ Ghar / office ke devices ke beech communication
+
+📌 Example:
+
+192.168.1.5
+10.0.0.12
+172.16.0.7
+
+💡 Tumhara phone, laptop, smart TV → sabko private IP milta hai.
+
+🔥 Example (Ghar ka WiFi)
+
+Router ka Public IP = 49.36.120.15
+Laptop = 192.168.1.2
+Phone = 192.168.1.3
+
+👉 Internet ko sirf router ka IP dikhta hai.
+
+
+
+
+
+
+
+
+
+
+
+
+
+2️⃣ Static vs Dynamic IP Address
+🔹 Static IP
+
+👉 Ye IP change nahi hota
+
+✔ Permanent hota hai
+✔ Servers & hosting me use hota hai
+✔ CCTV remote access
+✔ Businesses use karte hain
+
+📌 Example:
+
+Your website server IP = 103.21.58.10
+
+💰 ISP extra charge leta hai.
+
+🔹 Dynamic IP
+
+👉 Ye IP automatically change hota rehta hai
+
+✔ ISP assign karta hai
+✔ Home internet me use hota hai
+✔ Cheap & secure
+
+💡 Har baar router restart → naya IP mil sakta hai.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3️⃣ IPv4 vs IPv6
+🔹 IPv4
+
+👉 Traditional IP system
+
+Format:
+
+192.168.1.1
+
+✔ 32-bit address
+✔ ~4.3 billion addresses
+✔ Internet boom ke baad shortage ho gaya
+
+🔹 IPv6
+
+👉 New generation IP system
+
+Format:
+
+2001:0db8:85a3:0000:0000:8a2e:0370:7334
+
+✔ 128-bit address
+✔ unlimited addresses 😎
+✔ faster & more efficient routing
+✔ IoT future ke liye important
+
+🔥 Difference
+Feature	IPv4	IPv6
+Size	32 bit	128 bit
+Format	numbers	hex
+Addresses	limited	almost unlimited
+NAT needed	YES	NO
+Example	192.168.1.1	2001:db8::1
+🔥 4️⃣ NAT (Network Address Translation)
+
+👉 NAT router ka magic hai.
+
+Ye private IP ko public IP me convert karta hai.
+
+Kaise kaam karta hai:
+
+Laptop (192.168.1.2)
+↓
+Router NAT
+↓
+Internet par dikhega → 49.36.120.15
+
+💡 Isi wajah se ek hi WiFi se 10 devices internet use kar sakte hain.
+
+NAT kyun zaroori hai?
+
+✔ IPv4 shortage solve karta hai
+✔ Security provide karta hai
+✔ Local network protect karta hai
+
+🚀 5️⃣ CG-NAT (Carrier Grade NAT)
+
+👉 Ye NAT ka bada version hai.
+
+ISP khud NAT use karta hai.
+
+Normally:
+
+Device → Router NAT → Public IP
+
+CG-NAT me:
+
+Device → Router → ISP NAT → Public IP
+
+📌 CG-NAT Example
+
+100 customers
+➡ share 1 public IP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🌐 ISP kya hota hai?
+
+ISP = Internet Service Provider
+
+👉 Ye wo company hoti hai jo tumhe internet connection provide karti hai.
+
+Agar simple bolu:
+
+ISP = tumhare ghar aur poore internet ke beech ka bridge 🌍
+
+🧠 Real Life Example
+
+Jab tum YouTube kholte ho:
+
+Laptop → WiFi Router → ISP → Internet → YouTube Server
+
+Agar ISP na ho → internet access hi nahi milega.
+
+🇮🇳 India ke popular ISPs
+
+Airtel
+
+Jio
+
+BSNL
+
+ACT Fibernet
+
+Hathway
+
+Mobile data bhi ISP hi provide karta hai.
+
+🔧 ISP tumhe kya provide karta hai?
+
+✅ Internet access
+✅ Public IP address
+✅ DNS service
+✅ Bandwidth (speed plan)
+✅ Email hosting (kabhi kabhi)
+✅ Fiber / Broadband connection
+
+
+
+1️⃣ Tumhara device router se connect hota hai
+2️⃣ Router ISP ke network se connect hota hai
+3️⃣ ISP global internet backbone se connect hota hai
+4️⃣ Data requested server tak jata hai
+
+⚡ Ye sab milliseconds me hota hai.
+
+🔥 ISP ke types
+🔹 Mobile ISP
+
+📶 SIM internet
+Examples: Jio, Airtel
+
+🔹 Broadband ISP
+
+🏠 Home WiFi
+Fiber / DSL
+
+🔹 Satellite ISP
+
+Remote areas ke liye
+Example: Starlink
+
+💰 ISP ka plan kya hota hai?
+
+Example plan:
+
+✔ 100 Mbps speed
+✔ Unlimited data
+✔ ₹799/month
+
+👉 Speed = kitni fast data download hoga
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NAT kya hai? (Network Address Translation)
+
+👉 NAT ek technique hai jo router use karta hai:
+
+✅ private IP ko public IP me convert karne ke liye
+✅ multiple devices ko ek hi internet connection share karne dene ke liye
+
+🧠 Problem kya thi?
+
+Har device ko internet par jane ke liye unique public IP chahiye hota hai.
+
+BUT:
+
+❌ IPv4 addresses limited hain
+❌ har ghar ke har device ko public IP dena impossible
+
+👉 Solution = NAT
+
+🏠 Ghar ka Example
+
+Tumhare ghar ka WiFi:
+
+Device	Private IP
+Laptop	192.168.1.2
+Phone	192.168.1.3
+TV	192.168.1.4
+
+Router ka Public IP:
+
+49.36.120.15
+
+👉 Internet ko sirf ye IP dikhega.
+
+⚙ NAT kaise kaam karta hai?
+4
+Step-by-step:
+
+1️⃣ Phone request bhejta hai Google ko
+→ from 192.168.1.3
+
+2️⃣ Router NAT apply karta hai
+→ replace IP with 49.36.120.15
+
+3️⃣ Google response bhejta hai router ko
+
+4️⃣ Router check karta hai kis device ne request bheji thi
+→ phone ko data forward karta hai
+
+⚡ Ye sab milliseconds me hota hai.
+
+🔥 NAT Translation Table kya hoti hai?
+
+Router yaad rakhta hai:
+
+Private IP	Port	Public IP
+192.168.1.3	5201	49.36.120.15
+192.168.1.2	5202	49.36.120.15
+
+👉 isi se router ko pata chalta hai response kisko bhejna hai.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

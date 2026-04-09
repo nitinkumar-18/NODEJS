@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- <script src="script.js" type="module"></script> -->
+</head>
+<body>
+    <h1>User Form</h1>
+    <form action="/user" method="post" enctype="application/x-www-form-urlencoded">
+
+
+
+
+
+
+        <label for ="user">Name:</label>
+        <input type="text" id="user" name="user" value="TANISH TANDON"><br>
+<!-- 
+<!-- //multiparts sai detail atii hai    applocation/json file name -->
+<!-- text/plain bhi hota hai --> -->
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="tanish@gmail.com"><br>
+
+
+
+        <label for="hobby">HOBBY:</label>
+        <input type="text" id="hobby" name="hobbies[]" value="Tennis"><br>
+
+        <label for="hobby">HOBBY:</label>
+        <input type="text" id="hobby" name="hobbies[]" value="COding"><br>
+
+        <label for="profilePic">Profile Pic:</label>
+        <input type="file" id="profilePic" name="profilePic">
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

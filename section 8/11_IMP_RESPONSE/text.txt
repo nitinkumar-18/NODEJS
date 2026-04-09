@@ -1,0 +1,164 @@
+Jab browser server ko request bhejta hai:
+
+GET / HTTP/1.1
+Host: localhost:4000
+
+Server response deta hai:
+
+HTTP/1.1 200 OK
+Content-Type: text/html
+
+Hello world
+
+👉 isko bolte hain HTTP response
+
+
+
+
+
+
+
+
+
+HTTP response 3 parts me hota hai:
+
+STATUS LINE
+HEADERS
+(blank line)
+BODY
+🧩 Example
+HTTP/1.1 200 OK
+Content-Type: text/plain
+Content-Length: 11
+
+Hello World
+
+
+
+
+
+
+
+
+
+
+
+
+👉 headers = extra information about response
+
+💡 metadata (data ke baare me data)
+
+Example headers
+Content-Type: text/plain
+Content-Length: 11
+Access-Control-Allow-Origin: *
+
+
+
+
+
+
+✅ Content-Type
+
+Batata hai browser ko data kya hai
+
+Content-Type: text/html
+Content-Type: application/json
+Content-Type: image/webp
+
+Agar galat hua → browser samajh nahi payega.
+
+
+
+
+
+
+
+
+✅ Content-Length
+
+Data ka size.
+
+
+
+
+
+
+
+Access-Control-Allow-Origin
+
+CORS permission deta hai.
+
+Access-Control-Allow-Origin: *
+
+👉 sabko access allowed.
+
+
+
+
+
+
+
+
+
+
+
+🧠 3️⃣ Blank Line kyun zaroori hai?
+
+Headers aur body ko separate karta hai:
+
+headers
+(blank line)
+body
+
+Agar blank line nahi hogi → browser confuse ho jayega.
+
+
+
+
+
+
+4️⃣ BODY kya hota hai?
+
+Actual data:
+
+✔ text
+✔ HTML
+✔ JSON
+✔ image
+✔ file
+
+
+
+
+
+
+Why \r\n use karte hain?
+
+HTTP standard ke hisaab se:
+
+👉 line end = \r\n
+
+Browser expect karta hai.
+
+
+
+
+
+
+
+Real world header example
+HTTP/1.1 200 OK
+Content-Type: application/json
+Content-Length: 25
+Access-Control-Allow-Origin: *
+
+{"name":"Tanish"}
+
+
+
+
+
+headers browser ko batate hain response ko kaise handle karna hai.
+
+

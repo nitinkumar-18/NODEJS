@@ -1,0 +1,175 @@
+Socket kya hota hai?
+
+👉 Socket = communication endpoint
+👉 jahan se data send & receive hota hai
+
+Technical:
+
+👉 Socket = IP address + Port number
+
+192.168.1.5:3000
+
+👉 ye ek socket hai.
+
+🧠 Simple definition
+
+Socket ek door hai jahan se network data andar-bahar hota hai.
+
+🏢 Real-life analogy (BEST WAY)
+
+Socho:
+
+🏢 Building = Computer (IP address)
+🚪 Flat number = Port
+🚪 Door = Socket
+
+Parcel deliver karne ke liye:
+
+✔ building address chahiye
+✔ flat number chahiye
+✔ door se parcel milega
+
+👉 door = socket
+
+🌍 Internet me socket ka role
+
+Jab tum website open karte ho:
+
+google.com
+
+Browser connect karta hai:
+
+Google IP + port 443
+
+👉 ye socket communication hai.
+
+❓ Socket kyun zaroori hai?
+
+Computer ko pata hona chahiye:
+
+✔ kaunsa device
+✔ kaunsi service
+
+Example:
+
+Service	Port
+website	80
+secure web	443
+Node app	3000
+
+👉 socket service tak pahunchata hai.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+📡 Socket ka use kaha hota hai?
+
+✔ websites
+✔ WhatsApp / chat apps
+✔ online gaming
+✔ video calls
+✔ APIs
+✔ cloud servers
+✔ IoT devices
+
+👉 Internet = sockets ka network 🌍
+
+🧠 Socket types
+🔵 TCP Socket
+
+✔ connection based
+✔ reliable
+✔ ordered data
+
+Use:
+
+websites
+
+banking
+
+login systems
+
+🟢 UDP Socket
+
+✔ connectionless
+✔ fast
+✔ no guarantee
+
+Use:
+
+gaming
+
+streaming
+
+DNS
+
+👨‍💻 Server socket kya hota hai?
+
+Server:
+
+✔ port open karta hai
+✔ requests wait karta hai
+✔ clients accept karta hai
+
+Example:
+
+server listening on port 3000
+👨‍💻 Client socket kya hota hai?
+
+Client:
+
+✔ server se connect karta hai
+✔ request bhejta hai
+✔ response receive karta hai
+
+Example:
+
+Browser = client socket
+
+📡 TCP socket flow (step-by-step)
+1️⃣ Server socket banata hai
+
+(port open karta hai)
+
+2️⃣ Client connect karta hai
+3️⃣ Connection establish
+
+(handshake)
+
+4️⃣ Data exchange
+5️⃣ Connection close
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// yeh udp and tcp ka socket hai
+

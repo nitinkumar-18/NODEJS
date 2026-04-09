@@ -1,0 +1,154 @@
+// DYNAMIC VS STATIC IP ADDRESS
+
+
+
+// DHCP SERVER ASSIGN  IP ADDRESS CHANGE HOTA RHETA HAI FIXED BHI RHETA HAI
+
+
+
+
+
+
+
+
+
+
+1. Static IP Address
+
+👉 A static IP never changes.
+
+✅ Features
+
+Fixed and permanent
+
+Assigned manually or reserved by ISP
+
+Same IP every time you connect
+
+✅ Advantages
+
+✔ Easy remote access
+✔ Better for hosting servers & websites
+✔ Stable for CCTV, gaming servers, cloud services
+
+❌ Disadvantages
+
+✖ More expensive
+✖ Higher security risk (always visible)
+✖ Needs manual configuration
+
+📌 Example Uses
+
+Hosting a website
+
+Running a mail server
+
+Remote desktop access
+
+Business networks
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+2. Dynamic IP Address
+
+👉 A dynamic IP changes automatically.
+
+It is assigned by DHCP (Dynamic Host Configuration Protocol) whenever you connect to the network.
+
+✅ Features
+
+Changes periodically
+
+Assigned automatically by router/ISP
+
+Most common for home users
+
+✅ Advantages
+
+✔ More secure (keeps changing)
+✔ Cheaper
+✔ No manual setup needed
+
+❌ Disadvantages
+
+✖ Not ideal for hosting servers
+✖ Remote access becomes harder
+
+📌 Example Uses
+
+Home internet connections
+
+Mobile data networks
+
+Public WiFi
+
+
+
+
+
+
+
+
+
+
+// DEFAULT GATEWAY 
+
+// MAC ADDRESS GENERALLY CHANGE NHI HOTA HAI
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// PRIVATE VS PUBLIC IP ADDRESS
+

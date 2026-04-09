@@ -1,0 +1,441 @@
+ {
+        "id": "db3783f5-a179-4d68-857a-677664ea67c1",
+        "extension": ".txt",
+        "name": "num.txt",
+        "parentDirId": "9e754cfc-55bb-4e59-b770-60db28f4db45"
+    },
+    {
+        "id": "71dfbec3-9436-4ad8-a32a-4c3b97385900",
+        "extension": ".png",
+        "name": "3000.png",
+        "parentDirId": "9e754cfc-55bb-4e59-b770-60db28f4db45"
+    },
+    {
+        "id": "1e9d5115-3f8f-41c3-b59c-110597314200",
+        "extension": ".mp4",
+        "name": "STARS.mp4",
+        "parentDirId": "9e754cfc-55bb-4e59-b770-60db28f4db45"
+    },
+    {
+        "id": "aa381e04-0fd4-4f51-8b51-1e17ceee4095",
+        "extension": ".js",
+        "name": "app.js",
+        "parentDirId": "9e754cfc-55bb-4e59-b770-60db28f4db45"
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    [
+    {
+        "id": "ea69ad37-fa99-49fe-8214-d62bf320dc84",
+        "name": "root-tanish",
+        "userId": "224e1ea0-7cba-466d-9d0c-00bf5eb426e7",
+        "parentDirId": null,
+        "files": [],
+        "directories": []
+    }
+]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// try {
+  //   const directoriesData = JSON.parse(
+  //     await readFile("./directoriesDB.json", "utf-8")
+  //   );
+
+  //   const filesData = JSON.parse(
+  //     await readFile("./filesDB.json", "utf-8")
+  //   );
+
+  //   const dirIndex = directoriesData.findIndex(
+  //     (dir) => dir.id === id
+  //   );
+
+  //   if (dirIndex === -1) {
+  //     return res.status(404).json({ message: "Directory not found" });
+  //   }
+
+  //   const directoryData = directoriesData[dirIndex];
+
+  //   // ❌ remove directory
+  //   directoriesData.splice(dirIndex, 1);
+
+  //   // 🧹 delete files inside
+  //   for (const fileId of directoryData.files) {
+  //     const fileIndex = filesData.findIndex((file) => file.id === fileId);
+
+  //     if (fileIndex !== -1) {
+  //       const fileData = filesData[fileIndex];
+
+  //       await rm(`./storage/${fileId}${fileData.extension}`);
+  //       filesData.splice(fileIndex, 1);
+  //     }
+  //   }
+
+  //   // 🧹 delete child directories (simple version)
+  //   for (const childId of directoryData.directories) {
+  //     const childIndex = directoriesData.findIndex(
+  //       (d) => d.id === childId
+  //     );
+
+  //     if (childIndex !== -1) {
+  //       directoriesData.splice(childIndex, 1);
+  //     }
+  //   }
+
+  //   // 🧹 remove from parent
+  //   const parentDir = directoriesData.find(
+  //     (dir) => dir.id === directoryData.parentDirId
+  //   );
+
+  //   if (parentDir) {
+  //     parentDir.directories = parentDir.directories.filter(
+  //       (dirId) => dirId !== id
+  //     );
+  //   }
+
+  //   await writeFile(
+  //     "./filesDB.json",
+  //     JSON.stringify(filesData, null, 2)
+  //   );
+
+  //   await writeFile(
+  //     "./directoriesDB.json",
+  //     JSON.stringify(directoriesData, null, 2)
+  //   );
+
+  //   return res.status(200).json({ message: "Directory Deleted!" });
+
+  // } catch (err) {
+  //   console.log("DELETE ERROR:", err);
+  //   next(err);
+  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🔹 2. ObjectId ka structure (yeh main reason hai 🔥)
+
+| 4 bytes | 5 bytes        | 3 bytes |
+| time    | machine+process| counter |
+
+ObjectId = 12 bytes (24 hex characters)
+
+  🔍 Detail:
+Timestamp (4 bytes)
+→ kab document create hua
+→ isse sorting fast ho jati hai
+Machine + Process ID (5 bytes)
+→ kis system se generate hua
+→ distributed systems me unique banata hai
+Counter (3 bytes)
+→ auto-increment type value
+→ same second me bhi unique
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+mongodump is used to create a binary backup of MongoDB data, and mongorestore is used to restore it.
+
+
+
+
+
+
+mongodump
+mongorestore --port 27018 
+
+
+
+
+
+
+mongodump --host 127.0.0.1 --port 27017 --out /Users/tanishtandon/storageApp_dp_path --db storageApp
+
+
+
+
+
+
+
+mongodump --host 127.0.0.1 --port 27017 --out /Users/tanishtandon/storageApp_dp_path
+
+
+
+
+
+
+
+
+
+mongorestore --host 127.0.0.1 --port 27018 --dir /Users/tanishtandon/storageApp_dp_path/storageApp --db storageApp
+
+
+
+
+mongodump --host 127.0.0.1 --port 27017 --out /Users/tanishtandon/storageApp_dp_path/storageApp --db storageApp --gzip
+
+// size kam hota hai 
+
+
+
+
+
+mongorestore --host 127.0.0.1 --port 27018 --dir /Users/tanishtandon/storageApp_dp_path/storageApp --db storageApp --gzip
+
+
+mongodump --db storageApp \
+--archive=/Users/tanishtandon/dump/storageApp.archive \
+--gzip
+
+
+
+
+mongorestore --port 27018 --db storageApp \
+--archive=/Users/tanishtandon/dump/storageApp.archive \
+--gzip
+
+
+
+
+mongoexport --db storageApp --collection users --out usersArray.json --jsonArray
+
+
+
+
+
+mongoexport --port 27018 \
+--db storageApp \
+--collection
+ users \
+--out usersArray.json \
+--jsonArray
+
+
+//export data into json format and only collection data export not that validation data we export
+
+
+
+
+
+
+mongoexport --port 27018 \
+--db storageApp \
+--collection users \
+--out users.csv \
+--type csv --fields _id,name,email,password
+
+
+
+
+
+
+
+
+mongoexport --port 27018 \
+--db storageApp \
+--collection users \
+--out users.csv \
+--type csv --fields _id,name,email,password
+
+
+
+human readable format export use karo
+
+non human readable format database to database  dump karo use opposite is export
+
+
+
+
+mongoimport --port 27018 \
+--db storageApp \
+--collection customers \
+--file people.json \
+--jsonArray
+
+
+import karna csv mai thoda sahi nhi rheta hai thoda type bekar hojata hai
+
+
+
+

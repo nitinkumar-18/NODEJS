@@ -1,0 +1,65 @@
+// FIREWALL
+
+// INBOUND request system mai arahi hai
+
+// OUTBOUND request bahar jaa rhi hai
+
+
+
+INBOUND generally block hoti hai OUTBOUND nhi hoti hai jyda block
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Main simple + practical way me samjhata hoon 👇
+
+🔥 Firewall kya hota hai?
+
+👉 Firewall ek security guard hai jo network traffic ko control karta hai.
+
+💡 Simple:
+
+Kaun andar aa sakta hai aur kaun nahi → firewall decide karta hai.
+
+🧠 Real-life analogy
+
+🏢 Building gate par guard:
+
+✔ allowed log → andar
+❌ unknown log → entry band
+
+Firewall bhi yehi karta hai.
+
+🌐 Firewall kya protect karta hai?
+
+✔ hackers
+✔ unauthorized access
+✔ malware traffic
+✔ suspicious connections
+✔ unwanted ports access
+
+📦 Firewall ka kaam kaise hota hai?
+
+Firewall check karta hai:
+
+✔ IP address
+✔ port number
+✔ protocol (TCP/UDP)
+✔ incoming/outgoing traffic
+
+Phir decide karta hai:
+
+✅ allow
+❌ block

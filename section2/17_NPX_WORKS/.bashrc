@@ -1,0 +1,1 @@
+alias vt="create-vite"

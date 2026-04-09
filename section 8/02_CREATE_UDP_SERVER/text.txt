@@ -1,0 +1,89 @@
+// 👉 Socket = communication endpoint
+// 👉 do devices/programs ke beech data bhejne ka point
+
+// 💡 Simple:
+
+// Socket ek door hai jahan se data andar-bahar hota hai.
+
+
+
+
+
+🏢 Building = IP address
+🚪 Room number = Port
+🚪 Door = Socket
+
+Data door se andar jata hai.
+
+
+
+
+
+
+
+
+Computer ko pata hona chahiye:
+
+✔ kis device se baat karni hai (IP)
+✔ kis service se baat karni hai (port)
+
+👉 socket ye dono combine karta hai.
+
+
+
+
+
+Socket ka use kaha hota hai?
+
+✔ websites
+✔ chat apps
+✔ gaming
+✔ video streaming
+✔ cloud servers
+✔ APIs
+
+Internet = sockets ka network 🌍
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Behind the scenes:
+
+Browser connect karta hai:
+
+Google IP + port 443
+
+👉 ye socket connection hai.
+
+🧠 Socket kyun zaroori hai?
+
+Computer ko pata hona chahiye:
+
+✔ kaunsa device
+✔ kaunsi service
+
+Example:
+
+Service	Port
+website	80
+secure website	443
+Node app	3000
+
+👉 socket service tak pahunchata hai.

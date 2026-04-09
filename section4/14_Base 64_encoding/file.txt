@@ -1,0 +1,21 @@
+abc
+
+
+011000 010110 001001 100011   
+
+
+
+
+
+YWJj
+
+
+
+//matlab btoa phele binary mai karlega utf-8 ka use karke phir uske baadh binary ke 6-6 ka group banakar base 64 mai kardega
+
+
+
+
+
+
+

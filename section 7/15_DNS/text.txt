@@ -1,0 +1,86 @@
+
+
+yeh dono below correct hai last mai dot bhi correct hai
+google.com 
+google.com. // FULL DOMAIN NAME
+
+HAR DOMAIN MAI LAST MAI DOT HOTA HAI MAINLY TOH BUT USER NHI LIKHTE TOH BHI KOI ISSUE NHI HAI
+
+
+
+
+
+
+
+
+
+// MAINLY LAST MAI HI DOT HOTA HAI BHAUT IMPORTANT HOTA HAI YEH
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//YEH DOMAIN KE ALAG ALAG PART DOMAIN KI IP EASILY FIND KARTE HAI
+
+google.com.  -> yeh last mai dot root level domain
+
+com ->top level domain[TLD]
+
+google-> SECOND LEVEL DOMAIN[SLD]
+
+
+
+
+www->means sub domain or third level domain
+
+
+
+kisi domain mai kitne bhi level hoskte hai
+
+
+
+
+like app.web.google.com but domain ki limit 253 hoti hai badsically 
+
+
+
+
+
+
+
+
+
+
+
+HIERARCHY MAI SBSE TOP PART MAI
+->. RLD(ROOT LEVEL DOMAIN)
+    ->.com(VERISIGN COMPANY ASSIGN TO TAKE DOMAIn)
+    ->.org
+    ->.net
+    ->.in. YEJ com org yeh sabh TLD HAi
+
+
+
+    RLD BASICALLY EK ORGANISATION HAI ICANN NAME Ki
+
+
+
+
+BICH MAI GODADDY JAISE BROKER AAJATE HAI
+
+
+
+    // SABH KA KOI NA KOI DOMAIN ORGANISATION KO OWN HAI
+    com kisi ORGANISATION ki HAi
+    org kisi ki esse hi etc

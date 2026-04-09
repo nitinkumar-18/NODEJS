@@ -1,0 +1,47 @@
+// STREAM IN NODE JS
+
+
+
+// buffer ram ke andar hi space lee rha hota hai
+
+
+
+// STREAMS EK ZIP LINE BANADETI HAI LIKE
+
+// IF WE WANT HEAVY WEIGHT MEANS TO SAYS CAPACITY IS 8 GB AND HAVE 10 GB so it quite lagging type 
+
+
+// EXAMPLE C drive to D drive in mid there is RAM 
+// WE CAN ALSO SEND FROM ONE POINT TO ANOTHER LIKE ONE LAPTOP TO ANOTHER
+
+
+
+
+
+// SO WE READ IN CHUNKS VIA RAM C drive to D drive
+
+
+// DHEERE READ KARTA JAEGA 
+// WE CAN CARRY THEN INFINITE IF CHUNKS KE THROUGH SEND HO RHA HAI TIME LAGH JAEGA BUT HOJAEGA CHUNKS MAI
+BECAUSE WE ARE USING STREAMS
+
+
+// SO CHUNKS IS JUST A BUFFER HAVE 0s and 1s
+
+// WE CAN SEND FROM COMPUTER 1 to COMPUTER 2 this same things
+
+
+// DUE TO NETWORK ISSUE THERE TAKE SOME TIME BUT HOJATA HAI
+
+
+
+
+
+🎯 Buffer Kya Hai?
+
+Buffer = temporary memory space jahan binary data store hota hai.
+
+JavaScript normally text handle karta hai.
+Par files, images, video = binary data.
+
+Isliye Buffer use hota hai.

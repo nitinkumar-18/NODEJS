@@ -1,0 +1,10 @@
+1. AT least 3 bytes should be there to work with.
+2. If 3 bytes(24 bits) are not there then base 64 encoding will add multiple zeros to fill the remaining bits
+3. DATA should be in the multiples of 3 bytes.
+
+
+
+yaani 3 bytes ho yaa phir 6 bytes
+
+
+//= means placeholder wala zeros

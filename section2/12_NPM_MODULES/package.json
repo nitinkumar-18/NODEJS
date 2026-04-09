@@ -1,0 +1,18 @@
+{
+  "name": "tandontanish",
+  "version": "1.0.0",
+  "description": "My first npm package",
+  "main": "app.js",
+  "type": "commonjs",
+  "keywords": [
+    "npm",
+    "package",
+    "math"
+  ],
+  "author": "Tanish Tandon",
+  "license": "MIT",
+  "dependencies": {
+    "date-fns": "^4.1.0",
+    "procodrr": "^1.0.1"
+  }
+}

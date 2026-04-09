@@ -1,0 +1,576 @@
+db.getCollectionInfos({name:'user'})
+
+/**
+ * This is a starter template for a schema validation rule for a collection.
+ * More information on schema validation rules can be found at:
+ * https://www.mongodb.com/docs/manual/core/schema-validation/
+ */
+{
+  $jsonSchema: {
+    title: "Library.books",
+    bsonType: "object",
+    required: ["fieldname1", "fieldname2"],
+    properties: {
+      fieldname1: {
+        bsonType: "string",
+        description: "Fieldname1 must be a string",
+      },
+      fieldname2: {
+        bsonType: "int",
+        description: "Fieldname2 must be an integer",
+      },
+      arrayFieldName: {
+        bsonType: "array",
+        items: {
+          bsonType: "string"
+        },
+        description: "arrayFieldName must be an array of strings"
+      },
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+“Data ka structure kaisa hona chahiye”
+
+kya check karna hai
+kab check karna hai
+galti pe kya karna hai
+
+👉 validator → data ka rule
+👉 validationLevel → kab check karna hai
+👉 validationAction → galti pe kya karna hai
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+JSON Schema is a standard for validating JSON data.
+
+👉 It defines:
+
+Structure (fields)
+Data types
+Required properties
+Constraints (min/max, patterns, etc.)
+
+Think of it like:
+
+“Rules for your JSON data”
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+JSON Data:
+{
+  "name": "Tanish",
+  "age": 20
+}
+
+
+
+
+
+
+JSON Schema:
+{
+  "type": "object",
+  "properties": {
+    "name": { "type": "string" },
+    "age": { "type": "number" }
+  },
+  "required": ["name", "age"]
+}
+
+
+
+Possible values:
+string
+number
+integer
+boolean
+object
+array
+null
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+👉 Validation system = 3 cheezein milke kaam karti hain:
+
+validator → rules define karta hai
+validationLevel → kab apply hoga
+validationAction → fail hone pe kya hoga
+
+
+
+
+🔹 2. JSON vs JSON Schema (CONFUSION CLEAR)
+✅ JSON Data (Actual data stored)
+{
+  "name": "Tanish",
+  "age": 20,
+  "email": "tanish@gmail.com"
+}
+
+👉 Yeh database mein store hota hai
+
+✅ JSON Schema (Rules)
+{
+  "bsonType": "object",
+  "required": ["name", "email"],
+  "properties": {
+    "name": { "bsonType": "string" },
+    "age": { "bsonType": "int", "minimum": 18 },
+    "email": { "bsonType": "string" }
+  }
+}
+
+👉 Yeh batata hai:
+
+kya hona chahiye
+kya allowed hai
+
+
+
+
+
+
+
+
+
+
+INTERNAL ENGINERING TASK FORCE NAI BANAYA HAI JSON SCHEMA 
+yeh mongodb specific nahi hai jaise json mongodb json specific nhi hai
+
+
+👉 Why JSON Schema is used?
+
+JSON Schema is used to validate JSON data, enforce structure, ensure consistency, improve security, and act as a contract between systems like frontend, backend, and database.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// my sql postgrese sql mai validation schema 
+
+
+1. ENUM KYU (Why use enum?)
+
+👉 Reason: control + safety
+
+Problem without enum ❌
+{ "status": "delivred" }   // typo 😵
+{ "status": "DELIVERED" }
+{ "status": "done" }
+
+👉 System break / bugs / inconsistency
+
+With enum ✅
+"status": {
+  "enum": ["pending", "shipped", "delivered"]
+}
+
+👉 Sirf allowed values hi aayengi
+
+🔹 Summary:
+Data clean rahega
+Bugs kam honge
+System predictable banega
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+What is validationAction?
+
+In MongoDB:
+
+👉 validationAction decide karta hai:
+
+Agar data validation fail ho jaye → system kya kare?
+
+🔹 2 Types of validationAction
+✅ 1. "error" (MOST IMPORTANT)
+validationAction: "error"
+
+👉 Matlab:
+
+Invalid data → reject ❌
+Insert/update fail ho jayega
+🔹 Example
+
+Schema:
+
+age: { bsonType: "int", minimum: 18 }
+
+Insert:
+
+db.users.insertOne({
+  name: "Tanish",
+  age: 15
+})
+
+❌ Result:
+
+Error aayega
+Data insert nahi hoga
+
+👉 Use when:
+
+Production system
+Clean data chahiye
+Strict rules
+⚠️ 2. "warn"
+validationAction: "warn"
+
+👉 Matlab:
+
+Invalid data → allow ho jayega ✅
+Sirf warning milegi ⚠️
+🔹 Example
+
+Same insert:
+
+{ name: "Tanish", age: 15 }
+
+✅ Insert ho jayega
+⚠️ Warning log hogi
+
+👉 Use when:
+
+Testing phase
+Migration (old data clean nahi hai)
+Debugging
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+validator = rule engine
+
+Yeh define karta hai ki database me kaunsa data allowed hai aur kaunsa nahi
+
+🔹 Simple Understanding
+
+👉 Jab bhi:
+
+insert
+update
+
+hota hai…
+
+👉 MongoDB check karta hai:
+
+“Kya yeh document rules follow kar raha hai?”
+
+🔥 Basic Syntax
+db.createCollection("users", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["name"],
+      properties: {
+        name: { bsonType: "string" },
+        age: { bsonType: "int" }
+      }
+    }
+  }
+})
+🔹 Breakdown (IMPORTANT)
+🔸 validator
+
+👉 main field jahan rules define hote hain
+
+🔸 $jsonSchema
+
+👉 JSON Schema use karke validation likhte hain
+
+🔸 bsonType
+
+👉 MongoDB-specific datatype
+
+🔸 required
+
+👉 mandatory fields
+
+🔸 properties
+
+👉 fields + rules
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🔹 3 Types of validationLevel
+✅ 1. "strict" (Default)
+validationLevel: "strict"
+🔹 Behavior:
+ALL inserts → validate ✅
+ALL updates → validate ✅
+Old invalid docs → update bhi nahi kar paoge ❌
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"moderate"
+validationLevel: "moderate"
+🔹 Behavior:
+Case	Result
+New document	Validate ✅
+Valid doc update	Validate ✅
+Old invalid doc update	Allowed 😈
+🔹 Example
+
+Old data (already DB me):
+
+{ age: 10 }   // invalid
+
+Now update:
+
+db.users.updateOne({}, { $set: { name: "Tanish" } })
+
+✅ Allowed
+
+🔹 Meaning:
+
+“Old galtiyon ko ignore karo, naye data ko sahi rakho”
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+3. "off"
+validationLevel: "off"
+🔹 Behavior:
+No validation ❌
+Schema ignore
+🔹 Meaning:
+
+“Validation band hai”
+
+🔹 Use:
+Testing/debugging
+Rare cases
+🔥 Full Example (IMPORTANT)
+db.createCollection("users", {
+  validator: {
+    $jsonSchema: {
+      bsonType: "object",
+      required: ["name", "age"],
+      properties: {
+        name: { bsonType: "string" },
+        age: { bsonType: "int", minimum: 18 }
+      }
+    }
+  },
+  validationLevel: "moderate"
+})
+
+
+
+
+
+
+
+shell ke liye
+
+
+db.users.find({  $nor:[{$jsonSchema:db.getCollectionInfos({name:"users"})[0].options.validator.$jsonSchema}]});

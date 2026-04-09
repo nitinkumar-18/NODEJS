@@ -1,0 +1,431 @@
+fibre to the tower
+yeh wire power convert karke 3g 4g mai banata hai
+
+
+toh hamare phone mai modem hota hai jo convert karta hai uss signal ko jo towers sai aate hai
+
+
+3G 4G data ko cellular data
+
+
+SIM SUBSCRIBER IDENTITY MODULE 
+
+
+
+
+PRIVATE IP ADDRESS RANGE
+CLASS A:10.0.0.0-10.255.255.255
+
+CLASS B:172.16.0.0-172.31.255.255
+
+CLASS C:192.168.0.0-192.168.255.255
+
+
+
+
+CGNAT CARRIER GRADE NAT
+100.64.0.0 - 100.127.255.255
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//IP ADDRESS OR IP4 ADDRESS
+// INTERNET PROTOCOL ADDRESS
+// MAINLY ASSIGN BY DEVICES THOSE ARE CONNECTED WITH THE INTERNET ROUTER ASSIGN IP ADDRESS TOWER KE THROUGH ASSIGN HOTA HAI IP ADDRESS
+
+
+
+
+
+// IPv4 have 32 bits 
+192.168.0.1 example of IP ADDRESS
+
+
+
+
+192.168.0.1 yeh dot hata do isko ek sath likh do wahi hai valid
+
+
+IP KI MAXIMUM VALUE 255.255.255.255 
+MIN 0.0.0.0. YEHI RANGE HAI
+00000000 00000000 00000000 00000000
+
+
+ 
+
+
+
+ 
+
+
+
+NETWORK GROUP OF MULTIPLE DEVICES
+
+
+
+
+192.168.0.1 = 11000000 10101000 00000000 00000001
+
+
+
+
+
+
+
+
+255.255.255.0 = 11111111 11111111 11111111 00000000
+just above wala subnet mask hai router decide karta hai isko change bhi kar skte hai iska kaam hamare IP ADDRESS ko do HISSO MAI DEVIDE KARNA 
+
+
+
+
+
+
+11111111 11111111 11111111 00000000
+starting ke network portion zero wale host portion
+
+host portion change hota rheta hai 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+192.168.0.0 , 192.168.0.255 yeh ADDRESS reserve hote hai
+
+
+basically hamare pass 254 ADDRESS hi hote hai
+
+
+
+
+
+
+
+192.168.0.1/24 means iske subnet mask mai 24 one hoghe
+
+CIDR notation 
+CIDR Notation (Classless Inter-Domain Routing) IP address ko compact aur efficient format mein likhne ka tarika hai.
+
+Yeh batata hai:
+
+✅ Network ka size kitna hai
+✅ Kitne devices us network mein aa sakte hain
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🔹 👉 /24 → last number change hota hai
+
+Example:
+
+192.168.1.0/24
+
+✔ Fixed part → 192.168.1
+✔ Change hone wala → last number
+
+Range:
+
+192.168.1.0
+to
+192.168.1.255
+
+👉 Devices: 254 usable
+
+🔹 👉 /16 → last 2 numbers change hote hain
+
+Example:
+
+172.16.0.0/16
+
+✔ Fixed → 172.16
+✔ Change → last 2 numbers
+
+Range:
+
+172.16.0.0
+to
+172.16.255.255
+
+👉 Devices ≈ 65,534
+
+🔹 👉 /8 → last 3 numbers change hote hain
+
+Example:
+
+10.0.0.0/8
+
+✔ Fixed → 10
+✔ Change → last 3 numbers
+
+Range:
+
+10.0.0.0
+to
+10.255.255.255
+
+👉 Devices ≈ 16 million 😲
+
+🔹 Visual samajho
+
+IP format:
+
+A.B.C.D
+CIDR	Fixed	Change
+/8	A	B.C.D
+/16	A.B	C.D
+/24	A.B.C	D
+🔹 Ek aur example
+192.168.10.0/24
+
+✔ Range → 192.168.10.0 – 192.168.10.255
+
+192.168.0.0/16
+
+✔ Range → 192.168.0.0 – 192.168.255.255
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🌐 IPv6 kya hai?
+
+IPv6 = Internet Protocol version 6
+
+IPv4 ki problem solve karne ke liye banaya gaya.
+
+🔹 Format:
+2001:0db8:85a3:0000:0000:8a2e:0370:7334
+
+👉 8 groups
+👉 hexadecimal numbers
+👉 128-bit address
+
+🔹 Total addresses:
+
+≈ 340 undecillion 😲
+(itne ki har insaan ko billions mil jaye)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🌐 IPv4 kya hai?
+
+IPv4 = Internet Protocol version 4
+
+Yeh internet ka purana aur sabse widely used version hai.
+
+🔹 Format:
+192.168.0.1
+
+👉 4 numbers
+👉 Range: 0–255
+👉 32-bit address
+
+🔹 Total addresses:
+
+≈ 4.3 billion
+
+❗ Problem: duniya mein devices zyada ho gaye → addresses kam pad gaye.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+🌐 IP Address kya hota hai?
+
+IP (Internet Protocol) Address ek unique number hota hai jo network par har device ko diya jata hai.
+
+👉 Internet par data bhejne ke liye zaroori
+👉 Batata hai data kahan jaana hai
+
+📌 Example:
+192.168.1.1
+🔹 Real life example
+
+IP address = ghar ka address
+
+Data = courier
+
+Internet = delivery system
+
+Courier ko pata hona chahiye kahan deliver karna hai.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+4,294,967,296 -> 4 billion we use IPv4 we give the address to this much of the device
+
+
+
+
+
+// PRIVATE ADDRESS SAME MAXIMUM TIME 
+// BUT PUBLIC ADDRESS SAME NHI HOTE GENERALLY
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+LOOPBACK ADDRESS(LOCAL HOST)
+
+
+127.0.0.1 by default local host
+
+
+

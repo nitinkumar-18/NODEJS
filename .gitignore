@@ -15,3 +15,8 @@ node_modules/
 
 # Test files
 test.txt
+
+# Media / archives
+*.mp4
+*.mkv
+*.zip

@@ -1,0 +1,64 @@
+why should we learn Networking?
+
+
+kyoki jo node js ki application hai vo ek Networking application hoti hai generally because frontend sai batt karna hota hai toh vo ek network ke through frontend sai batt kar rhi hoti hai
+
+
+
+
+
+
+
+
+
+// EFFICIENT CLIENT - SERVER INTERACTION (Increase API performance) 
+//bole toh efficient interaction hogha jissa api performance inc hogha jaise humko pata hai ki kya transfer karna hai aur kitna karna hai toh best hai yeh
+
+
+
+
+
+
+
+
+
+
+
+
+//TROUBLE SHOUTING NETWORK ISSUES
+// KOI BHI DIKKAT AAJAE KAHI PAR IN frontend PART AUR backend part agar humko knowledge hogha toh issue resolve hojaega easy way mai
+
+
+
+
+
+
+
+//IMPLEMENTING SECURITY
+//DATA TRANSFER FROM FRONT TO BACKEND JUST LIKE A WIRE SO WE //IMPLEMENT SOME SECURITY OTHERWISE WITHOUT SECURITY IT BECOME DIFFICULT
+
+
+
+
+
+
+
+
+
+
+
+
+
+// SCALING applications.  -> hamara server crash na ho toh multiple client ke traffic ko handle kardega handle traffic of clients basically
+
+
+
+
+// STREAMLINE DEPLOYMENT isme hum deployment ka process easy kar paege dekhege ki khaa par dikkat ho rhi hai
+
+
+
+
+
+
+//NODE JS APP IS A NETWORK APP JUST LIKE A SERVER TALK WITH THE CLIENTS AND ALL USE THE network

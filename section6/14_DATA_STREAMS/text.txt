@@ -1,0 +1,66 @@
+// DATA STREAMS EK OS KA CONCEPT HAI 
+// PROCESSES EK APPLICATION HOTA HAI JO TERMINAL SAI START HOTA
+
+// DATA STREAM KUCH NHI HAI JYADA BSS STREAM HAI BSS VO
+
+
+
+
+
+
+
+// BY DEFAULT JABH PROCESS START HOTA HAI TOH 3 DATA STREAM CONNECT RHETI HAI 
+
+
+
+
+
+
+
+// FIRST STREAM ->standard input because it connect with the keyboard yeh ek duplex stream hoti HAI JUST LIKE READABLE STREAM HOTI HAI BUT WRITABLE WALA JYADA KAAM NHI ATAA HAI
+
+
+
+
+
+
+
+
+// SECOND STEAM-> STANDARD OUTPUT STREAM yeh writable duplex stream hoti HAI
+
+
+
+
+// THIRD -> standard error vo bhi hamare monitor sai connect hoti HAI // YEH BHI WRITABLE DUPLEX STREAM HAI
+
+
+
+// stdin below
+
+Tanishs-MacBook-Air:14_DATA_STREAMS tanishtandon$ ls
+app.js                  package.json
+node_modules            text.txt
+package-lock.json
+
+
+
+
+
+
+//below stdout
+
+Tanishs-MacBook-Air:14_DATA_STREAMS tanishtandon$ abcd
+bash: abcd: command not found
+Tanishs-MacBook-Air:14_DATA_STREAMS tanishtandon$ 
+
+
+
+
+
+// THIS IS VERY POWERFUL WE CONNECT TWO APPLICATIONS VIA ALL THIS
+
+
+
+
+
+cat output.txt.  cat command we use and get output of that file

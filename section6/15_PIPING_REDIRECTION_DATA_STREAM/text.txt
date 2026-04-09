@@ -1,0 +1,39 @@
+// PIPING MEANS ONE PROCESS STANDARD OUTPUT CONNECTED TO ANOTHER PROCESS INPUT
+
+
+
+
+
+
+// yeh app2.js ka jo output hai vo output.txt mai jaega below
+
+Tanishs-MacBook-Air:15_PIPING_REDIRECTION_DATA_STREAM tanishtandon$ node app2.js > output.txt 2>> output.txt
+Tanishs-MacBook-Air:15_PIPING_REDIRECTION
+
+
+
+
+
+// yeh jo output.txt ka hai vo jaega app.js in mai chala ajega
+
+
+Tanishs-MacBook-Air:15_PIPING_REDIRECTION_DATA_STREAM tanishtandon$ node app.js < output.txt
+Debugger listening on ws://127.0.0.1:52710/8b37bd90-1b22-4982-8a2f-6ff075f6eedd
+For help, see: https://nodejs.org/en/docs/inspector
+Debugger attached.
+app2.js: stdout : THIS IS TANISH TANDON from app2.js
+97d4439-3d40-456d-83c2-7090ae164348
+For help, see: https://nodejs.org/en/docs/inspector
+Debugger attached.
+stderr : THIS IS TANISH TANDON from app2.js
+Waiting for the debugger to disconnect...
+
+Waiting for the debugger to disconnect...
+Tanishs-MacBook-Air:15_PIPING_REDIRECTION_DATA_STREAM tanishtandon$ 
+
+
+
+
+
+
+// redirection basically used for multiple application

@@ -1,0 +1,68 @@
+// SOMETHING ABOUT DNS HIJACKING
+http://mysite.local:4000/.  create this DNS HIJACKS
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Terminal me hosts file open karo:
+
+sudo nano /etc/hosts
+
+File ke end me add karo:
+
+127.0.0.1   facebook.com
+127.0.0.1   www.facebook.com
+
+Save & exit:
+
+CTRL + O → Enter
+CTRL + X
+🔄 DNS cache flush karo
+sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder
+🌐 Ab test karo
+
+Browser me open karo:
+
+facebook.com
+
+👉 Facebook open nahi hoga
+👉 tumhara local server open hoga
+👉 ya page load fail ho jayega
+
+🧠 Yeh kya dikhata hai?
+
+Jab tum facebook open karte ho:
+
+1️⃣ Browser IP poochta hai
+2️⃣ OS pehle hosts file check karta hai
+3️⃣ 127.0.0.1 mil gaya
+4️⃣ request internet par nahi gayi
+
+👉 DNS bypass ho gaya.
+
+
+// SMALL LEVEL DNS HIJACKING VERY HELPFUL FOR DEVELOPERS
+// MANY BENEFITS AND MANY DISADVANTAGES
+
+
+
+🖥️ Hosts File — Pros & Cons
+✅ Advantages (Fayde)	               ❌ Disadvantages (Nuksaan)
+⚡ Fast connection (DNS lookup skip)	    ❗ Galat entry se websites block ho sakti hain
+💻 Local development easy              	🤯 Bhool gaye to internet issues
+🌐 Real domain jaisa testing	         📱 Sirf isi computer par kaam karega
+🧪 Offline testing possible          	 🔄 Changes ke baad DNS flush karna padta hai
+🔧 Multiple subdomains simulate	         🛠 Manual editing & maintenance
+🚫 Websites block kar sakte ho	         🦠 Malware misuse kar sakta hai
+🔐 Security learning & testing	         🌍 Large networks me practical nahi
+🧼 Ads & trackers block kar sakte ho	  ⚠️ Galat use se confusion

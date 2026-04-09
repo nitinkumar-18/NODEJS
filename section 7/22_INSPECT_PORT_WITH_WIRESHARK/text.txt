@@ -1,0 +1,28 @@
+// bhaut TCP REQUEST LAGTA HAI
+
+
+
+ip.addr == 75.2.60.5
+
+// https hai toh bts mai 443 hogha
+
+console.log(server.address());// we get port
+
+
+// port ek logical number hai 
+
+
+
+
+🦈 Wireshark kya hai?
+
+👉 Network packets capture & analyze karne ka tool.
+
+Matlab:
+
+✔ kaunsa data ja raha hai
+✔ kaunse IP se
+✔ kaunse port par
+✔ kaunsa protocol
+
+sab dikhta hai.

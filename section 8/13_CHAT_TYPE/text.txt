@@ -1,0 +1,20 @@
+❗ Real world me kaha use hota hai?
+
+✅ video streaming
+✅ file download systems
+✅ large data APIs
+✅ log streaming dashboards
+✅ live feeds
+✅ cloud storage downloads
+
+🧠 SUPER IMPORTANT INSIGHT
+
+👉 Ye code performance + scalability ka foundation hai.
+
+Isi technique se:
+
+YouTube video stream hota hai
+
+Netflix buffering control karta hai
+
+AWS S3 files serve karta hai

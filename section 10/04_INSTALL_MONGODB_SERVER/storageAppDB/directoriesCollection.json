@@ -1,0 +1,28 @@
+[
+  {
+    "id": "ea69ad37-fa99-49fe-8214-d62bf320dc84",
+    "name": "root-tanish",
+    "userId": "224e1ea0-7cba-466d-9d0c-00bf5eb426e7",
+    "parentDirId": null,
+    "files": [],
+    "directories": []
+  },
+  {
+    "id": "6490567f-8d64-41b3-b78e-e3102de50345",
+    "name": "root-tani@gmail.com",
+    "userId": "85f4bc4e-0f94-4547-9a80-0907cb5f5cca",
+    "parentDirId": null,
+    "files": [],
+    "directories": [
+      "974f5483-9f2a-4a3a-b014-618d46f606a2"
+    ]
+  },
+  {
+    "id": "974f5483-9f2a-4a3a-b014-618d46f606a2",
+    "name": "tt",
+    "parentDirId": "6490567f-8d64-41b3-b78e-e3102de50345",
+    "userId": "dfab7921-0dac-4bba-b269-7f8fab89924f",
+    "files": [],
+    "directories": []
+  }
+]

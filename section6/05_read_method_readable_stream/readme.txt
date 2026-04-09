@@ -1,0 +1,1 @@
+readStream having internal buffer
